@@ -1,6 +1,6 @@
 """
-Agent d'extraction pour Location d'Appartements
-Extrait TOUS les champs spécifiques à la location
+Agent d'extraction pour Location de Villas
+Extrait TOUS les champs spécifiques aux villas
 """
 
 import re
@@ -12,30 +12,39 @@ from datetime import datetime
 from urllib.parse import unquote
 
 
-# ========== CONSTANTES SPÉCIFIQUES À LA LOCATION ==========
+# ========== CONSTANTES SPÉCIFIQUES AUX VILLAS ==========
 
-TYPES_APPARTEMENTS = [
-    'studio', 's1', 's2', 's3', 's4', 's5',
-    'duplex', 'triplex', 'penthouse', 'loft'
+TYPES_VILLAS = [
+    'villa', 'villa de luxe', 'villa moderne', 'villa contemporaine',
+    'villa classique', 'villa traditionnelle', 'villa vue mer',
+    'villa avec piscine', 'villa de standing', 'villa haut standing',
+    'villa indépendante', 'villa mitoyenne', 'villa jumelée'
 ]
 
-EQUIPEMENTS_LOCATION = [
-    'ascenseur', 'parking', 'garage', 'terrasse', 'balcon',
-    'jardin', 'vue sur mer', 'vue dégagée', 'climatisation',
-    'chauffage central', 'chauffage individuel', 'double vitrage',
-    'porte blindée', 'cuisine équipée', 'cuisine américaine',
-    'réfrigérateur', 'four', 'micro-ondes', 'lave-vaisselle',
-    'machine à laver', 'sèche-linge', 'tv', 'internet', 'fibre',
-    'alarme', 'gardien', 'vidéosurveillance', 'interphone',
-    'meublé', 'non meublé', 'chambre de service', 'buanderie',
-    'cellier', 'débarras', 'dressing', 'placards'
+EQUIPEMENTS_VILLA = [
+    'jardin', 'piscine', 'piscine chauffée', 'piscine couverte',
+    'terrasse', 'balcon', 'garage', 'parking', 'parking visiteur',
+    'cave', 'cellier', 'buanderie', 'chambre de service',
+    'dressing', 'cheminée', 'véranda', 'pergola', 'barbecue',
+    'cuisine d\'été', 'plancha', 'spa', 'hammam', 'jacuzzi',
+    'ascenseur', 'monte-charge', 'climatisation centrale',
+    'climatisation split', 'chauffage central', 'chauffage au sol',
+    'double vitrage', 'porte blindée', 'alarme', 'caméras',
+    'vidéosurveillance', 'gardien', 'sécurité', 'interphone',
+    'visiophone', 'portail automatique', 'portail électrique',
+    'arrosage automatique', 'éclairage paysager', 'fontaine',
+    'bassin', 'potager', 'verger', 'arbres fruitiers',
+    'vue sur mer', 'vue panoramique', 'vue dégagée', 'vue sur lac',
+    'proche mer', 'proche plage', 'quartier calme', 'quartier résidentiel',
+    'suite parentale', 'dressing', 'placards', 'rangements'
 ]
 
-PROXIMITES_APPARTEMENT = [
-    'transports', 'bus', 'métro', 'tram', 'commerces',
-    'supermarché', 'marché', 'écoles', 'collège', 'lycée',
-    'hôpital', 'clinique', 'pharmacie', 'restaurants',
-    'plage', 'mer', 'lac', 'parc', 'jardin public'
+PROXIMITES_VILLA = [
+    'mer', 'plage', 'commerces', 'écoles', 'collège', 'lycée',
+    'crèche', 'jardin d\'enfants', 'supermarché', 'marché',
+    'pharmacie', 'hôpital', 'clinique', 'transports', 'bus',
+    'autoroute', 'aéroport', 'restaurants', 'hôtels', 'golf',
+    'tennis', 'ports de plaisance', 'marina'
 ]
 
 REGIONS_MAPPING = {
@@ -145,7 +154,7 @@ def extract_loyer_from_text(text: str) -> Dict[str, Any]:
             try:
                 loyer_str = m.group(group).replace(' ', '').replace(',', '.')
                 val = float(loyer_str)
-                if 100 <= val <= 50000:
+                if 500 <= val <= 100000:
                     result['loyer'] = val
                     break
             except:
@@ -154,28 +163,68 @@ def extract_loyer_from_text(text: str) -> Dict[str, Any]:
     return result
 
 
-def extract_charges_incluses(text: str) -> bool:
-    """Détecte si les charges sont incluses"""
+def extract_type_villa_from_text(text: str) -> Optional[str]:
+    """Extrait le type de villa"""
     text_lower = text.lower()
     
-    if 'charges incluses' in text_lower:
-        return True
-    elif 'charges comprises' in text_lower:
-        return True
-    elif 'syndic inclus' in text_lower:
-        return True
-    elif 'frais de syndic inclus' in text_lower:
-        return True
+    for type_villa in TYPES_VILLAS:
+        if type_villa in text_lower:
+            return type_villa.title()
     
-    return False
+    return None
 
 
-def extract_montant_charges(text: str) -> Optional[float]:
-    """Extrait le montant des charges"""
+def extract_nombre_niveaux(text: str) -> Optional[int]:
+    """Extrait le nombre de niveaux"""
     patterns = [
-        r'charges\s*[:\-]?\s*(\d+)\s*(?:tnd|dt)',
-        r'(\d+)\s*(?:tnd|dt)\s*de\s*charges',
-        r'syndic\s*[:\-]?\s*(\d+)\s*(?:tnd|dt)',
+        r'sur\s+(\d+)\s*niveaux',
+        r'(\d+)\s*niveaux',
+        r'r\s*\+\s*(\d+)',
+        r'rez-de-chaussée\s*et\s*(\d+)\s*étages?',
+        r'(\d+)\s*étages?',
+    ]
+    
+    text_lower = text.lower()
+    
+    for pattern in patterns:
+        m = re.search(pattern, text_lower)
+        if m:
+            try:
+                return int(m.group(1)) + 1
+            except:
+                pass
+    
+    return None
+
+
+def extract_surface_habitable(text: str) -> Optional[float]:
+    """Extrait la surface habitable"""
+    patterns = [
+        r'surface\s*(?:habitable)?\s*[:\-]?\s*(\d+)\s*m[²2]',
+        r'(\d+)\s*m[²2]\s*(?:habitable)?',
+        r'superficie\s*(?:habitable)?\s*[:\-]?\s*(\d+)\s*m²',
+    ]
+    
+    for pattern in patterns:
+        m = re.search(pattern, text, re.IGNORECASE)
+        if m:
+            try:
+                val = float(m.group(1))
+                if 50 <= val <= 2000:
+                    return val
+            except:
+                pass
+    
+    return None
+
+
+def extract_surface_terrain(text: str) -> Optional[float]:
+    """Extrait la surface du terrain"""
+    patterns = [
+        r'terrain\s+de\s*(\d+)\s*m[²2]',
+        r'terrain\s*[:\-]?\s*(\d+)\s*m²',
+        r'surface\s+du\s+terrain\s*[:\-]?\s*(\d+)\s*m²',
+        r'parcelle\s*[:\-]?\s*(\d+)\s*m²',
     ]
     
     for pattern in patterns:
@@ -189,12 +238,17 @@ def extract_montant_charges(text: str) -> Optional[float]:
     return None
 
 
-def extract_caution(text: str) -> Optional[float]:
-    """Extrait le montant de la caution"""
+def extract_presence_jardin(text: str) -> bool:
+    """Détecte la présence d'un jardin"""
+    return 'jardin' in text.lower()
+
+
+def extract_surface_jardin(text: str) -> Optional[float]:
+    """Extrait la surface du jardin"""
     patterns = [
-        r'caution\s*[:\-]?\s*(\d+)\s*(?:tnd|dt)',
-        r'(\d+)\s*(?:tnd|dt)\s*de\s*caution',
-        r'dépôt de garantie\s*[:\-]?\s*(\d+)\s*(?:tnd|dt)',
+        r'jardin\s+de\s*(\d+)\s*m[²2]',
+        r'jardin\s+(\d+)\s*m²',
+        r'jardin\s+(\d+)\s*m',
     ]
     
     for pattern in patterns:
@@ -208,220 +262,69 @@ def extract_caution(text: str) -> Optional[float]:
     return None
 
 
-def extract_duree_location(text: str) -> Optional[str]:
-    """Extrait la durée de location"""
+def extract_type_jardin(text: str) -> Optional[str]:
+    """Extrait le type de jardin"""
     text_lower = text.lower()
     
-    if 'long terme' in text_lower:
-        return 'Long terme'
-    elif 'courte durée' in text_lower:
-        return 'Courte durée'
-    elif 'saisonnier' in text_lower:
-        return 'Saisonnier'
-    elif 'vacances' in text_lower:
-        return 'Vacances'
-    elif 'à l\'année' in text_lower:
-        return 'Long terme'
+    if 'gazonné' in text_lower:
+        return 'Gazonné'
+    elif 'arboré' in text_lower or 'arbres' in text_lower:
+        return 'Arboré'
+    elif 'paysager' in text_lower:
+        return 'Paysager'
+    elif 'exotique' in text_lower:
+        return 'Exotique'
+    elif 'méditerranéen' in text_lower:
+        return 'Méditerranéen'
+    elif 'fruitiers' in text_lower or 'verger' in text_lower:
+        return 'Verger'
     
-    return 'Long terme'  # Par défaut
+    return 'Standard'
 
 
-def extract_duree_minimum(text: str) -> Optional[str]:
-    """Extrait la durée minimum de location"""
+def extract_presence_piscine(text: str) -> bool:
+    """Détecte la présence d'une piscine"""
+    return 'piscine' in text.lower()
+
+
+def extract_surface_piscine(text: str) -> Optional[float]:
+    """Extrait la surface/dimensions de la piscine"""
     patterns = [
-        r'minimum\s*(\d+)\s*mois',
-        r'(\d+)\s*mois\s*minimum',
-        r'location\s*(\d+)\s*mois',
+        r'piscine\s+de\s*(\d+)\s*m[²2]',
+        r'piscine\s+(\d+)\s*m²',
+        r'piscine\s+(\d+)[x\*]\s*(\d+)',
     ]
     
     for pattern in patterns:
         m = re.search(pattern, text, re.IGNORECASE)
         if m:
             try:
-                return f"{m.group(1)} mois"
+                if m.lastindex == 2:
+                    return float(m.group(1)) * float(m.group(2))
+                else:
+                    return float(m.group(1))
             except:
                 pass
     
     return None
 
 
-def extract_preavis(text: str) -> Optional[str]:
-    """Extrait le préavis"""
-    patterns = [
-        r'préavis\s*[:\-]?\s*(\d+)\s*mois',
-        r'(\d+)\s*mois\s*de\s*préavis',
-    ]
-    
-    for pattern in patterns:
-        m = re.search(pattern, text, re.IGNORECASE)
-        if m:
-            try:
-                return f"{m.group(1)} mois"
-            except:
-                pass
-    
-    return None
-
-
-def extract_etage_from_text(text: str) -> Optional[int]:
-    """Extrait le numéro d'étage"""
+def extract_type_piscine(text: str) -> Optional[str]:
+    """Extrait le type de piscine"""
     text_lower = text.lower()
     
-    patterns = [
-        r'au\s+(\d+)[eè]me?\s*[eé]tage',
-        r'(\d+)[eè]me?\s*[eé]tage',
-        r'étage\s*[:\-]?\s*(\d+)',
-        r'situé au (\d+)[eè]?',
-        r'rdc',
-        r'rez-de-chaussée',
-    ]
+    if 'chauffée' in text_lower:
+        return 'Chauffée'
+    elif 'couverte' in text_lower:
+        return 'Couverte'
+    elif 'intérieure' in text_lower:
+        return 'Intérieure'
+    elif 'extérieure' in text_lower:
+        return 'Extérieure'
+    elif 'à débordement' in text_lower:
+        return 'À débordement'
     
-    for pattern in patterns:
-        m = re.search(pattern, text_lower)
-        if m:
-            if 'rdc' in m.group(0) or 'rez' in m.group(0):
-                return 0
-            try:
-                return int(m.group(1))
-            except:
-                pass
-    
-    return None
-
-
-def extract_est_dernier_etage(text: str) -> bool:
-    """Détecte si c'est un dernier étage"""
-    text_lower = text.lower()
-    keywords = ['dernier étage', 'dernier etage', 'penthouse', 'rooftop']
-    return any(keyword in text_lower for keyword in keywords)
-
-
-def extract_presence_ascenseur(text: str) -> bool:
-    """Détecte la présence d'un ascenseur"""
-    return 'ascenseur' in text.lower()
-
-
-def extract_nombre_ascenseurs(text: str) -> Optional[int]:
-    """Extrait le nombre d'ascenseurs"""
-    patterns = [
-        r'(\d+)\s*ascenseur[s]?',
-        r'ascenseur\s*(\d+)',
-        r'double\s*ascenseur',
-        r'deux\s*ascenseurs',
-    ]
-    
-    text_lower = text.lower()
-    
-    for pattern in patterns:
-        m = re.search(pattern, text_lower)
-        if m:
-            if 'double' in pattern or 'deux' in pattern:
-                return 2
-            try:
-                return int(m.group(1))
-            except:
-                pass
-    
-    return 1 if 'ascenseur' in text_lower else None
-
-
-def extract_presence_parking(text: str) -> bool:
-    """Détecte la présence d'un parking"""
-    text_lower = text.lower()
-    keywords = ['parking', 'garage', 'place de parking', 'sous-sol']
-    return any(keyword in text_lower for keyword in keywords)
-
-
-def extract_nombre_parking(text: str) -> Optional[int]:
-    """Extrait le nombre de places de parking"""
-    patterns = [
-        r'(\d+)\s*place[s]?\s*(?:de)?\s*parking',
-        r'(\d+)\s*parking[s]?',
-        r'parking\s+(\d+)\s*places?',
-        r'(\d+)\s*garage[s]?',
-    ]
-    
-    text_lower = text.lower()
-    
-    for pattern in patterns:
-        m = re.search(pattern, text_lower)
-        if m:
-            try:
-                return int(m.group(1))
-            except:
-                pass
-    
-    return 1 if extract_presence_parking(text) else None
-
-
-def extract_type_parking(text: str) -> Optional[str]:
-    """Extrait le type de parking"""
-    text_lower = text.lower()
-    
-    if 'sous-sol' in text_lower:
-        return 'Sous-sol'
-    elif 'couvert' in text_lower:
-        return 'Couvert'
-    elif 'extérieur' in text_lower:
-        return 'Extérieur'
-    elif 'garage' in text_lower:
-        return 'Garage'
-    
-    return None
-
-
-def extract_presence_meuble(text: str) -> bool:
-    """Détecte si l'appartement est meublé"""
-    text_lower = text.lower()
-    
-    if 'meublé' in text_lower:
-        return True
-    elif 'non meublé' in text_lower:
-        return False
-    elif 'vide' in text_lower:
-        return False
-    
-    return False  # Par défaut, non meublé
-
-
-def extract_niveau_meuble(text: str) -> Optional[str]:
-    """Extrait le niveau de meublé"""
-    text_lower = text.lower()
-    
-    if 'entièrement meublé' in text_lower:
-        return 'Entièrement meublé'
-    elif 'partiellement meublé' in text_lower:
-        return 'Partiellement meublé'
-    elif 'meublé avec goût' in text_lower:
-        return 'Meublé avec goût'
-    elif 'meublé' in text_lower:
-        return 'Meublé'
-    elif 'vide' in text_lower:
-        return 'Vide'
-    
-    return None
-
-
-def extract_vue(text: str) -> Optional[str]:
-    """Extrait le type de vue"""
-    text_lower = text.lower()
-    
-    if 'vue sur mer' in text_lower:
-        return 'Mer'
-    elif 'vue mer' in text_lower:
-        return 'Mer'
-    elif 'vue sur lac' in text_lower:
-        return 'Lac'
-    elif 'vue dégagée' in text_lower:
-        return 'Dégagée'
-    elif 'vue panoramique' in text_lower:
-        return 'Panoramique'
-    elif 'vue sur piscine' in text_lower:
-        return 'Piscine'
-    elif 'vue sur jardin' in text_lower:
-        return 'Jardin'
-    
-    return None
+    return 'Standard'
 
 
 def extract_presence_terrasse(text: str) -> bool:
@@ -447,39 +350,57 @@ def extract_surface_terrasse(text: str) -> Optional[float]:
     return None
 
 
-def extract_presence_balcon(text: str) -> bool:
-    """Détecte la présence d'un balcon"""
-    return 'balcon' in text.lower()
+def extract_presence_garage(text: str) -> bool:
+    """Détecte la présence d'un garage"""
+    return 'garage' in text.lower()
 
 
-def extract_presence_jardin(text: str) -> bool:
-    """Détecte la présence d'un jardin"""
-    return 'jardin' in text.lower()
-
-
-def extract_presence_cuisine_equipee(text: str) -> bool:
-    """Détecte si la cuisine est équipée"""
-    text_lower = text.lower()
-    keywords = ['cuisine équipée', 'cuisine equipee', 'cuisine aménagée']
-    return any(keyword in text_lower for keyword in keywords)
-
-
-def extract_type_cuisine(text: str) -> Optional[str]:
-    """Extrait le type de cuisine"""
+def extract_nombre_garage(text: str) -> Optional[int]:
+    """Extrait le nombre de places de garage"""
+    patterns = [
+        r'(\d+)\s*garage[s]?',
+        r'garage\s+(\d+)\s*places?',
+        r'(\d+)\s*places?\s*de\s*garage',
+        r'(\d+)\s*voitures?',
+    ]
+    
     text_lower = text.lower()
     
-    if 'cuisine américaine' in text_lower:
-        return 'Américaine'
-    elif 'cuisine équipée' in text_lower:
-        return 'Équipée'
-    elif 'cuisine aménagée' in text_lower:
-        return 'Aménagée'
-    elif 'cuisine séparée' in text_lower:
-        return 'Séparée'
-    elif 'cuisine ouverte' in text_lower:
-        return 'Ouverte'
+    for pattern in patterns:
+        m = re.search(pattern, text_lower)
+        if m:
+            try:
+                return int(m.group(1))
+            except:
+                pass
     
-    return None
+    return 1 if 'garage' in text_lower else None
+
+
+def extract_presence_parking(text: str) -> bool:
+    """Détecte la présence de parking extérieur"""
+    return 'parking' in text.lower() and 'garage' not in text.lower()
+
+
+def extract_nombre_parking(text: str) -> Optional[int]:
+    """Extrait le nombre de places de parking"""
+    patterns = [
+        r'(\d+)\s*places?\s*de\s*parking',
+        r'(\d+)\s*parking[s]?',
+        r'(\d+)\s*voitures?',
+    ]
+    
+    text_lower = text.lower()
+    
+    for pattern in patterns:
+        m = re.search(pattern, text_lower)
+        if m:
+            try:
+                return int(m.group(1))
+            except:
+                pass
+    
+    return 1 if extract_presence_parking(text) else None
 
 
 def extract_presence_chambre_service(text: str) -> bool:
@@ -487,14 +408,24 @@ def extract_presence_chambre_service(text: str) -> bool:
     return 'chambre de service' in text.lower()
 
 
-def extract_presence_buanderie(text: str) -> bool:
-    """Détecte la présence d'une buanderie"""
-    return 'buanderie' in text.lower()
-
-
-def extract_presence_cellier(text: str) -> bool:
-    """Détecte la présence d'un cellier"""
-    return 'cellier' in text.lower() or 'débarras' in text.lower()
+def extract_nombre_suites(text: str) -> Optional[int]:
+    """Extrait le nombre de suites parentales"""
+    patterns = [
+        r'(\d+)\s*suite[s]?\s*parentale[s]?',
+        r'(\d+)\s*suite[s]?',
+    ]
+    
+    text_lower = text.lower()
+    
+    for pattern in patterns:
+        m = re.search(pattern, text_lower)
+        if m:
+            try:
+                return int(m.group(1))
+            except:
+                pass
+    
+    return None
 
 
 def extract_presence_dressing(text: str) -> bool:
@@ -502,7 +433,91 @@ def extract_presence_dressing(text: str) -> bool:
     return 'dressing' in text.lower()
 
 
-def extract_chauffage_type(text: str) -> Optional[str]:
+def extract_presence_cheminee(text: str) -> bool:
+    """Détecte la présence d'une cheminée"""
+    return 'cheminée' in text.lower() or 'cheminee' in text.lower()
+
+
+def extract_presence_ascenseur(text: str) -> bool:
+    """Détecte la présence d'un ascenseur"""
+    return 'ascenseur' in text.lower()
+
+
+def extract_vue(text: str) -> Optional[str]:
+    """Extrait le type de vue"""
+    text_lower = text.lower()
+    
+    if 'vue sur mer' in text_lower:
+        return 'Mer'
+    elif 'vue mer' in text_lower:
+        return 'Mer'
+    elif 'vue panoramique' in text_lower:
+        return 'Panoramique'
+    elif 'vue dégagée' in text_lower:
+        return 'Dégagée'
+    elif 'vue sur lac' in text_lower:
+        return 'Lac'
+    elif 'vue sur jardin' in text_lower:
+        return 'Jardin'
+    elif 'vue sur piscine' in text_lower:
+        return 'Piscine'
+    
+    return None
+
+
+def extract_proximite_mer(text: str) -> Optional[str]:
+    """Extrait la distance à la mer"""
+    patterns = [
+        r'(\d+)\s*minutes?\s*(?:à pied)?\s*de\s*la\s*mer',
+        r'(\d+)\s*m\s*de\s*la\s*mer',
+        r'proche\s*de\s*la\s*mer',
+        r'front\s*de\s*mer',
+    ]
+    
+    text_lower = text.lower()
+    
+    if 'front de mer' in text_lower:
+        return 'Front de mer'
+    
+    for pattern in patterns:
+        m = re.search(pattern, text_lower)
+        if m:
+            try:
+                if m.lastindex:
+                    return f"{m.group(1)} min"
+                else:
+                    return 'Proche'
+            except:
+                return 'Proche'
+    
+    return None
+
+
+def extract_presence_climatisation(text: str) -> bool:
+    """Détecte la présence de climatisation"""
+    return 'climatisation' in text.lower()
+
+
+def extract_type_climatisation(text: str) -> Optional[str]:
+    """Extrait le type de climatisation"""
+    text_lower = text.lower()
+    
+    if 'climatisation centrale' in text_lower:
+        return 'Centrale'
+    elif 'climatisation split' in text_lower:
+        return 'Split'
+    elif 'climatisation réversible' in text_lower:
+        return 'Réversible'
+    
+    return None
+
+
+def extract_presence_chauffage(text: str) -> bool:
+    """Détecte la présence de chauffage"""
+    return 'chauffage' in text.lower()
+
+
+def extract_type_chauffage(text: str) -> Optional[str]:
     """Extrait le type de chauffage"""
     text_lower = text.lower()
     
@@ -510,22 +525,8 @@ def extract_chauffage_type(text: str) -> Optional[str]:
         return 'Central'
     elif 'chauffage individuel' in text_lower:
         return 'Individuel'
-    elif 'chauffage électrique' in text_lower:
-        return 'Électrique'
-    
-    return None
-
-
-def extract_climatisation_type(text: str) -> Optional[str]:
-    """Extrait le type de climatisation"""
-    text_lower = text.lower()
-    
-    if 'climatisation centrale' in text_lower:
-        return 'Centrale'
-    elif 'climatisation réversible' in text_lower:
-        return 'Réversible'
-    elif 'climatisation split' in text_lower:
-        return 'Split'
+    elif 'chauffage au sol' in text_lower:
+        return 'Au sol'
     
     return None
 
@@ -533,15 +534,23 @@ def extract_climatisation_type(text: str) -> Optional[str]:
 def extract_presence_securite(text: str) -> bool:
     """Détecte la présence de sécurité"""
     text_lower = text.lower()
-    keywords = ['sécurité', 'gardien', 'concierge', 'caméras', 'alarme', 'code']
+    keywords = ['sécurité', 'alarme', 'caméras', 'vidéosurveillance', 'gardien', 'surveillance']
     return any(keyword in text_lower for keyword in keywords)
 
 
-def extract_presence_internet(text: str) -> bool:
-    """Détecte la présence d'internet"""
-    text_lower = text.lower()
-    keywords = ['internet', 'fibre', 'wifi', 'fibre optique']
-    return any(keyword in text_lower for keyword in keywords)
+def extract_presence_spa(text: str) -> bool:
+    """Détecte la présence d'un spa"""
+    return 'spa' in text.lower()
+
+
+def extract_presence_hammam(text: str) -> bool:
+    """Détecte la présence d'un hammam"""
+    return 'hammam' in text.lower()
+
+
+def extract_presence_jacuzzi(text: str) -> bool:
+    """Détecte la présence d'un jacuzzi"""
+    return 'jacuzzi' in text.lower()
 
 
 def extract_animaux_acceptes(text: str) -> bool:
@@ -558,21 +567,64 @@ def extract_animaux_acceptes(text: str) -> bool:
     return False
 
 
-def extract_proximites(text: str) -> List[str]:
-    """Extrait les proximités mentionnées"""
-    found_prox = []
+def extract_meuble(text: str) -> bool:
+    """Détecte si la villa est meublée"""
     text_lower = text.lower()
     
-    for prox in PROXIMITES_APPARTEMENT:
-        if prox in text_lower:
-            if prox == 'bus':
-                found_prox.append('Bus')
-            elif prox == 'métro':
-                found_prox.append('Métro')
-            else:
-                found_prox.append(prox.title())
+    if 'meublé' in text_lower and 'non meublé' not in text_lower:
+        return True
+    elif 'vide' in text_lower:
+        return False
     
-    return list(set(found_prox))
+    return False
+
+
+def extract_duree_location(text: str) -> Optional[str]:
+    """Extrait la durée de location"""
+    text_lower = text.lower()
+    
+    patterns = [
+        r'location\s*(\d+)\s*an',
+        r'bail\s*(\d+)\s*an',
+        r'minimum\s*(\d+)\s*mois',
+    ]
+    
+    for pattern in patterns:
+        m = re.search(pattern, text_lower)
+        if m:
+            try:
+                return f"{m.group(1)} ans" if 'an' in pattern else f"{m.group(1)} mois"
+            except:
+                pass
+    
+    if 'long terme' in text_lower:
+        return 'Long terme'
+    elif 'courte durée' in text_lower:
+        return 'Courte durée'
+    
+    return None
+
+
+def extract_disponibilite(text: str) -> Optional[str]:
+    """Extrait la date de disponibilité"""
+    patterns = [
+        r'disponible\s*(?:à partir du)?\s*(\d{1,2}[/-]\d{1,2}[/-]\d{4})',
+        r'libre\s*(?:à partir du)?\s*(\d{1,2}[/-]\d{1,2}[/-]\d{4})',
+        r'disponible\s*(?:imm[ée]diatement)?',
+        r'libre\s*(?:de suite)?',
+    ]
+    
+    text_lower = text.lower()
+    
+    if 'immédiatement' in text_lower or 'de suite' in text_lower:
+        return 'Immédiate'
+    
+    for pattern in patterns:
+        m = re.search(pattern, text)
+        if m and m.lastindex:
+            return m.group(1)
+    
+    return None
 
 
 def extract_reference(text: str) -> Optional[str]:
@@ -589,6 +641,37 @@ def extract_reference(text: str) -> Optional[str]:
             return m.group(1).strip()
     
     return None
+
+
+def extract_materiaux(text: str) -> List[str]:
+    """Extrait les matériaux mentionnés"""
+    found = []
+    text_lower = text.lower()
+    
+    materiaux = ['marbre', 'parquet', 'carrelage', 'granit', 'pierre', 'bois']
+    
+    for mat in materiaux:
+        if mat in text_lower:
+            found.append(mat.title())
+    
+    return list(set(found))
+
+
+def extract_proximites(text: str) -> List[str]:
+    """Extrait les proximités mentionnées"""
+    found_prox = []
+    text_lower = text.lower()
+    
+    for prox in PROXIMITES_VILLA:
+        if prox in text_lower:
+            if prox == 'mer':
+                found_prox.append('Mer')
+            elif prox == 'plage':
+                found_prox.append('Plage')
+            else:
+                found_prox.append(prox.title())
+    
+    return list(set(found_prox))
 
 
 def extract_telephone_from_text(text: str) -> Optional[str]:
@@ -617,7 +700,7 @@ def extract_equipements_from_text(text: str) -> List[str]:
     equip_found = []
     text_lower = text.lower()
     
-    for eq in EQUIPEMENTS_LOCATION:
+    for eq in EQUIPEMENTS_VILLA:
         if eq in text_lower:
             equip_found.append(eq.title())
     
@@ -652,22 +735,14 @@ def extract_from_caracteristiques(caracteristiques_json: Any) -> Dict[str, Any]:
                 'type de bien': 'type_bien',
                 'etat': 'etat_bien',
                 'années': 'age_bien',
-                'type du sol': 'type_sol',
-                'étage du bien': 'etage',
-                'orientation': 'orientation'
+                'orientation': 'orientation',
+                'type du sol': 'type_sol'
             }
             
             for old_key, new_key in mapping.items():
                 if old_key in caracs and caracs[old_key]:
                     val = caracs[old_key]
-                    if 'etage' in new_key and isinstance(val, str):
-                        num = extract_number_from_text(val)
-                        if num is not None:
-                            result[new_key] = int(num)
-                        else:
-                            result[new_key] = val
-                    else:
-                        result[new_key] = val
+                    result[new_key] = val
     
     except (json.JSONDecodeError, AttributeError):
         pass
@@ -675,13 +750,30 @@ def extract_from_caracteristiques(caracteristiques_json: Any) -> Dict[str, Any]:
     return result
 
 
+def extract_from_amenities_villa(amenities: Any) -> List[str]:
+    """Extrait depuis amenities_villa"""
+    if not amenities:
+        return []
+    
+    if isinstance(amenities, list):
+        return amenities
+    
+    if isinstance(amenities, str):
+        if ';' in amenities:
+            return [a.strip() for a in amenities.split(';') if a.strip()]
+        else:
+            return [amenities.strip()]
+    
+    return []
+
+
 def extract_from_equipements_detaille(equip_det: Any) -> Dict[str, Any]:
     """Extrait depuis equipements_detaille (string avec ;)"""
     result = {
         'equipements_list': [],
-        'terrasse_surface': None,
         'jardin_surface': None,
-        'parking_nombre': None
+        'terrasse_surface': None,
+        'garage_nombre': None
     }
     
     if not equip_det:
@@ -700,21 +792,21 @@ def extract_from_equipements_detaille(equip_det: Any) -> Dict[str, Any]:
         
         item_lower = item.lower()
         
-        if 'terrasse' in item_lower:
-            surface = extract_number_from_text(item)
-            if surface:
-                result['terrasse_surface'] = surface
-            result['equipements_list'].append('Terrasse')
-        elif 'jardin' in item_lower:
+        if 'jardin' in item_lower:
             surface = extract_number_from_text(item)
             if surface:
                 result['jardin_surface'] = surface
             result['equipements_list'].append('Jardin')
-        elif 'parking' in item_lower or 'garage' in item_lower:
+        elif 'terrasse' in item_lower:
+            surface = extract_number_from_text(item)
+            if surface:
+                result['terrasse_surface'] = surface
+            result['equipements_list'].append('Terrasse')
+        elif 'garage' in item_lower:
             nombre = extract_number_from_text(item)
             if nombre:
-                result['parking_nombre'] = int(nombre)
-            result['equipements_list'].append('Parking')
+                result['garage_nombre'] = int(nombre)
+            result['equipements_list'].append('Garage')
         else:
             result['equipements_list'].append(item.title())
     
@@ -859,7 +951,7 @@ def extract_images_list(images_field: Any) -> List[str]:
 
 def extract_all_from_listing(listing: Dict) -> Dict[str, Any]:
     """
-    Extrait TOUS les champs possibles d'un listing de location d'appartement
+    Extrait TOUS les champs possibles d'un listing de location de villa
     """
     desc_c = listing.get('description_courte', '') or ''
     desc_f = listing.get('description_complete', '') or ''
@@ -890,111 +982,138 @@ def extract_all_from_listing(listing: Dict) -> Dict[str, Any]:
     loyer_info = extract_loyer_from_text(all_text)
     extracted.update(loyer_info)
     
-    # Charges
-    extracted['charges_incluses'] = extract_charges_incluses(all_text)
-    montant_charges = extract_montant_charges(all_text)
-    if montant_charges:
-        extracted['montant_charges'] = montant_charges
+    # Type de villa
+    type_villa = extract_type_villa_from_text(all_text)
+    if type_villa:
+        extracted['type_villa_extrait'] = type_villa
     
-    # Caution
-    caution = extract_caution(all_text)
-    if caution:
-        extracted['caution'] = caution
+    # Nombre de niveaux
+    nb_niveaux = extract_nombre_niveaux(all_text)
+    if nb_niveaux:
+        extracted['nombre_niveaux'] = nb_niveaux
     
-    # Durée
-    duree = extract_duree_location(all_text)
-    if duree:
-        extracted['duree_location_extrait'] = duree
+    # Surfaces
+    surface_hab = extract_surface_habitable(all_text)
+    if surface_hab:
+        extracted['surface_habitable'] = surface_hab
     
-    duree_min = extract_duree_minimum(all_text)
-    if duree_min:
-        extracted['duree_minimum'] = duree_min
+    surface_terrain = extract_surface_terrain(all_text)
+    if surface_terrain:
+        extracted['surface_terrain'] = surface_terrain
     
-    preavis = extract_preavis(all_text)
-    if preavis:
-        extracted['preavis'] = preavis
+    # Jardin
+    extracted['a_jardin'] = extract_presence_jardin(all_text)
+    surface_jardin = extract_surface_jardin(all_text)
+    if surface_jardin:
+        extracted['surface_jardin'] = surface_jardin
+    type_jardin = extract_type_jardin(all_text)
+    if type_jardin:
+        extracted['type_jardin'] = type_jardin
     
-    # Étage
-    etage = extract_etage_from_text(all_text)
-    if etage is not None:
-        extracted['etage_extrait'] = etage
+    # Piscine
+    extracted['a_piscine'] = extract_presence_piscine(all_text)
+    surface_piscine = extract_surface_piscine(all_text)
+    if surface_piscine:
+        extracted['surface_piscine'] = surface_piscine
+    type_piscine = extract_type_piscine(all_text)
+    if type_piscine:
+        extracted['type_piscine'] = type_piscine
     
-    extracted['dernier_etage'] = extract_est_dernier_etage(all_text)
+    # Terrasse
+    extracted['a_terrasse'] = extract_presence_terrasse(all_text)
+    surface_terrasse = extract_surface_terrasse(all_text)
+    if surface_terrasse:
+        extracted['surface_terrasse'] = surface_terrasse
     
-    # Ascenseur
-    extracted['a_ascenseur'] = extract_presence_ascenseur(all_text)
-    nb_ascenseurs = extract_nombre_ascenseurs(all_text)
-    if nb_ascenseurs:
-        extracted['nombre_ascenseurs'] = nb_ascenseurs
+    # Garage
+    extracted['a_garage'] = extract_presence_garage(all_text)
+    nb_garage = extract_nombre_garage(all_text)
+    if nb_garage:
+        extracted['garage_nombre'] = nb_garage
     
     # Parking
     extracted['a_parking'] = extract_presence_parking(all_text)
     nb_parking = extract_nombre_parking(all_text)
     if nb_parking:
         extracted['parking_nombre'] = nb_parking
-    parking_type = extract_type_parking(all_text)
-    if parking_type:
-        extracted['parking_type'] = parking_type
     
-    # Meublé
-    extracted['meuble'] = extract_presence_meuble(all_text)
-    niveau_meuble = extract_niveau_meuble(all_text)
-    if niveau_meuble:
-        extracted['niveau_meuble'] = niveau_meuble
+    # Chambre de service
+    extracted['a_chambre_service'] = extract_presence_chambre_service(all_text)
+    
+    # Suites
+    nb_suites = extract_nombre_suites(all_text)
+    if nb_suites:
+        extracted['nombre_suites'] = nb_suites
+    
+    # Dressing
+    extracted['a_dressing'] = extract_presence_dressing(all_text)
+    
+    # Cheminée
+    extracted['a_cheminee'] = extract_presence_cheminee(all_text)
+    
+    # Ascenseur
+    extracted['a_ascenseur'] = extract_presence_ascenseur(all_text)
     
     # Vue
     vue = extract_vue(all_text)
     if vue:
         extracted['vue'] = vue
     
-    # Terrasse/Balcon/Jardin
-    extracted['a_terrasse'] = extract_presence_terrasse(all_text)
-    surface_terrasse = extract_surface_terrasse(all_text)
-    if surface_terrasse:
-        extracted['surface_terrasse'] = surface_terrasse
+    # Proximité mer
+    prox_mer = extract_proximite_mer(all_text)
+    if prox_mer:
+        extracted['proximite_mer'] = prox_mer
     
-    extracted['a_balcon'] = extract_presence_balcon(all_text)
-    extracted['a_jardin'] = extract_presence_jardin(all_text)
+    # Climatisation
+    extracted['a_climatisation'] = extract_presence_climatisation(all_text)
+    clim_type = extract_type_climatisation(all_text)
+    if clim_type:
+        extracted['climatisation_type'] = clim_type
     
-    # Cuisine
-    extracted['cuisine_equipee'] = extract_presence_cuisine_equipee(all_text)
-    type_cuisine = extract_type_cuisine(all_text)
-    if type_cuisine:
-        extracted['type_cuisine'] = type_cuisine
-    
-    # Équipements supplémentaires
-    extracted['a_chambre_service'] = extract_presence_chambre_service(all_text)
-    extracted['a_buanderie'] = extract_presence_buanderie(all_text)
-    extracted['a_cellier'] = extract_presence_cellier(all_text)
-    extracted['a_dressing'] = extract_presence_dressing(all_text)
-    
-    # Chauffage et climatisation
-    chauffage = extract_chauffage_type(all_text)
-    if chauffage:
-        extracted['chauffage_type'] = chauffage
-    
-    clim = extract_climatisation_type(all_text)
-    if clim:
-        extracted['climatisation_type'] = clim
+    # Chauffage
+    extracted['a_chauffage'] = extract_presence_chauffage(all_text)
+    chauffage_type = extract_type_chauffage(all_text)
+    if chauffage_type:
+        extracted['chauffage_type'] = chauffage_type
     
     # Sécurité
     extracted['a_securite'] = extract_presence_securite(all_text)
     
-    # Internet
-    extracted['a_internet'] = extract_presence_internet(all_text)
+    # Spa, Hammam, Jacuzzi
+    extracted['a_spa'] = extract_presence_spa(all_text)
+    extracted['a_hammam'] = extract_presence_hammam(all_text)
+    extracted['a_jacuzzi'] = extract_presence_jacuzzi(all_text)
     
     # Animaux
     extracted['animaux_acceptes'] = extract_animaux_acceptes(all_text)
+    
+    # Meublé
+    extracted['meuble'] = extract_meuble(all_text)
+    
+    # Durée location
+    duree = extract_duree_location(all_text)
+    if duree:
+        extracted['duree_location_extrait'] = duree
+    
+    # Disponibilité
+    dispo = extract_disponibilite(all_text)
+    if dispo:
+        extracted['disponibilite'] = dispo
+    
+    # Référence
+    ref = extract_reference(all_text)
+    if ref:
+        extracted['reference_extrait'] = ref
+    
+    # Matériaux
+    materiaux = extract_materiaux(all_text)
+    if materiaux:
+        extracted['materiaux'] = materiaux
     
     # Proximités
     proximites = extract_proximites(all_text)
     if proximites:
         extracted['proximites'] = proximites
-    
-    # Référence
-    reference = extract_reference(all_text)
-    if reference:
-        extracted['reference_extrait'] = reference
     
     # Téléphone
     telephone = extract_telephone_from_text(all_text)
@@ -1013,17 +1132,22 @@ def extract_all_from_listing(listing: Dict) -> Dict[str, Any]:
     if caracs_info:
         extracted.update({f"caracs_{k}": v for k, v in caracs_info.items()})
     
+    # Amenities villa
+    amenities = extract_from_amenities_villa(listing.get('amenities_villa', []))
+    if amenities:
+        extracted['amenities_villa_list'] = amenities
+    
     # Équipements détaillés
     equip_det_info = extract_from_equipements_detaille(listing.get('equipements_detaille'))
     if equip_det_info:
         if equip_det_info.get('equipements_list'):
             extracted['equipements_detaille_list'] = equip_det_info['equipements_list']
-        if equip_det_info.get('terrasse_surface'):
-            extracted['surface_terrasse_det'] = equip_det_info['terrasse_surface']
         if equip_det_info.get('jardin_surface'):
             extracted['surface_jardin_det'] = equip_det_info['jardin_surface']
-        if equip_det_info.get('parking_nombre'):
-            extracted['parking_nombre_det'] = equip_det_info['parking_nombre']
+        if equip_det_info.get('terrasse_surface'):
+            extracted['surface_terrasse_det'] = equip_det_info['terrasse_surface']
+        if equip_det_info.get('garage_nombre'):
+            extracted['garage_nombre_det'] = equip_det_info['garage_nombre']
     
     # Informations supplémentaires
     info_supp = extract_from_informations_supplementaires(listing.get('informations_supplementaires'))
@@ -1050,7 +1174,7 @@ def extract_all_from_listing(listing: Dict) -> Dict[str, Any]:
 
 def enrich_listing(listing: Dict) -> Dict:
     """
-    Enrichit complètement un listing de location d'appartement
+    Enrichit complètement un listing de location de villa
     """
     extracted = extract_all_from_listing(listing)
     
@@ -1072,95 +1196,118 @@ def enrich_listing(listing: Dict) -> Dict:
         if extracted.get('loyer_text'):
             enriched['loyer_text'] = extracted['loyer_text']
     
-    # Charges
-    if extracted.get('charges_incluses') is not None:
-        enriched['charges_incluses'] = extracted['charges_incluses']
-    if extracted.get('montant_charges'):
-        enriched['montant_charges'] = extracted['montant_charges']
+    # Type de villa
+    if extracted.get('type_villa_extrait') and not listing.get('type_villa'):
+        enriched['type_villa'] = extracted['type_villa_extrait']
     
-    # Caution
-    if extracted.get('caution'):
-        enriched['caution'] = extracted['caution']
+    # Nombre de niveaux
+    if extracted.get('nombre_niveaux') and not listing.get('niveaux'):
+        enriched['niveaux'] = extracted['nombre_niveaux']
     
-    # Durée
-    if extracted.get('duree_location_extrait') and not listing.get('duree_location'):
-        enriched['duree_location'] = extracted['duree_location_extrait']
-    if extracted.get('duree_minimum'):
-        enriched['duree_minimum'] = extracted['duree_minimum']
-    if extracted.get('preavis'):
-        enriched['preavis'] = extracted['preavis']
+    # Surfaces
+    if extracted.get('surface_habitable') and not listing.get('surface'):
+        enriched['surface'] = extracted['surface_habitable']
+        enriched['surface_text'] = f"{int(extracted['surface_habitable'])} m²"
     
-    # Étage
-    if extracted.get('etage_extrait') is not None and not listing.get('etage'):
-        enriched['etage'] = extracted['etage_extrait']
-    if extracted.get('dernier_etage') is not None:
-        enriched['dernier_etage'] = extracted['dernier_etage']
+    if extracted.get('surface_terrain') and not listing.get('surface_terrain'):
+        enriched['surface_terrain'] = extracted['surface_terrain']
     
-    # Ascenseur
-    if extracted.get('a_ascenseur') is not None:
-        enriched['a_ascenseur'] = extracted['a_ascenseur']
-    if extracted.get('nombre_ascenseurs'):
-        enriched['nombre_ascenseurs'] = extracted['nombre_ascenseurs']
+    # Jardin
+    if extracted.get('a_jardin') is not None:
+        enriched['jardin'] = extracted['a_jardin']
+    if extracted.get('surface_jardin') or extracted.get('surface_jardin_det'):
+        enriched['surface_jardin'] = extracted.get('surface_jardin') or extracted.get('surface_jardin_det')
+    if extracted.get('type_jardin'):
+        enriched['type_jardin'] = extracted['type_jardin']
     
-    # Parking
-    if extracted.get('a_parking') is not None:
-        enriched['a_parking'] = extracted['a_parking']
-    if extracted.get('parking_nombre') or extracted.get('parking_nombre_det'):
-        enriched['parking_nombre'] = extracted.get('parking_nombre') or extracted.get('parking_nombre_det')
-    if extracted.get('parking_type'):
-        enriched['parking_type'] = extracted['parking_type']
+    # Piscine
+    if extracted.get('a_piscine') is not None:
+        enriched['piscine'] = extracted['a_piscine']
+    if extracted.get('surface_piscine'):
+        enriched['surface_piscine'] = extracted['surface_piscine']
+    if extracted.get('type_piscine'):
+        enriched['type_piscine'] = extracted['type_piscine']
     
-    # Meublé
-    if extracted.get('meuble') is not None:
-        enriched['meuble'] = extracted['meuble']
-    if extracted.get('niveau_meuble'):
-        enriched['niveau_meuble'] = extracted['niveau_meuble']
-    
-    # Vue
-    if extracted.get('vue') and not listing.get('vue'):
-        enriched['vue'] = extracted['vue']
-    
-    # Terrasse/Balcon/Jardin
+    # Terrasse
     if extracted.get('a_terrasse') is not None:
         enriched['a_terrasse'] = extracted['a_terrasse']
     if extracted.get('surface_terrasse') or extracted.get('surface_terrasse_det'):
         enriched['surface_terrasse'] = extracted.get('surface_terrasse') or extracted.get('surface_terrasse_det')
     
-    if extracted.get('a_balcon') is not None:
-        enriched['a_balcon'] = extracted['a_balcon']
-    if extracted.get('a_jardin') is not None:
-        enriched['a_jardin'] = extracted['a_jardin']
+    # Garage
+    if extracted.get('a_garage') is not None:
+        enriched['garage'] = extracted['a_garage']
+    if extracted.get('garage_nombre') or extracted.get('garage_nombre_det'):
+        enriched['garage_nombre'] = extracted.get('garage_nombre') or extracted.get('garage_nombre_det')
     
-    # Cuisine
-    if extracted.get('cuisine_equipee') is not None:
-        enriched['cuisine_equipee'] = extracted['cuisine_equipee']
-    if extracted.get('type_cuisine'):
-        enriched['type_cuisine'] = extracted['type_cuisine']
+    # Parking
+    if extracted.get('a_parking') is not None:
+        enriched['parking'] = extracted['a_parking']
+    if extracted.get('parking_nombre'):
+        enriched['parking_nombre'] = extracted['parking_nombre']
     
-    # Équipements supplémentaires
-    bool_fields = ['a_chambre_service', 'a_buanderie', 'a_cellier', 'a_dressing',
-                   'a_securite', 'a_internet']
+    # Chambre de service
+    if extracted.get('a_chambre_service') is not None:
+        enriched['a_chambre_service'] = extracted['a_chambre_service']
+    
+    # Suites
+    if extracted.get('nombre_suites') and not listing.get('nombre_suites'):
+        enriched['nombre_suites'] = extracted['nombre_suites']
+    
+    # Autres équipements
+    bool_fields = ['a_dressing', 'a_cheminee', 'a_ascenseur', 'a_securite',
+                   'a_spa', 'a_hammam', 'a_jacuzzi']
     for field in bool_fields:
         if extracted.get(field) is not None:
             enriched[field] = extracted[field]
     
-    # Chauffage et climatisation
-    if extracted.get('chauffage_type') and not listing.get('chauffage_type'):
-        enriched['chauffage_type'] = extracted['chauffage_type']
+    # Vue
+    if extracted.get('vue') and not listing.get('vue'):
+        enriched['vue'] = extracted['vue']
+    
+    # Proximité mer
+    if extracted.get('proximite_mer') and not listing.get('proximite_mer'):
+        enriched['proximite_mer'] = extracted['proximite_mer']
+    
+    # Climatisation
+    if extracted.get('a_climatisation') is not None:
+        enriched['a_climatisation'] = extracted['a_climatisation']
     if extracted.get('climatisation_type') and not listing.get('climatisation_type'):
         enriched['climatisation_type'] = extracted['climatisation_type']
+    
+    # Chauffage
+    if extracted.get('a_chauffage') is not None:
+        enriched['a_chauffage'] = extracted['a_chauffage']
+    if extracted.get('chauffage_type') and not listing.get('chauffage_type'):
+        enriched['chauffage_type'] = extracted['chauffage_type']
     
     # Animaux
     if extracted.get('animaux_acceptes') is not None:
         enriched['animaux_acceptes'] = extracted['animaux_acceptes']
     
-    # Proximités
-    if extracted.get('proximites'):
-        enriched['proximites'] = extracted['proximites']
+    # Meublé
+    if extracted.get('meuble') is not None:
+        enriched['meuble'] = extracted['meuble']
+    
+    # Durée location
+    if extracted.get('duree_location_extrait') and not listing.get('duree_location'):
+        enriched['duree_location'] = extracted['duree_location_extrait']
+    
+    # Disponibilité
+    if extracted.get('disponibilite') and not listing.get('disponibilite'):
+        enriched['disponibilite'] = extracted['disponibilite']
     
     # Référence
     if extracted.get('reference_extrait') and not listing.get('reference'):
         enriched['reference'] = extracted['reference_extrait']
+    
+    # Matériaux
+    if extracted.get('materiaux'):
+        enriched['materiaux'] = extracted['materiaux']
+    
+    # Proximités
+    if extracted.get('proximites'):
+        enriched['proximites'] = extracted['proximites']
     
     # Téléphone
     if extracted.get('telephone_extrait'):
@@ -1177,6 +1324,7 @@ def enrich_listing(listing: Dict) -> Dict:
     # Équipements fusionnés
     all_equipements = list(set(listing.get('equipements', []) +
                                 extracted.get('equipements_texte', []) +
+                                extracted.get('amenities_villa_list', []) +
                                 extracted.get('equipements_detaille_list', [])))
     if all_equipements:
         enriched['equipements'] = sorted(all_equipements)
@@ -1227,13 +1375,16 @@ def process_json_file(input_path: str, output_path: Optional[str] = None) -> int
         'total': len(listings),
         'dates_publication': 0,
         'loyers_extraits': 0,
-        'charges_detectees': 0,
-        'parkings_detectes': 0,
-        'ascenseurs_detectes': 0,
-        'meubles_detectes': 0,
-        'vues_mer_detectees': 0,
-        'etages_extraits': 0,
+        'types_villa_extraits': 0,
+        'jardins_detectes': 0,
+        'piscines_detectees': 0,
         'terrasses_detectees': 0,
+        'garages_detectes': 0,
+        'vues_mer_detectees': 0,
+        'suites_detectees': 0,
+        'ascenseurs_detectes': 0,
+        'chauffages_detectes': 0,
+        'climatisations_detectees': 0,
         'references_extraites': 0,
         'contacts_extraits': 0
     }
@@ -1248,20 +1399,26 @@ def process_json_file(input_path: str, output_path: Optional[str] = None) -> int
                 stats['dates_publication'] += 1
             if enriched.get('loyer') and listing.get('loyer') != enriched.get('loyer'):
                 stats['loyers_extraits'] += 1
-            if enriched.get('charges_incluses') or enriched.get('montant_charges'):
-                stats['charges_detectees'] += 1
-            if enriched.get('a_parking'):
-                stats['parkings_detectes'] += 1
-            if enriched.get('a_ascenseur'):
-                stats['ascenseurs_detectes'] += 1
-            if enriched.get('meuble'):
-                stats['meubles_detectes'] += 1
-            if enriched.get('vue') == 'Mer':
-                stats['vues_mer_detectees'] += 1
-            if enriched.get('etage') and not listing.get('etage'):
-                stats['etages_extraits'] += 1
+            if enriched.get('type_villa') and not listing.get('type_villa'):
+                stats['types_villa_extraits'] += 1
+            if enriched.get('jardin'):
+                stats['jardins_detectes'] += 1
+            if enriched.get('piscine'):
+                stats['piscines_detectees'] += 1
             if enriched.get('a_terrasse'):
                 stats['terrasses_detectees'] += 1
+            if enriched.get('garage'):
+                stats['garages_detectes'] += 1
+            if enriched.get('vue') == 'Mer':
+                stats['vues_mer_detectees'] += 1
+            if enriched.get('nombre_suites'):
+                stats['suites_detectees'] += 1
+            if enriched.get('a_ascenseur'):
+                stats['ascenseurs_detectes'] += 1
+            if enriched.get('a_chauffage'):
+                stats['chauffages_detectes'] += 1
+            if enriched.get('a_climatisation'):
+                stats['climatisations_detectees'] += 1
             if enriched.get('reference'):
                 stats['references_extraites'] += 1
             if enriched.get('telephone_extrait'):
@@ -1284,18 +1441,21 @@ def process_json_file(input_path: str, output_path: Optional[str] = None) -> int
         json.dump(data, f, indent=2, ensure_ascii=False, default=str)
     
     print("\n" + "="*70)
-    print("📊 STATISTIQUES D'EXTRACTION - LOCATION APPARTEMENTS")
+    print("📊 STATISTIQUES D'EXTRACTION - LOCATION DE VILLAS")
     print("="*70)
     print(f"✅ Listings traités: {stats['total']}")
     print(f"✅ Dates publication extraites: {stats['dates_publication']}")
     print(f"✅ Loyers extraits/améliorés: {stats['loyers_extraits']}")
-    print(f"✅ Charges détectées: {stats['charges_detectees']}")
-    print(f"✅ Parkings détectés: {stats['parkings_detectes']}")
-    print(f"✅ Ascenseurs détectés: {stats['ascenseurs_detectes']}")
-    print(f"✅ Meublés détectés: {stats['meubles_detectes']}")
-    print(f"✅ Vues mer détectées: {stats['vues_mer_detectees']}")
-    print(f"✅ Étages extraits: {stats['etages_extraits']}")
+    print(f"✅ Types de villa extraits: {stats['types_villa_extraits']}")
+    print(f"✅ Jardins détectés: {stats['jardins_detectes']}")
+    print(f"✅ Piscines détectées: {stats['piscines_detectees']}")
     print(f"✅ Terrasses détectées: {stats['terrasses_detectees']}")
+    print(f"✅ Garages détectés: {stats['garages_detectes']}")
+    print(f"✅ Vues mer détectées: {stats['vues_mer_detectees']}")
+    print(f"✅ Suites détectées: {stats['suites_detectees']}")
+    print(f"✅ Ascenseurs détectés: {stats['ascenseurs_detectes']}")
+    print(f"✅ Chauffages détectés: {stats['chauffages_detectes']}")
+    print(f"✅ Climatisations détectées: {stats['climatisations_detectees']}")
     print(f"✅ Références extraites: {stats['references_extraites']}")
     print(f"✅ Contacts extraits: {stats['contacts_extraits']}")
     print("="*70)
@@ -1305,7 +1465,7 @@ def process_json_file(input_path: str, output_path: Optional[str] = None) -> int
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Agent d'extraction pour Location d'Appartements")
+    parser = argparse.ArgumentParser(description="Agent d'extraction pour Location de Villas")
     parser.add_argument('--file', '-f', required=True, help='Fichier JSON des listings')
     parser.add_argument('--output', '-o', help='Fichier de sortie')
     args = parser.parse_args()
