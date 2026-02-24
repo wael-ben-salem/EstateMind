@@ -1,8 +1,8 @@
 """
-SCRIPT D'INSERTION ET DE MISE À JOUR DES LOCATIONS DE VACANCES TUNISIE PROMO DANS MONGODB ATLAS
+SCRIPT D'INSERTION ET DE MISE À JOUR DES VENTES TUNISIE PROMO DANS MONGODB ATLAS
 Base de données: mubaweb
-Collection: tunisiepromo_vacances
-Fichier: vacances_final.json (69 annonces de locations de vacances)
+Collection: tunisiepromo_ventes
+Fichier: vente_final.json (59165 annonces de vente)
 Fonctionnalité: Insertion intelligente avec détection des nouvelles annonces
 VERSION CORRIGÉE: Gestion robuste des valeurs None
 """
@@ -13,21 +13,21 @@ from datetime import datetime
 import os
 import time
 
-def inserer_ou_mettre_a_jour_vacances():
+def inserer_ou_mettre_a_jour_ventes():
     print("="*70)
-    print("🚀 INSERTION/MISE À JOUR DES LOCATIONS DE VACANCES TUNISIE PROMO DANS MONGODB ATLAS")
+    print("🚀 INSERTION/MISE À JOUR DES VENTES TUNISIE PROMO DANS MONGODB ATLAS")
     print("="*70)
     print("📁 Base de données: mubaweb")
-    print("📁 Collection: tunisiepromo_vacances")
-    print("📊 Fichier: tunisiapromo_vacances_final.json (69 annonces de locations de vacances)")
+    print("📁 Collection: tunisiepromo_ventes")
+    print("📊 Fichier: vente_final.json (59165 annonces de vente)")
     print("🔄 Mode: Mise à jour incrémentale (détection des nouvelles annonces)")
     print("="*70)
     
     # === CONFIGURATION ===
     CHAINE_CONNEXION = "mongodb+srv://EstateMindBD:EstateMindBDBD@cluster0.ybul6b0.mongodb.net/?retryWrites=true&w=majority"
     NOM_BASE_DONNEES = "EstateMind"
-    NOM_COLLECTION = "tunisiepromo.vacances"
-    NOM_FICHIER = "tunisiapromo_vacances_final.json"
+    NOM_COLLECTION = "tunisiepromo.ventes"
+    NOM_FICHIER = "tunisiapromo_vente_final.json"
     
     # 1. Vérifier que le fichier existe
     if not os.path.exists(NOM_FICHIER):
@@ -48,20 +48,21 @@ def inserer_ou_mettre_a_jour_vacances():
         # Afficher les métadonnées
         if 'metadata' in donnees:
             metadata = donnees['metadata']
-            print(f"\n📊 MÉTADONNÉES DU FICHIER DE VACANCES:")
+            print(f"\n📊 MÉTADONNÉES DU FICHIER DE VENTES:")
             print(f"   • Date nettoyage: {metadata.get('date_nettoyage', 'N/A')}")
-            print(f"   • Total annonces vacances: {metadata.get('total_annonces', 0)}")
+            print(f"   • Total annonces ventes: {metadata.get('total_annonces', 0):,}".replace(',', ' '))
             
             if 'statistiques' in metadata:
                 stats = metadata['statistiques']
-                print(f"   • Annonces valides: {stats.get('valides', 0)}")
-                print(f"   • Annonces invalides: {stats.get('invalides', 0)}")
-                print(f"   • Avec téléphone: {stats.get('avec_telephone', 0)}")
-                print(f"   • Avec images: {stats.get('avec_images', 0)}")
-                print(f"   • Appartements: {stats.get('appartements', 0)}")
-                print(f"   • Villas: {stats.get('villas', 0)}")
-                print(f"   • Avec piscine: {stats.get('avec_piscine', 0)}")
-                print(f"   • Vue mer: {stats.get('vue_mer', 0)}")
+                print(f"   • Annonces valides: {stats.get('valides', 0):,}".replace(',', ' '))
+                print(f"   • Annonces invalides: {stats.get('invalides', 0):,}".replace(',', ' '))
+                print(f"   • Avec téléphone: {stats.get('avec_telephone', 0):,}".replace(',', ' '))
+                print(f"   • Avec images: {stats.get('avec_images', 0):,}".replace(',', ' '))
+                print(f"   • Appartements: {stats.get('appartements', 0):,}".replace(',', ' '))
+                print(f"   • Villas: {stats.get('villas', 0):,}".replace(',', ' '))
+                print(f"   • Maisons: {stats.get('maisons', 0):,}".replace(',', ' '))
+                print(f"   • Terrains: {stats.get('terrains', 0):,}".replace(',', ' '))
+                print(f"   • Avec piscine: {stats.get('avec_piscine', 0):,}".replace(',', ' '))
         
         # Extraire la liste des annonces
         if isinstance(donnees, dict) and 'annonces' in donnees:
@@ -73,32 +74,29 @@ def inserer_ou_mettre_a_jour_vacances():
             return
         
         nombre_annonces = len(annonces)
-        print(f"\n✅ {nombre_annonces} annonces de vacances trouvées dans le fichier")
+        print(f"\n✅ {nombre_annonces:,} annonces de vente trouvées dans le fichier".replace(',', ' '))
         
         # Vérification du nombre attendu
-        if nombre_annonces == 69:
-            print("✅ Nombre d'annonces conforme aux métadonnées (69)")
+        if nombre_annonces == 59165:
+            print("✅ Nombre d'annonces conforme aux métadonnées (59 165)")
         else:
-            print(f"⚠️ Attention: {nombre_annonces} trouvées, mais les métadonnées indiquent 69")
+            print(f"⚠️ Attention: {nombre_annonces} trouvées, mais les métadonnées indiquent 59 165")
         
         # Afficher un exemple
         if nombre_annonces > 0:
-            print("\n🔍 Exemple d'annonce de vacances (première du fichier):")
+            print("\n🔍 Exemple d'annonce de vente (première du fichier):")
             exemple = annonces[0]
             champs_importants = ['annonce_id', 'titre', 'type_bien', 'prix_text', 
-                                'region', 'ville', 'capacite', 'surface_habitable',
-                                'pieces', 'a_piscine', 'vue', 'distance_mer_m',
-                                'proximite_mer', 'periode_disponible', 'est_valide']
+                                'region', 'ville', 'surface_habitable', 'surface_terrain',
+                                'pieces', 'a_piscine', 'a_jardin', 'titre_foncier', 'est_valide']
             for champ in champs_importants:
                 if champ in exemple and exemple[champ] is not None:
                     valeur = exemple[champ]
                     if isinstance(valeur, bool):
                         valeur = "Oui" if valeur else "Non"
-                    elif isinstance(valeur, float) and champ in ['surface_habitable', 'distance_mer_m']:
-                        if champ == 'distance_mer_m' and valeur:
-                            valeur = f"{valeur} m"
-                        elif champ == 'surface_habitable' and valeur:
-                            valeur = f"{valeur} m²"
+                    elif isinstance(valeur, float) and champ in ['surface_habitable', 'surface_terrain']:
+                        if valeur:
+                            valeur = f"{valeur:,.0f} m²".replace(',', ' ')
                     print(f"   • {champ}: {valeur}")
             
     except Exception as e:
@@ -122,7 +120,7 @@ def inserer_ou_mettre_a_jour_vacances():
         
         # Vérifier le nombre de documents existants
         ancien_nombre = collection.count_documents({})
-        print(f"\n📊 Collection existante: {ancien_nombre} documents déjà présents")
+        print(f"\n📊 Collection existante: {ancien_nombre:,} documents déjà présents".replace(',', ' '))
         
     except Exception as e:
         print(f"❌ Erreur de connexion: {e}")
@@ -132,7 +130,7 @@ def inserer_ou_mettre_a_jour_vacances():
         return
     
     # 4. Préparer les opérations de mise à jour
-    print("\n🔄 Préparation des opérations de mise à jour pour les locations de vacances...")
+    print("\n🔄 Préparation des opérations de mise à jour pour les ventes...")
     
     # Créer un index unique sur annonce_id
     print("   Vérification de l'index unique sur 'annonce_id'...")
@@ -148,7 +146,7 @@ def inserer_ou_mettre_a_jour_vacances():
     for doc in collection.find({}, {'annonce_id': 1}):
         if 'annonce_id' in doc:
             ids_existants.add(doc['annonce_id'])
-    print(f"   ✅ {len(ids_existants)} IDs uniques déjà présents dans la base")
+    print(f"   ✅ {len(ids_existants):,} IDs uniques déjà présents dans la base".replace(',', ' '))
     
     # Préparer les opérations bulk
     operations = []
@@ -166,13 +164,13 @@ def inserer_ou_mettre_a_jour_vacances():
             
             # Ajouter des métadonnées MongoDB
             doc['_derniere_mise_a_jour'] = datetime.now()
-            doc['_source'] = 'tunisiepromo_vacances'
+            doc['_source'] = 'tunisiepromo_ventes'
             doc['_site'] = 'tunisiapromo.com'
-            doc['type_offre'] = 'Location vacances'
+            doc['type_offre'] = 'Vente'
             
             # S'assurer que l'annonce_id est présent
             if 'annonce_id' not in doc or not doc['annonce_id']:
-                doc['annonce_id'] = f"VAC_{i + 1}"
+                doc['annonce_id'] = f"VENTE_{i + 1}"
             
             # Nettoyer les prix
             if 'prix' in doc and doc['prix'] is not None:
@@ -181,17 +179,14 @@ def inserer_ou_mettre_a_jour_vacances():
                 except (ValueError, TypeError):
                     doc['prix'] = 0
             
-            if 'prix_semaine' in doc and doc['prix_semaine'] is not None:
-                try:
-                    doc['prix_semaine'] = float(doc['prix_semaine'])
-                except (ValueError, TypeError):
-                    doc['prix_semaine'] = None
-            
-            if 'prix_jour' in doc and doc['prix_jour'] is not None:
-                try:
-                    doc['prix_jour'] = float(doc['prix_jour'])
-                except (ValueError, TypeError):
-                    doc['prix_jour'] = None
+            # Calculer prix_m2 si possible
+            if 'prix' in doc and doc['prix'] and doc['prix'] > 0:
+                surface = doc.get('surface_habitable') or doc.get('surface_terrain')
+                if surface and surface > 0:
+                    try:
+                        doc['prix_m2_calcule'] = round(doc['prix'] / surface, 2)
+                    except:
+                        pass
             
             # Convertir les types
             if 'surface_habitable' in doc and doc['surface_habitable'] is not None:
@@ -200,11 +195,11 @@ def inserer_ou_mettre_a_jour_vacances():
                 except (ValueError, TypeError):
                     doc['surface_habitable'] = None
             
-            if 'capacite' in doc and doc['capacite'] is not None:
+            if 'surface_terrain' in doc and doc['surface_terrain'] is not None:
                 try:
-                    doc['capacite'] = int(doc['capacite'])
+                    doc['surface_terrain'] = float(doc['surface_terrain'])
                 except (ValueError, TypeError):
-                    doc['capacite'] = None
+                    doc['surface_terrain'] = None
             
             if 'pieces' in doc and doc['pieces'] is not None:
                 try:
@@ -218,41 +213,23 @@ def inserer_ou_mettre_a_jour_vacances():
                 except (ValueError, TypeError):
                     doc['chambres'] = None
             
-            if 'salles_bain' in doc and doc['salles_bain'] is not None:
-                try:
-                    doc['salles_bain'] = int(doc['salles_bain'])
-                except (ValueError, TypeError):
-                    doc['salles_bain'] = None
-            
-            if 'places_voiture' in doc and doc['places_voiture'] is not None:
-                try:
-                    doc['places_voiture'] = int(doc['places_voiture'])
-                except (ValueError, TypeError):
-                    doc['places_voiture'] = None
-            
-            if 'distance_mer_m' in doc and doc['distance_mer_m'] is not None:
-                try:
-                    doc['distance_mer_m'] = int(doc['distance_mer_m'])
-                except (ValueError, TypeError):
-                    doc['distance_mer_m'] = None
-            
             if 'etage' in doc and doc['etage'] is not None:
                 try:
                     doc['etage'] = int(doc['etage'])
                 except (ValueError, TypeError):
                     doc['etage'] = None
             
-            # Convertir les booléens (CORRIGÉ - gestion des None)
+            # Convertir les booléens (gestion des None)
             for champ_bool in ['a_piscine', 'a_jardin', 'a_terrasse', 'a_balcon',
-                              'a_climatisation', 'a_chauffage', 'a_meuble', 
-                              'a_cuisine_equipee', 'a_parking', 'a_gardien']:
+                              'a_climatisation', 'a_chauffage', 'a_securite', 
+                              'a_parking', 'cloture', 'a_puit', 'promoteur_direct']:
                 if champ_bool in doc and doc[champ_bool] is not None:
                     if isinstance(doc[champ_bool], str):
                         doc[champ_bool] = doc[champ_bool].lower() in ['true', 'oui', '1', 'yes']
                     elif isinstance(doc[champ_bool], (int, float)):
                         doc[champ_bool] = bool(doc[champ_bool])
                 elif champ_bool in doc and doc[champ_bool] is None:
-                    doc[champ_bool] = False  # Valeur par défaut pour None
+                    doc[champ_bool] = False  # Valeur par défaut
             
             # Normaliser le type de bien (CORRIGÉ - gestion des None)
             type_bien = doc.get('type_bien')
@@ -264,39 +241,32 @@ def inserer_ou_mettre_a_jour_vacances():
                     doc['type_bien_normalise'] = 'appartement'
                 elif 'maison' in type_bien_lower:
                     doc['type_bien_normalise'] = 'maison'
-                elif 'duplex' in type_bien_lower:
-                    doc['type_bien_normalise'] = 'duplex'
+                elif 'terrain' in type_bien_lower:
+                    doc['type_bien_normalise'] = 'terrain'
+                elif 'ferme' in type_bien_lower:
+                    doc['type_bien_normalise'] = 'ferme'
+                elif 'local' in type_bien_lower or 'commercial' in type_bien_lower:
+                    doc['type_bien_normalise'] = 'local commercial'
+                elif 'bureau' in type_bien_lower:
+                    doc['type_bien_normalise'] = 'bureau'
                 else:
                     doc['type_bien_normalise'] = 'autre'
             else:
                 doc['type_bien_normalise'] = 'non spécifié'
             
-            # Normaliser la vue (CORRIGÉ - gestion des None)
-            vue = doc.get('vue')
-            if vue is not None and isinstance(vue, str):
-                vue_lower = vue.lower()
-                if 'mer' in vue_lower:
-                    doc['vue_mer'] = True
-                    doc['vue_normalisee'] = 'mer'
-                elif 'jardin' in vue_lower:
-                    doc['vue_mer'] = False
-                    doc['vue_normalisee'] = 'jardin'
-                elif 'piscine' in vue_lower:
-                    doc['vue_mer'] = False
-                    doc['vue_normalisee'] = 'piscine'
-                else:
-                    doc['vue_mer'] = False
-                    doc['vue_normalisee'] = vue_lower
+            # Normaliser le titre foncier
+            titre_foncier = doc.get('titre_foncier')
+            if titre_foncier is not None and isinstance(titre_foncier, str):
+                doc['titre_foncier_normalise'] = titre_foncier.lower()
             else:
-                doc['vue_mer'] = False
-                doc['vue_normalisee'] = None
+                doc['titre_foncier_normalise'] = None
             
             # Traiter les listes
-            for champ in ['proximites', 'options', 'equipements', 'tous_equipements']:
+            for champ in ['proximites', 'images']:
                 if champ in doc and isinstance(doc[champ], list):
                     doc[champ] = [item for item in doc[champ] if item is not None and item != '']
             
-            # Ajouter un champ pour la recherche textuelle (CORRIGÉ - gestion des None)
+            # Ajouter un champ pour la recherche textuelle (CORRIGÉ)
             texte_parts = []
             for champ_texte in ['titre', 'description', 'ville', 'region']:
                 valeur = doc.get(champ_texte, '')
@@ -304,6 +274,13 @@ def inserer_ou_mettre_a_jour_vacances():
                     texte_parts.append(str(valeur))
             
             doc['_texte_recherche'] = ' '.join(texte_parts)[:1000] if texte_parts else ''
+            
+            # Compter le nombre d'images réelles
+            if 'images' in doc and isinstance(doc['images'], list):
+                doc['nombre_images_reelles'] = len([img for img in doc['images'] 
+                                                   if img and 'empty.jpg' not in img])
+            else:
+                doc['nombre_images_reelles'] = 0
             
             # Vérifier si l'annonce est valide
             est_valide = doc.get('est_valide', True)
@@ -323,31 +300,35 @@ def inserer_ou_mettre_a_jour_vacances():
             else:
                 nouvelles_annonces += 1
             
+            # Afficher progression tous les 10000 annonces
+            if (i + 1) % 10000 == 0:
+                print(f"   📊 Progression: {i + 1}/{len(annonces)} annonces préparées")
+            
         except Exception as e:
             annonces_a_ignorer += 1
             erreur_msg = f"Annonce {i} (ID: {annonce.get('annonce_id', 'inconnu')}): {str(e)}"
             erreurs_details.append(erreur_msg)
-            if annonces_a_ignorer <= 10:  # Afficher seulement les 10 premières erreurs
+            if annonces_a_ignorer <= 10:
                 print(f"   ⚠️ Erreur préparation annonce {i}: {e}")
     
     duree_preparation = time.time() - debut
     
-    print(f"\n📊 Résultat de l'analyse des locations de vacances:")
-    print(f"   • Annonces dans le fichier: {len(annonces)}")
-    print(f"   • Nouvelles à insérer: {nouvelles_annonces}")
-    print(f"   • Déjà existantes: {annonces_existantes}")
-    print(f"   • Ignorées (erreurs): {annonces_a_ignorer}")
+    print(f"\n📊 Résultat de l'analyse des ventes:")
+    print(f"   • Annonces dans le fichier: {len(annonces):,}".replace(',', ' '))
+    print(f"   • Nouvelles à insérer: {nouvelles_annonces:,}".replace(',', ' '))
+    print(f"   • Déjà existantes: {annonces_existantes:,}".replace(',', ' '))
+    print(f"   • Ignorées (erreurs): {annonces_a_ignorer:,}".replace(',', ' '))
     print(f"   • Temps de préparation: {duree_preparation:.2f} secondes")
     
     if erreurs_details and len(erreurs_details) > 10:
-        print(f"   • {len(erreurs_details)} erreurs au total. Les 10 premières affichées ci-dessus.")
+        print(f"   • {len(erreurs_details)} erreurs au total. Les 10 premières affichées.")
     
     # 5. Exécuter les opérations bulk
     if operations:
         print(f"\n💾 Exécution des opérations de mise à jour...")
-        print(f"   Nombre d'opérations: {len(operations)}")
+        print(f"   Nombre d'opérations: {len(operations):,}".replace(',', ' '))
         
-        batch_size = 50
+        batch_size = 1000  # Lots de 1000 pour optimiser
         total_insere = 0
         total_modifie = 0
         
@@ -371,9 +352,9 @@ def inserer_ou_mettre_a_jour_vacances():
         duree_insertion = time.time() - debut_insertion
         
         print(f"\n✅ Opérations terminées en {duree_insertion:.1f} secondes:")
-        print(f"   • Nouvelles locations de vacances insérées: {total_insere}")
-        print(f"   • Locations de vacances mises à jour: {total_modifie}")
-        print(f"   • Total opérations: {len(operations)}")
+        print(f"   • Nouvelles ventes insérées: {total_insere:,}".replace(',', ' '))
+        print(f"   • Ventes mises à jour: {total_modifie:,}".replace(',', ' '))
+        print(f"   • Total opérations: {len(operations):,}".replace(',', ' '))
     else:
         print("\n⚠️ Aucune opération à exécuter")
         total_insere = 0
@@ -382,37 +363,41 @@ def inserer_ou_mettre_a_jour_vacances():
     # 6. Vérification finale
     print("\n🔍 Vérification finale...")
     nombre_final = collection.count_documents({})
-    print(f"📊 Nombre total de locations de vacances dans la collection: {nombre_final}")
+    print(f"📊 Nombre total de ventes dans la collection: {nombre_final:,}".replace(',', ' '))
     
     # Statistiques détaillées
     nb_villas = collection.count_documents({"type_bien_normalise": "villa"})
     nb_appartements = collection.count_documents({"type_bien_normalise": "appartement"})
     nb_maisons = collection.count_documents({"type_bien_normalise": "maison"})
-    nb_duplex = collection.count_documents({"type_bien_normalise": "duplex"})
+    nb_terrains = collection.count_documents({"type_bien_normalise": "terrain"})
+    nb_fermes = collection.count_documents({"type_bien_normalise": "ferme"})
+    nb_locaux = collection.count_documents({"type_bien_normalise": "local commercial"})
     nb_avec_piscine = collection.count_documents({"a_piscine": True})
-    nb_vue_mer = collection.count_documents({"vue_mer": True})
+    nb_avec_parking = collection.count_documents({"a_parking": True})
     
     print(f"\n📊 Détail par type de bien:")
-    print(f"   • Villas: {nb_villas}")
-    print(f"   • Appartements: {nb_appartements}")
-    print(f"   • Maisons: {nb_maisons}")
-    print(f"   • Duplex: {nb_duplex}")
-    print(f"\n🏊 Avec piscine: {nb_avec_piscine}")
-    print(f"🌊 Vue mer: {nb_vue_mer}")
+    print(f"   • Villas: {nb_villas:,}".replace(',', ' '))
+    print(f"   • Appartements: {nb_appartements:,}".replace(',', ' '))
+    print(f"   • Maisons: {nb_maisons:,}".replace(',', ' '))
+    print(f"   • Terrains: {nb_terrains:,}".replace(',', ' '))
+    print(f"   • Fermes: {nb_fermes:,}".replace(',', ' '))
+    print(f"   • Locaux commerciaux: {nb_locaux:,}".replace(',', ' '))
+    print(f"\n🏊 Avec piscine: {nb_avec_piscine:,}".replace(',', ' '))
+    print(f"🅿️ Avec parking: {nb_avec_parking:,}".replace(',', ' '))
     
     if ancien_nombre > 0:
         evolution = nombre_final - ancien_nombre
         if evolution > 0:
-            print(f"\n✅ Évolution positive: +{evolution} nouvelles locations de vacances")
+            print(f"\n✅ Évolution positive: +{evolution:,} nouvelles ventes".replace(',', ' '))
         elif evolution < 0:
-            print(f"\n⚠️ Attention: {abs(evolution)} annonces ont disparu")
+            print(f"\n⚠️ Attention: {abs(evolution):,} annonces ont disparu".replace(',', ' '))
         else:
             print("\n➡️ Aucun changement")
     
     # 7. Créer des index supplémentaires
     print("\n🔧 Création d'index supplémentaires...")
     try:
-        # Index sur les champs spécifiques aux vacances
+        # Index sur les champs fréquemment recherchés
         collection.create_index("type_bien_normalise")
         print("✅ Index créé sur 'type_bien_normalise'")
         
@@ -425,33 +410,39 @@ def inserer_ou_mettre_a_jour_vacances():
         collection.create_index("prix")
         print("✅ Index créé sur 'prix'")
         
-        collection.create_index("prix_semaine")
-        print("✅ Index créé sur 'prix_semaine'")
+        collection.create_index("surface_habitable")
+        print("✅ Index créé sur 'surface_habitable'")
         
-        collection.create_index("prix_jour")
-        print("✅ Index créé sur 'prix_jour'")
+        collection.create_index("surface_terrain")
+        print("✅ Index créé sur 'surface_terrain'")
         
-        collection.create_index("capacite")
-        print("✅ Index créé sur 'capacite'")
+        collection.create_index("pieces")
+        print("✅ Index créé sur 'pieces'")
         
         collection.create_index("a_piscine")
         print("✅ Index créé sur 'a_piscine'")
         
-        collection.create_index("vue_mer")
-        print("✅ Index créé sur 'vue_mer'")
+        collection.create_index("a_parking")
+        print("✅ Index créé sur 'a_parking'")
         
-        collection.create_index("periode_disponible")
-        print("✅ Index créé sur 'periode_disponible'")
+        collection.create_index("titre_foncier_normalise")
+        print("✅ Index créé sur 'titre_foncier_normalise'")
+        
+        collection.create_index("est_valide")
+        print("✅ Index créé sur 'est_valide'")
         
         # Index composés pour recherches fréquentes
+        collection.create_index([("region", 1), ("prix", 1)])
+        print("✅ Index composé créé (region + prix)")
+        
+        collection.create_index([("type_bien_normalise", 1), ("prix", 1)])
+        print("✅ Index composé créé (type_bien + prix)")
+        
+        collection.create_index([("ville", 1), ("type_bien_normalise", 1)])
+        print("✅ Index composé créé (ville + type_bien)")
+        
         collection.create_index([("region", 1), ("a_piscine", 1)])
         print("✅ Index composé créé (region + a_piscine)")
-        
-        collection.create_index([("ville", 1), ("prix_jour", 1)])
-        print("✅ Index composé créé (ville + prix_jour)")
-        
-        collection.create_index([("type_bien_normalise", 1), ("capacite", 1)])
-        print("✅ Index composé créé (type_bien + capacite)")
         
         # Index texte pour recherche full-text
         collection.create_index([("_texte_recherche", "text")])
@@ -462,7 +453,7 @@ def inserer_ou_mettre_a_jour_vacances():
     
     # 8. Statistiques détaillées
     print("\n" + "="*70)
-    print("📊 STATISTIQUES DÉTAILLÉES DES LOCATIONS DE VACANCES")
+    print("📊 STATISTIQUES DÉTAILLÉES DES VENTES")
     print("="*70)
     
     try:
@@ -470,129 +461,109 @@ def inserer_ou_mettre_a_jour_vacances():
         print("\n📍 Par région:")
         regions = collection.aggregate([
             {"$group": {"_id": "$region", "count": {"$sum": 1}}},
-            {"$sort": {"count": -1}}
+            {"$sort": {"count": -1}},
+            {"$limit": 10}
         ])
         for r in regions:
             if r['_id']:
                 pourcentage = (r['count'] / nombre_final) * 100
-                print(f"   • {r['_id']}: {r['count']} ({pourcentage:.1f}%)")
+                print(f"   • {r['_id']}: {r['count']:,} ({pourcentage:.1f}%)".replace(',', ' '))
         
         # 2. Top villes
-        print("\n📍 Top villes:")
+        print("\n📍 Top 10 villes:")
         villes = collection.aggregate([
             {"$match": {"ville": {"$ne": "", "$ne": None}}},
             {"$group": {"_id": "$ville", "count": {"$sum": 1}}},
             {"$sort": {"count": -1}},
-            {"$limit": 5}
+            {"$limit": 10}
         ])
         for v in villes:
             if v['_id']:
-                print(f"   • {v['_id']}: {v['count']}")
+                print(f"   • {v['_id']}: {v['count']:,}".replace(',', ' '))
         
-        # 3. Statistiques de capacité
-        stats_capacite = collection.aggregate([
-            {"$match": {"capacite": {"$exists": True, "$ne": None, "$ne": 0}}},
+        # 3. Statistiques de prix
+        stats_prix = collection.aggregate([
+            {"$match": {"prix": {"$exists": True, "$ne": None, "$ne": 0}}},
             {"$group": {
                 "_id": None,
-                "min": {"$min": "$capacite"},
-                "max": {"$max": "$capacite"},
-                "moyen": {"$avg": "$capacite"},
+                "min": {"$min": "$prix"},
+                "max": {"$max": "$prix"},
+                "moyen": {"$avg": "$prix"},
                 "total": {"$sum": 1}
             }}
         ])
-        for s in stats_capacite:
-            print(f"\n👥 Capacité:")
-            print(f"   • Min: {s['min']} personnes")
-            print(f"   • Max: {s['max']} personnes")
-            print(f"   • Moyenne: {s['moyen']:.1f} personnes")
+        for s in stats_prix:
+            print(f"\n💰 Prix (TND):")
+            print(f"   • Min: {s['min']:,.0f}".replace(',', ' '))
+            print(f"   • Max: {s['max']:,.0f}".replace(',', ' '))
+            print(f"   • Moyen: {s['moyen']:,.0f}".replace(',', ' '))
+            print(f"   • Ventes avec prix: {s['total']:,}".replace(',', ' '))
         
-        # 4. Statistiques des prix journaliers
-        stats_prix_jour = collection.aggregate([
-            {"$match": {"prix_jour": {"$exists": True, "$ne": None, "$ne": 0}}},
+        # 4. Statistiques de surface
+        stats_surface = collection.aggregate([
+            {"$match": {"surface_habitable": {"$exists": True, "$ne": None, "$ne": 0}}},
             {"$group": {
                 "_id": None,
-                "min": {"$min": "$prix_jour"},
-                "max": {"$max": "$prix_jour"},
-                "moyen": {"$avg": "$prix_jour"},
+                "min": {"$min": "$surface_habitable"},
+                "max": {"$max": "$surface_habitable"},
+                "moyen": {"$avg": "$surface_habitable"},
                 "total": {"$sum": 1}
             }}
         ])
-        for s in stats_prix_jour:
-            print(f"\n💰 Prix par jour (TND):")
-            print(f"   • Min: {s['min']:,.0f}")
-            print(f"   • Max: {s['max']:,.0f}")
-            print(f"   • Moyen: {s['moyen']:,.0f}")
+        for s in stats_surface:
+            print(f"\n📐 Surfaces habitables (m²):")
+            print(f"   • Min: {s['min']:,.0f}".replace(',', ' '))
+            print(f"   • Max: {s['max']:,.0f}".replace(',', ' '))
+            print(f"   • Moyenne: {s['moyen']:,.0f}".replace(',', ' '))
         
-        # 5. Statistiques des prix semaine
-        stats_prix_semaine = collection.aggregate([
-            {"$match": {"prix_semaine": {"$exists": True, "$ne": None, "$ne": 0}}},
-            {"$group": {
-                "_id": None,
-                "min": {"$min": "$prix_semaine"},
-                "max": {"$max": "$prix_semaine"},
-                "moyen": {"$avg": "$prix_semaine"},
-                "total": {"$sum": 1}
-            }}
-        ])
-        for s in stats_prix_semaine:
-            print(f"\n💰 Prix par semaine (TND):")
-            print(f"   • Min: {s['min']:,.0f}")
-            print(f"   • Max: {s['max']:,.0f}")
-            print(f"   • Moyen: {s['moyen']:,.0f}")
-        
-        # 6. Équipements les plus courants
+        # 5. Équipements les plus courants
         print("\n✨ Équipements:")
         equipements = {
             'Piscine': collection.count_documents({"a_piscine": True}),
             'Jardin': collection.count_documents({"a_jardin": True}),
             'Terrasse': collection.count_documents({"a_terrasse": True}),
+            'Parking': collection.count_documents({"a_parking": True}),
             'Climatisation': collection.count_documents({"a_climatisation": True}),
             'Chauffage': collection.count_documents({"a_chauffage": True}),
-            'Parking': collection.count_documents({"a_parking": True}),
-            'Vue mer': collection.count_documents({"vue_mer": True})
+            'Sécurité': collection.count_documents({"a_securite": True})
         }
         
         for equip, count in sorted(equipements.items(), key=lambda x: x[1], reverse=True):
             if count > 0:
                 pourcentage = (count / nombre_final) * 100
-                print(f"   • {equip}: {count} ({pourcentage:.1f}%)")
+                print(f"   • {equip}: {count:,} ({pourcentage:.1f}%)".replace(',', ' '))
         
-        # 7. Répartition par période de disponibilité
-        print("\n📅 Par période:")
-        periodes = collection.aggregate([
-            {"$group": {"_id": "$periode_disponible", "count": {"$sum": 1}}},
-            {"$sort": {"count": -1}}
+        # 6. Répartition par nombre de pièces
+        print("\n🛋️ Par nombre de pièces:")
+        pieces_stats = collection.aggregate([
+            {"$match": {"pieces": {"$exists": True, "$ne": None, "$ne": 0}}},
+            {"$group": {"_id": "$pieces", "count": {"$sum": 1}}},
+            {"$sort": {"_id": 1}},
+            {"$limit": 10}
         ])
-        for p in periodes:
+        for p in pieces_stats:
             if p['_id']:
-                print(f"   • {p['_id']}: {p['count']}")
-        
-        # 8. Proximité mer
-        print("\n🌊 Proximité mer:")
-        tres_proche = collection.count_documents({"distance_mer_m": {"$lte": 100}})
-        proche = collection.count_documents({"distance_mer_m": {"$gt": 100, "$lte": 500}})
-        print(f"   • À moins de 100m: {tres_proche}")
-        print(f"   • Entre 100m et 500m: {proche}")
+                print(f"   • {p['_id']} pièce(s): {p['count']:,}".replace(',', ' '))
         
     except Exception as e:
         print(f"⚠️ Erreur lors des statistiques: {e}")
     
     # 9. Récapitulatif final
     print("\n" + "="*70)
-    print("📊 RÉCAPITULATIF FINAL - LOCATIONS DE VACANCES")
+    print("📊 RÉCAPITULATIF FINAL - VENTES TUNISIE PROMO")
     print("="*70)
     
     print(f"📁 Fichier source: {NOM_FICHIER}")
-    print(f"📊 Annonces dans le fichier: {len(annonces)}")
-    print(f"📊 Avant insertion: {ancien_nombre}")
-    print(f"📊 Après insertion: {nombre_final}")
-    print(f"📈 Nouvelles locations de vacances: {total_insere}")
-    print(f"🔄 Mises à jour: {total_modifie}")
+    print(f"📊 Annonces dans le fichier: {len(annonces):,}".replace(',', ' '))
+    print(f"📊 Avant insertion: {ancien_nombre:,}".replace(',', ' '))
+    print(f"📊 Après insertion: {nombre_final:,}".replace(',', ' '))
+    print(f"📈 Nouvelles ventes: {total_insere:,}".replace(',', ' '))
+    print(f"🔄 Mises à jour: {total_modifie:,}".replace(',', ' '))
     
     if total_insere > 0:
-        print(f"\n✅ Mise à jour réussie: {total_insere} nouvelles locations de vacances!")
+        print(f"\n✅ Mise à jour réussie: {total_insere:,} nouvelles ventes!".replace(',', ' '))
     else:
-        print("\n➡️ Aucune nouvelle location de vacances détectée")
+        print("\n➡️ Aucune nouvelle vente détectée")
     
     # 10. Récapitulatif de toutes les collections
     print("\n" + "="*70)
@@ -607,7 +578,9 @@ def inserer_ou_mettre_a_jour_vacances():
         
         # Afficher dans un ordre spécifique
         collections_ordre = [
-            'menzili_annonces',
+            'tunisiepromo.ventes',
+            'menzili.vente',
+            'menzili.location',
             'tunisiepromo.locations',
             'tunisiepromo.vacances',
             'tunisiepromo.colocations',
@@ -643,9 +616,9 @@ def inserer_ou_mettre_a_jour_vacances():
     # Fermer la connexion
     client.close()
     print("\n🔒 Connexion fermée")
-    print("\n✨ La collection tunisiepromo_vacances est maintenant prête!")
-    print(f"   • {nombre_final} locations de vacances dans la base")
+    print("\n✨ La collection tunisiepromo_ventes est maintenant prête!")
+    print(f"   • {nombre_final:,} ventes dans la base".replace(',', ' '))
     print("\n👉 Les prochaines exécutions n'ajouteront que les nouvelles annonces.")
 
 if __name__ == "__main__":
-    inserer_ou_mettre_a_jour_vacances()
+    inserer_ou_mettre_a_jour_ventes()
