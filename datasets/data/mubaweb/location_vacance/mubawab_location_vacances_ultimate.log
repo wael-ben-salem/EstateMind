@@ -1,0 +1,147 @@
+2026-02-01 15:12:21,784 - __main__ - INFO - 🚀 DÉBUT SCRAPING COMPLET - APPARTEMENTS DE VACANCES
+2026-02-01 15:12:21,786 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/sc/appartements-vacational
+2026-02-01 15:12:25,819 - __main__ - INFO - ✅ Détecté: 316 annonces au total
+2026-02-01 15:12:25,879 - __main__ - INFO - 📊 Estimation: 10 pages à 34 annonces/page
+2026-02-01 15:12:25,883 - __main__ - INFO - 📊 TOTAL: 316 annonces détectées
+2026-02-01 15:12:25,883 - __main__ - INFO - 📄 Objectif: 316 annonces sur 10/10 pages
+2026-02-01 15:12:25,883 - __main__ - INFO - 📈 Estimation: 34 annonces par page
+2026-02-01 15:12:25,883 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/sc/appartements-vacational
+2026-02-01 15:12:28,224 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:12:28,224 - __main__ - INFO - Page 1: 34 cartes trouvées
+2026-02-01 15:12:28,568 - __main__ - INFO - ✅ PAGE 1: 8 annonces valides, 26 invalides
+2026-02-01 15:12:28,640 - __main__ - INFO - ✅ Page 1: 8 annonces trouvées
+2026-02-01 15:12:28,640 - __main__ - INFO - 🔍 Extraction des détails pour 8 annonces...
+2026-02-01 15:12:43,249 - __main__ - INFO -   📊 Détails: 5/8 (62%)
+2026-02-01 15:12:52,477 - __main__ - INFO -   📊 Détails: 8/8 (100%)
+2026-02-01 15:12:52,790 - __main__ - INFO - 📈 8/316 annonces accumulées
+2026-02-01 15:12:52,790 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-02-01 15:12:54,791 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/sc/appartements-vacational:p:2
+2026-02-01 15:12:57,153 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:12:57,153 - __main__ - INFO - Page 2: 34 cartes trouvées
+2026-02-01 15:12:57,470 - __main__ - INFO - ✅ PAGE 2: 10 annonces valides, 24 invalides
+2026-02-01 15:12:57,535 - __main__ - INFO - ✅ Page 2: 10 annonces trouvées
+2026-02-01 15:12:57,537 - __main__ - INFO - 🔍 Extraction des détails pour 10 annonces...
+2026-02-01 15:13:12,164 - __main__ - INFO -   📊 Détails: 5/10 (50%)
+2026-02-01 15:13:26,727 - __main__ - INFO -   📊 Détails: 10/10 (100%)
+2026-02-01 15:13:27,037 - __main__ - INFO - 📈 18/316 annonces accumulées
+2026-02-01 15:13:27,037 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-02-01 15:13:29,039 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/sc/appartements-vacational:p:3
+2026-02-01 15:13:31,136 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:13:31,136 - __main__ - INFO - Page 3: 34 cartes trouvées
+2026-02-01 15:13:31,539 - __main__ - INFO - ✅ PAGE 3: 9 annonces valides, 25 invalides
+2026-02-01 15:13:31,602 - __main__ - INFO - ✅ Page 3: 9 annonces trouvées
+2026-02-01 15:13:31,603 - __main__ - INFO - 🔍 Extraction des détails pour 9 annonces...
+2026-02-01 15:13:45,982 - __main__ - INFO -   📊 Détails: 5/9 (56%)
+2026-02-01 15:13:58,349 - __main__ - INFO -   📊 Détails: 9/9 (100%)
+2026-02-01 15:13:58,654 - __main__ - INFO - 📈 27/316 annonces accumulées
+2026-02-01 15:13:58,654 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-02-01 15:14:00,655 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/sc/appartements-vacational:p:4
+2026-02-01 15:14:02,656 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:14:02,656 - __main__ - INFO - Page 4: 34 cartes trouvées
+2026-02-01 15:14:02,881 - __main__ - INFO - ✅ PAGE 4: 15 annonces valides, 19 invalides
+2026-02-01 15:14:02,938 - __main__ - INFO - ✅ Page 4: 15 annonces trouvées
+2026-02-01 15:14:02,938 - __main__ - INFO - 🔍 Extraction des détails pour 15 annonces...
+2026-02-01 15:14:16,787 - __main__ - INFO -   📊 Détails: 5/15 (33%)
+2026-02-01 15:14:30,761 - __main__ - INFO -   📊 Détails: 10/15 (67%)
+2026-02-01 15:14:45,137 - __main__ - INFO -   📊 Détails: 15/15 (100%)
+2026-02-01 15:14:45,441 - __main__ - INFO - 📈 42/316 annonces accumulées
+2026-02-01 15:14:45,441 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-02-01 15:14:49,443 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/sc/appartements-vacational:p:5
+2026-02-01 15:14:51,502 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:14:51,506 - __main__ - INFO - Page 5: 34 cartes trouvées
+2026-02-01 15:14:51,789 - __main__ - INFO - ✅ PAGE 5: 21 annonces valides, 13 invalides
+2026-02-01 15:14:51,845 - __main__ - INFO - ✅ Page 5: 21 annonces trouvées
+2026-02-01 15:14:51,845 - __main__ - INFO - 🔍 Extraction des détails pour 21 annonces...
+2026-02-01 15:15:06,072 - __main__ - INFO -   📊 Détails: 5/21 (24%)
+2026-02-01 15:15:19,819 - __main__ - INFO -   📊 Détails: 10/21 (48%)
+2026-02-01 15:15:35,501 - __main__ - INFO -   📊 Détails: 15/21 (71%)
+2026-02-01 15:15:49,625 - __main__ - INFO -   📊 Détails: 20/21 (95%)
+2026-02-01 15:15:52,459 - __main__ - INFO -   📊 Détails: 21/21 (100%)
+2026-02-01 15:15:52,773 - __main__ - INFO - 📈 63/316 annonces accumulées
+2026-02-01 15:15:52,773 - __main__ - INFO - ⏳ Pause de 2s avant page 6...
+2026-02-01 15:15:54,774 - __main__ - INFO - 📄 SCRAPING PAGE 6: https://www.mubawab.tn/fr/sc/appartements-vacational:p:6
+2026-02-01 15:15:56,694 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:15:56,694 - __main__ - INFO - Page 6: 34 cartes trouvées
+2026-02-01 15:15:56,948 - __main__ - INFO - ✅ PAGE 6: 15 annonces valides, 19 invalides
+2026-02-01 15:15:57,011 - __main__ - INFO - ✅ Page 6: 15 annonces trouvées
+2026-02-01 15:15:57,011 - __main__ - INFO - 🔍 Extraction des détails pour 15 annonces...
+2026-02-01 15:16:10,706 - __main__ - INFO -   📊 Détails: 5/15 (33%)
+2026-02-01 15:16:24,282 - __main__ - INFO -   📊 Détails: 10/15 (67%)
+2026-02-01 15:16:37,590 - __main__ - INFO -   📊 Détails: 15/15 (100%)
+2026-02-01 15:16:37,895 - __main__ - INFO - 📈 78/316 annonces accumulées
+2026-02-01 15:16:37,896 - __main__ - INFO - ⏳ Pause de 2s avant page 7...
+2026-02-01 15:16:39,897 - __main__ - INFO - 📄 SCRAPING PAGE 7: https://www.mubawab.tn/fr/sc/appartements-vacational:p:7
+2026-02-01 15:16:41,784 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:16:41,784 - __main__ - INFO - Page 7: 34 cartes trouvées
+2026-02-01 15:16:42,000 - __main__ - INFO - ✅ PAGE 7: 15 annonces valides, 19 invalides
+2026-02-01 15:16:42,064 - __main__ - INFO - ✅ Page 7: 15 annonces trouvées
+2026-02-01 15:16:42,064 - __main__ - INFO - 🔍 Extraction des détails pour 15 annonces...
+2026-02-01 15:16:57,175 - __main__ - INFO -   📊 Détails: 5/15 (33%)
+2026-02-01 15:17:15,239 - __main__ - INFO -   📊 Détails: 10/15 (67%)
+2026-02-01 15:17:35,418 - __main__ - INFO -   📊 Détails: 15/15 (100%)
+2026-02-01 15:17:35,725 - __main__ - INFO - 📈 93/316 annonces accumulées
+2026-02-01 15:17:35,725 - __main__ - INFO - ⏳ Pause de 2s avant page 8...
+2026-02-01 15:17:37,727 - __main__ - INFO - 📄 SCRAPING PAGE 8: https://www.mubawab.tn/fr/sc/appartements-vacational:p:8
+2026-02-01 15:17:40,364 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:17:40,364 - __main__ - INFO - Page 8: 34 cartes trouvées
+2026-02-01 15:17:40,622 - __main__ - INFO - ✅ PAGE 8: 18 annonces valides, 16 invalides
+2026-02-01 15:17:40,679 - __main__ - INFO - ✅ Page 8: 18 annonces trouvées
+2026-02-01 15:17:40,679 - __main__ - INFO - 🔍 Extraction des détails pour 18 annonces...
+2026-02-01 15:17:56,122 - __main__ - INFO -   📊 Détails: 5/18 (28%)
+2026-02-01 15:18:11,448 - __main__ - INFO -   📊 Détails: 10/18 (56%)
+2026-02-01 15:18:26,663 - __main__ - INFO -   📊 Détails: 15/18 (83%)
+2026-02-01 15:18:36,019 - __main__ - INFO -   📊 Détails: 18/18 (100%)
+2026-02-01 15:18:36,320 - __main__ - INFO - 📈 111/316 annonces accumulées
+2026-02-01 15:18:36,320 - __main__ - INFO - ⏳ Pause de 2s avant page 9...
+2026-02-01 15:18:38,322 - __main__ - INFO - 📄 SCRAPING PAGE 9: https://www.mubawab.tn/fr/sc/appartements-vacational:p:9
+2026-02-01 15:18:40,496 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-01 15:18:40,496 - __main__ - INFO - Page 9: 34 cartes trouvées
+2026-02-01 15:18:40,781 - __main__ - INFO - ✅ PAGE 9: 16 annonces valides, 18 invalides
+2026-02-01 15:18:40,837 - __main__ - INFO - ✅ Page 9: 16 annonces trouvées
+2026-02-01 15:18:40,837 - __main__ - INFO - 🔍 Extraction des détails pour 16 annonces...
+2026-02-01 15:18:55,717 - __main__ - INFO -   📊 Détails: 5/16 (31%)
+2026-02-01 15:19:09,846 - __main__ - INFO -   📊 Détails: 10/16 (62%)
+2026-02-01 15:19:23,966 - __main__ - INFO -   📊 Détails: 15/16 (94%)
+2026-02-01 15:19:26,702 - __main__ - INFO -   📊 Détails: 16/16 (100%)
+2026-02-01 15:19:27,004 - __main__ - INFO - 📈 127/316 annonces accumulées
+2026-02-01 15:19:27,004 - __main__ - INFO - ⏳ Pause de 4s avant page 10...
+2026-02-01 15:19:31,006 - __main__ - INFO - 📄 SCRAPING PAGE 10: https://www.mubawab.tn/fr/sc/appartements-vacational:p:10
+2026-02-01 15:19:32,879 - __main__ - INFO - Total cartes uniques trouvées: 20
+2026-02-01 15:19:32,879 - __main__ - INFO - Page 10: 20 cartes trouvées
+2026-02-01 15:19:33,037 - __main__ - INFO - ✅ PAGE 10: 10 annonces valides, 10 invalides
+2026-02-01 15:19:33,076 - __main__ - INFO - ✅ Page 10: 10 annonces trouvées
+2026-02-01 15:19:33,076 - __main__ - INFO - 🔍 Extraction des détails pour 10 annonces...
+2026-02-01 15:19:46,392 - __main__ - INFO -   📊 Détails: 5/10 (50%)
+2026-02-01 15:20:00,542 - __main__ - INFO -   📊 Détails: 10/10 (100%)
+2026-02-01 15:20:00,847 - __main__ - INFO - 📈 137/316 annonces accumulées
+2026-02-01 15:20:00,847 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE
+2026-02-01 15:20:00,847 - __main__ - INFO - ✅ FIN SCRAPING: 137 annonces
+2026-02-01 15:20:00,870 - __main__ - INFO - ✅ CSV SAUVEGARDÉ: mubawab_location_vacances_complet_20260201_152000.csv
+2026-02-01 15:20:00,911 - __main__ - INFO - ✅ JSON SAUVEGARDÉ: mubawab_location_vacances_complet_20260201_152000.json
+2026-02-16 19:02:10,975 - __main__ - INFO - 🚀 DÉBUT SCRAPING COMPLET - APPARTEMENTS DE VACANCES
+2026-02-16 19:02:10,978 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/sc/appartements-vacational
+2026-02-16 19:02:14,510 - __main__ - INFO - ✅ Détecté: 305 annonces au total
+2026-02-16 19:02:14,579 - __main__ - INFO - 📊 Estimation: 9 pages à 34 annonces/page
+2026-02-16 19:02:14,580 - __main__ - INFO - 📊 TOTAL: 305 annonces détectées
+2026-02-16 19:02:14,580 - __main__ - INFO - 📄 Objectif: 305 annonces sur 9/9 pages
+2026-02-16 19:02:14,581 - __main__ - INFO - 📈 Estimation: 34 annonces par page
+2026-02-16 19:02:14,582 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/sc/appartements-vacational
+2026-02-16 19:02:16,600 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-16 19:02:16,601 - __main__ - INFO - Page 1: 34 cartes trouvées
+2026-02-16 19:02:17,028 - __main__ - INFO - ✅ PAGE 1: 10 annonces valides, 24 invalides
+2026-02-16 19:02:17,204 - __main__ - INFO - ✅ Page 1: 10 annonces trouvées
+2026-02-16 19:02:17,205 - __main__ - INFO - 🔍 Extraction des détails pour 10 annonces...
+2026-02-16 19:02:32,209 - __main__ - INFO -   📊 Détails: 5/10 (50%)
+2026-02-16 19:02:47,545 - __main__ - INFO -   📊 Détails: 10/10 (100%)
+2026-02-16 19:02:47,846 - __main__ - INFO - 📈 10/305 annonces accumulées
+2026-02-16 19:02:47,847 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-02-16 19:02:49,849 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/sc/appartements-vacational:p:2
+2026-02-16 19:02:52,320 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-02-16 19:02:52,320 - __main__ - INFO - Page 2: 34 cartes trouvées
+2026-02-16 19:02:52,867 - __main__ - INFO - ✅ PAGE 2: 9 annonces valides, 25 invalides
+2026-02-16 19:02:52,949 - __main__ - INFO - ✅ Page 2: 9 annonces trouvées
+2026-02-16 19:02:52,950 - __main__ - INFO - 🔍 Extraction des détails pour 9 annonces...
+2026-02-16 19:02:56,784 - __main__ - INFO - ⏹️  INTERROMPU PAR UTILISATEUR
+2026-02-16 19:02:56,785 - __main__ - INFO - ✅ FIN SCRAPING: 10 annonces
+2026-02-16 19:02:56,795 - __main__ - INFO - ✅ CSV SAUVEGARDÉ: mubawab_location_vacances_complet_20260216_190256.csv
+2026-02-16 19:02:56,808 - __main__ - INFO - ✅ JSON SAUVEGARDÉ: mubawab_location_vacances_complet_20260216_190256.json
