@@ -1,6 +1,5 @@
 # Ignorer les fichiers volumineux
 *.json
-*.csv
 *.scrapy
 
 # Python
