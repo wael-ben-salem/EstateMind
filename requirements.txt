@@ -1,0 +1,38 @@
+# Core
+pandas
+numpy
+
+# Visualization
+matplotlib
+seaborn
+
+# Machine Learning
+scikit-learn
+xgboost
+lightgbm
+
+# NLP (for description + feature extraction)
+nltk
+spacy
+
+# Explainability
+shap
+
+# Web scraping
+playwright
+beautifulsoup4
+lxml
+
+# Geolocation (optional but useful)
+geopy
+
+# Time series
+statsmodels
+
+# Utilities
+tqdm
+joblib
+
+# Jupyter
+notebook
+ipykernel

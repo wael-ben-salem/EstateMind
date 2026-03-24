@@ -2,3 +2,26 @@
 *.json
 *.csv
 *.scrapy
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+
+# Jupyter
+.ipynb_checkpoints/
+# Models
+*.pkl
+*.joblib
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
