@@ -1,4 +1,135 @@
-# Ignorer les fichiers volumineux
-*.json
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# C extensions
+*.c
+*.o
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv
+.env
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+.jupyter/
+
+# Data and models
+minio_data/
+output/
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.pth
+*.pt
+*.model
+*.weights
+
+# Data files
 *.csv
-*.scrapy
+*.json
+*.xlsx
+*.xls
+*.parquet
+data/
+datasets/
+raw_data/
+
+# Logs
+logs/
+*.log
+airflow/logs/
+
+# Reports and outputs
+reports/
+*.html
+
+# OS-specific
+.DS_Store
+Thumbs.db
+.windows
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Scrapy
+.scrapy
+scrapy.cfg
+
+# scrapy-specific
+scrapy/data/
+
+# Airflow
+airflow/logs/
+airflow/plugins/__pycache__/
+airflow/dags/__pycache__/
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Local environment overrides
+.env.local
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+
+# MinIO/S3 cache
+.minio/
