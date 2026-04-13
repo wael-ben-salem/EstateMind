@@ -1,0 +1,660 @@
+2026-02-01 11:27:45,958 - __main__ - INFO - 🚀 DÉBUT SCRAPING COMPLET - 4 RÉGIONS
+2026-02-01 11:27:45,959 - __main__ - INFO - 
+============================================================
+2026-02-01 11:27:45,960 - __main__ - INFO - 🎯 DÉBUT RÉGION: La Marsa
+2026-02-01 11:27:45,960 - __main__ - INFO - ============================================================
+2026-02-01 11:27:45,961 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: La Marsa
+2026-02-01 11:27:45,963 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer
+2026-02-01 11:27:49,523 - __main__ - INFO - ✅ Détecté: 971 annonces au total
+2026-02-01 11:27:49,605 - __main__ - INFO - 📊 Estimation: 28 pages à 35 annonces/page
+2026-02-01 11:27:49,605 - __main__ - INFO - 📊 La Marsa: 971 annonces détectées
+2026-02-01 11:27:49,612 - __main__ - INFO - 📄 Objectif: 971 annonces sur 28/28 pages
+2026-02-01 11:27:49,613 - __main__ - INFO - 📈 Estimation: 35 annonces par page
+2026-02-01 11:27:49,613 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer
+2026-02-01 11:27:52,055 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:27:52,055 - __main__ - INFO - Page 1: 35 cartes trouvées
+2026-02-01 11:27:52,421 - __main__ - INFO - ✅ PAGE 1: 32 annonces valides, 3 invalides
+2026-02-01 11:27:52,563 - __main__ - INFO - ✅ Page 1: 32 annonces trouvées
+2026-02-01 11:27:52,563 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 11:28:06,994 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 11:28:21,614 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 11:28:35,473 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 11:28:49,856 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 11:29:04,361 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 11:29:19,883 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 11:29:25,695 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 11:29:25,997 - __main__ - INFO - 📈 La Marsa: 32/971 annonces accumulées
+2026-02-01 11:29:25,997 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-02-01 11:29:28,008 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:2
+2026-02-01 11:29:30,664 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:29:30,664 - __main__ - INFO - Page 2: 35 cartes trouvées
+2026-02-01 11:29:30,978 - __main__ - INFO - ✅ PAGE 2: 32 annonces valides, 3 invalides
+2026-02-01 11:29:31,044 - __main__ - INFO - ✅ Page 2: 32 annonces trouvées
+2026-02-01 11:29:31,045 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 11:29:45,220 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 11:30:00,837 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 11:30:15,526 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 11:30:31,719 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 11:30:46,231 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 11:31:01,081 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 11:31:07,079 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 11:31:07,382 - __main__ - INFO - 📈 La Marsa: 64/971 annonces accumulées
+2026-02-01 11:31:07,382 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-02-01 11:31:09,384 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:3
+2026-02-01 11:31:11,619 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:31:11,619 - __main__ - INFO - Page 3: 35 cartes trouvées
+2026-02-01 11:31:12,004 - __main__ - INFO - ✅ PAGE 3: 30 annonces valides, 5 invalides
+2026-02-01 11:31:12,074 - __main__ - INFO - ✅ Page 3: 30 annonces trouvées
+2026-02-01 11:31:12,074 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-02-01 11:31:26,103 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-02-01 11:31:40,835 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-02-01 11:31:55,675 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-02-01 11:32:11,197 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-02-01 11:32:28,397 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-02-01 11:32:45,449 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-02-01 11:32:45,751 - __main__ - INFO - 📈 La Marsa: 94/971 annonces accumulées
+2026-02-01 11:32:45,752 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-02-01 11:32:47,753 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:4
+2026-02-01 11:32:50,851 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:32:50,852 - __main__ - INFO - Page 4: 35 cartes trouvées
+2026-02-01 11:32:51,251 - __main__ - INFO - ✅ PAGE 4: 30 annonces valides, 5 invalides
+2026-02-01 11:32:51,333 - __main__ - INFO - ✅ Page 4: 30 annonces trouvées
+2026-02-01 11:32:51,334 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-02-01 11:33:05,623 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-02-01 11:33:23,706 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-02-01 11:33:39,652 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-02-01 11:33:56,134 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-02-01 11:34:11,817 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-02-01 11:34:26,789 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-02-01 11:34:27,090 - __main__ - INFO - 📈 La Marsa: 124/971 annonces accumulées
+2026-02-01 11:34:27,090 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-02-01 11:34:31,092 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:5
+2026-02-01 11:34:33,605 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:34:33,606 - __main__ - INFO - Page 5: 35 cartes trouvées
+2026-02-01 11:34:33,954 - __main__ - INFO - ✅ PAGE 5: 28 annonces valides, 7 invalides
+2026-02-01 11:34:34,040 - __main__ - INFO - ✅ Page 5: 28 annonces trouvées
+2026-02-01 11:34:34,040 - __main__ - INFO - 🔍 Extraction des détails pour 28 annonces...
+2026-02-01 11:34:48,372 - __main__ - INFO -   📊 Détails: 5/28 (18%)
+2026-02-01 11:35:03,452 - __main__ - INFO -   📊 Détails: 10/28 (36%)
+2026-02-01 11:35:18,462 - __main__ - INFO -   📊 Détails: 15/28 (54%)
+2026-02-01 11:35:35,739 - __main__ - INFO -   📊 Détails: 20/28 (71%)
+2026-02-01 11:35:52,148 - __main__ - INFO -   📊 Détails: 25/28 (89%)
+2026-02-01 11:36:00,814 - __main__ - INFO -   📊 Détails: 28/28 (100%)
+2026-02-01 11:36:01,120 - __main__ - INFO - 📈 La Marsa: 152/971 annonces accumulées
+2026-02-01 11:36:01,120 - __main__ - INFO - ⏳ Pause de 2s avant page 6...
+2026-02-01 11:36:03,122 - __main__ - INFO - 📄 SCRAPING PAGE 6: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:6
+2026-02-01 11:36:05,329 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:36:05,329 - __main__ - INFO - Page 6: 35 cartes trouvées
+2026-02-01 11:36:05,710 - __main__ - INFO - ✅ PAGE 6: 32 annonces valides, 3 invalides
+2026-02-01 11:36:05,786 - __main__ - INFO - ✅ Page 6: 32 annonces trouvées
+2026-02-01 11:36:05,788 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 11:36:20,372 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 11:36:35,951 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 11:36:51,406 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 11:37:06,026 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 11:37:21,138 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 11:37:37,418 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 11:37:43,285 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 11:37:43,593 - __main__ - INFO - 📈 La Marsa: 184/971 annonces accumulées
+2026-02-01 11:37:43,593 - __main__ - INFO - ⏳ Pause de 2s avant page 7...
+2026-02-01 11:37:45,595 - __main__ - INFO - 📄 SCRAPING PAGE 7: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:7
+2026-02-01 11:37:48,009 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:37:48,009 - __main__ - INFO - Page 7: 35 cartes trouvées
+2026-02-01 11:37:48,398 - __main__ - INFO - ✅ PAGE 7: 30 annonces valides, 5 invalides
+2026-02-01 11:37:48,477 - __main__ - INFO - ✅ Page 7: 30 annonces trouvées
+2026-02-01 11:37:48,477 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-02-01 11:38:02,307 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-02-01 11:38:16,323 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-02-01 11:38:31,044 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-02-01 11:38:45,291 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-02-01 11:39:00,022 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-02-01 11:39:14,394 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-02-01 11:39:14,703 - __main__ - INFO - 📈 La Marsa: 214/971 annonces accumulées
+2026-02-01 11:39:14,704 - __main__ - INFO - ⏳ Pause de 2s avant page 8...
+2026-02-01 11:39:16,705 - __main__ - INFO - 📄 SCRAPING PAGE 8: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:8
+2026-02-01 11:39:19,105 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:39:19,105 - __main__ - INFO - Page 8: 35 cartes trouvées
+2026-02-01 11:39:19,444 - __main__ - INFO - ✅ PAGE 8: 27 annonces valides, 8 invalides
+2026-02-01 11:39:19,521 - __main__ - INFO - ✅ Page 8: 27 annonces trouvées
+2026-02-01 11:39:19,522 - __main__ - INFO - 🔍 Extraction des détails pour 27 annonces...
+2026-02-01 11:39:33,566 - __main__ - INFO -   📊 Détails: 5/27 (19%)
+2026-02-01 11:39:50,309 - __main__ - INFO -   📊 Détails: 10/27 (37%)
+2026-02-01 11:40:06,365 - __main__ - INFO -   📊 Détails: 15/27 (56%)
+2026-02-01 11:40:21,596 - __main__ - INFO -   📊 Détails: 20/27 (74%)
+2026-02-01 11:40:36,342 - __main__ - INFO -   📊 Détails: 25/27 (93%)
+2026-02-01 11:40:43,127 - __main__ - INFO -   📊 Détails: 27/27 (100%)
+2026-02-01 11:40:43,431 - __main__ - INFO - 📈 La Marsa: 241/971 annonces accumulées
+2026-02-01 11:40:43,431 - __main__ - INFO - ⏳ Pause de 2s avant page 9...
+2026-02-01 11:40:45,432 - __main__ - INFO - 📄 SCRAPING PAGE 9: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:9
+2026-02-01 11:40:48,387 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:40:48,387 - __main__ - INFO - Page 9: 35 cartes trouvées
+2026-02-01 11:40:48,965 - __main__ - INFO - ✅ PAGE 9: 29 annonces valides, 6 invalides
+2026-02-01 11:40:49,054 - __main__ - INFO - ✅ Page 9: 29 annonces trouvées
+2026-02-01 11:40:49,055 - __main__ - INFO - 🔍 Extraction des détails pour 29 annonces...
+2026-02-01 11:41:04,021 - __main__ - INFO -   📊 Détails: 5/29 (17%)
+2026-02-01 11:41:19,756 - __main__ - INFO -   📊 Détails: 10/29 (34%)
+2026-02-01 11:41:35,363 - __main__ - INFO -   📊 Détails: 15/29 (52%)
+2026-02-01 11:41:50,360 - __main__ - INFO -   📊 Détails: 20/29 (69%)
+2026-02-01 11:42:04,681 - __main__ - INFO -   📊 Détails: 25/29 (86%)
+2026-02-01 11:42:17,309 - __main__ - INFO -   📊 Détails: 29/29 (100%)
+2026-02-01 11:42:17,611 - __main__ - INFO - 📈 La Marsa: 270/971 annonces accumulées
+2026-02-01 11:42:17,615 - __main__ - INFO - ⏳ Pause de 4s avant page 10...
+2026-02-01 11:42:21,616 - __main__ - INFO - 📄 SCRAPING PAGE 10: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:10
+2026-02-01 11:42:23,796 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:42:23,796 - __main__ - INFO - Page 10: 35 cartes trouvées
+2026-02-01 11:42:24,157 - __main__ - INFO - ✅ PAGE 10: 29 annonces valides, 6 invalides
+2026-02-01 11:42:24,224 - __main__ - INFO - ✅ Page 10: 29 annonces trouvées
+2026-02-01 11:42:24,225 - __main__ - INFO - 🔍 Extraction des détails pour 29 annonces...
+2026-02-01 11:42:39,138 - __main__ - INFO -   📊 Détails: 5/29 (17%)
+2026-02-01 11:42:54,773 - __main__ - INFO -   📊 Détails: 10/29 (34%)
+2026-02-01 11:43:09,560 - __main__ - INFO -   📊 Détails: 15/29 (52%)
+2026-02-01 11:43:23,656 - __main__ - INFO -   📊 Détails: 20/29 (69%)
+2026-02-01 11:43:38,577 - __main__ - INFO -   📊 Détails: 25/29 (86%)
+2026-02-01 11:43:50,868 - __main__ - INFO -   📊 Détails: 29/29 (100%)
+2026-02-01 11:43:51,169 - __main__ - INFO - 📈 La Marsa: 299/971 annonces accumulées
+2026-02-01 11:43:51,170 - __main__ - INFO - ⏳ Pause de 2s avant page 11...
+2026-02-01 11:43:53,170 - __main__ - INFO - 📄 SCRAPING PAGE 11: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:11
+2026-02-01 11:43:55,569 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:43:55,569 - __main__ - INFO - Page 11: 35 cartes trouvées
+2026-02-01 11:43:55,878 - __main__ - INFO - ✅ PAGE 11: 30 annonces valides, 5 invalides
+2026-02-01 11:43:55,943 - __main__ - INFO - ✅ Page 11: 30 annonces trouvées
+2026-02-01 11:43:55,943 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-02-01 11:44:09,979 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-02-01 11:44:25,336 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-02-01 11:44:40,166 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-02-01 11:44:55,464 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-02-01 11:45:11,007 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-02-01 11:45:25,206 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-02-01 11:45:25,519 - __main__ - INFO - 📈 La Marsa: 329/971 annonces accumulées
+2026-02-01 11:45:25,520 - __main__ - INFO - ⏳ Pause de 2s avant page 12...
+2026-02-01 11:45:27,521 - __main__ - INFO - 📄 SCRAPING PAGE 12: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:12
+2026-02-01 11:45:29,955 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:45:29,955 - __main__ - INFO - Page 12: 35 cartes trouvées
+2026-02-01 11:45:30,303 - __main__ - INFO - ✅ PAGE 12: 31 annonces valides, 4 invalides
+2026-02-01 11:45:30,376 - __main__ - INFO - ✅ Page 12: 31 annonces trouvées
+2026-02-01 11:45:30,377 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 11:45:44,424 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 11:45:58,963 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 11:46:12,972 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 11:46:27,804 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 11:46:42,332 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 11:46:56,216 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 11:46:59,169 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 11:46:59,477 - __main__ - INFO - 📈 La Marsa: 360/971 annonces accumulées
+2026-02-01 11:46:59,477 - __main__ - INFO - ⏳ Pause de 2s avant page 13...
+2026-02-01 11:47:01,478 - __main__ - INFO - 📄 SCRAPING PAGE 13: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:13
+2026-02-01 11:47:04,593 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:47:04,595 - __main__ - INFO - Page 13: 35 cartes trouvées
+2026-02-01 11:47:04,993 - __main__ - INFO - ✅ PAGE 13: 32 annonces valides, 3 invalides
+2026-02-01 11:47:05,060 - __main__ - INFO - ✅ Page 13: 32 annonces trouvées
+2026-02-01 11:47:05,060 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 11:47:19,404 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 11:47:34,896 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 11:47:50,647 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 11:48:05,340 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 11:48:22,035 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 11:48:38,350 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 11:48:45,703 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 11:48:46,004 - __main__ - INFO - 📈 La Marsa: 392/971 annonces accumulées
+2026-02-01 11:48:46,005 - __main__ - INFO - ⏳ Pause de 2s avant page 14...
+2026-02-01 11:48:48,006 - __main__ - INFO - 📄 SCRAPING PAGE 14: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:14
+2026-02-01 11:48:51,698 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:48:51,698 - __main__ - INFO - Page 14: 35 cartes trouvées
+2026-02-01 11:48:52,032 - __main__ - INFO - ✅ PAGE 14: 31 annonces valides, 4 invalides
+2026-02-01 11:48:52,102 - __main__ - INFO - ✅ Page 14: 31 annonces trouvées
+2026-02-01 11:48:52,103 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 11:49:07,855 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 11:49:25,137 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 11:49:42,543 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 11:49:57,556 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 11:50:13,981 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 11:50:30,278 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 11:50:33,170 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 11:50:33,471 - __main__ - INFO - 📈 La Marsa: 423/971 annonces accumulées
+2026-02-01 11:50:33,471 - __main__ - INFO - ⏳ Pause de 4s avant page 15...
+2026-02-01 11:50:37,473 - __main__ - INFO - 📄 SCRAPING PAGE 15: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:15
+2026-02-01 11:50:39,993 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:50:39,994 - __main__ - INFO - Page 15: 35 cartes trouvées
+2026-02-01 11:50:40,513 - __main__ - INFO - ✅ PAGE 15: 31 annonces valides, 4 invalides
+2026-02-01 11:50:40,591 - __main__ - INFO - ✅ Page 15: 31 annonces trouvées
+2026-02-01 11:50:40,593 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 11:50:57,112 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 11:51:14,013 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 11:51:30,068 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 11:51:46,611 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 11:52:03,561 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 11:52:18,850 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 11:52:22,099 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 11:52:22,400 - __main__ - INFO - 📈 La Marsa: 454/971 annonces accumulées
+2026-02-01 11:52:22,400 - __main__ - INFO - ⏳ Pause de 2s avant page 16...
+2026-02-01 11:52:24,403 - __main__ - INFO - 📄 SCRAPING PAGE 16: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:16
+2026-02-01 11:52:26,942 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:52:26,943 - __main__ - INFO - Page 16: 35 cartes trouvées
+2026-02-01 11:52:27,438 - __main__ - INFO - ✅ PAGE 16: 32 annonces valides, 3 invalides
+2026-02-01 11:52:27,515 - __main__ - INFO - ✅ Page 16: 32 annonces trouvées
+2026-02-01 11:52:27,517 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 11:52:42,683 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 11:52:58,454 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 11:53:15,159 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 11:53:31,165 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 11:53:49,908 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 11:54:06,818 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 11:54:13,752 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 11:54:14,053 - __main__ - INFO - 📈 La Marsa: 486/971 annonces accumulées
+2026-02-01 11:54:14,053 - __main__ - INFO - ⏳ Pause de 2s avant page 17...
+2026-02-01 11:54:16,055 - __main__ - INFO - 📄 SCRAPING PAGE 17: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:17
+2026-02-01 11:54:18,527 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:54:18,527 - __main__ - INFO - Page 17: 35 cartes trouvées
+2026-02-01 11:54:18,862 - __main__ - INFO - ✅ PAGE 17: 31 annonces valides, 4 invalides
+2026-02-01 11:54:18,926 - __main__ - INFO - ✅ Page 17: 31 annonces trouvées
+2026-02-01 11:54:18,926 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 11:54:34,007 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 11:54:50,016 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 11:55:12,844 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 11:55:42,317 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 11:56:00,393 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 11:56:18,140 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 11:56:21,277 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 11:56:21,581 - __main__ - INFO - 📈 La Marsa: 517/971 annonces accumulées
+2026-02-01 11:56:21,581 - __main__ - INFO - ⏳ Pause de 2s avant page 18...
+2026-02-01 11:56:23,583 - __main__ - INFO - 📄 SCRAPING PAGE 18: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:18
+2026-02-01 11:56:26,559 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:56:26,559 - __main__ - INFO - Page 18: 35 cartes trouvées
+2026-02-01 11:56:26,966 - __main__ - INFO - ✅ PAGE 18: 30 annonces valides, 5 invalides
+2026-02-01 11:56:27,076 - __main__ - INFO - ✅ Page 18: 30 annonces trouvées
+2026-02-01 11:56:27,077 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-02-01 11:56:42,532 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-02-01 11:56:58,878 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-02-01 11:57:13,930 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-02-01 11:57:30,143 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-02-01 11:57:44,708 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-02-01 11:57:59,030 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-02-01 11:57:59,341 - __main__ - INFO - 📈 La Marsa: 547/971 annonces accumulées
+2026-02-01 11:57:59,341 - __main__ - INFO - ⏳ Pause de 2s avant page 19...
+2026-02-01 11:58:01,345 - __main__ - INFO - 📄 SCRAPING PAGE 19: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:19
+2026-02-01 11:58:03,582 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:58:03,584 - __main__ - INFO - Page 19: 35 cartes trouvées
+2026-02-01 11:58:03,893 - __main__ - INFO - ✅ PAGE 19: 29 annonces valides, 6 invalides
+2026-02-01 11:58:03,960 - __main__ - INFO - ✅ Page 19: 29 annonces trouvées
+2026-02-01 11:58:03,960 - __main__ - INFO - 🔍 Extraction des détails pour 29 annonces...
+2026-02-01 11:58:18,254 - __main__ - INFO -   📊 Détails: 5/29 (17%)
+2026-02-01 11:58:33,773 - __main__ - INFO -   📊 Détails: 10/29 (34%)
+2026-02-01 11:58:49,262 - __main__ - INFO -   📊 Détails: 15/29 (52%)
+2026-02-01 11:59:04,344 - __main__ - INFO -   📊 Détails: 20/29 (69%)
+2026-02-01 11:59:19,537 - __main__ - INFO -   📊 Détails: 25/29 (86%)
+2026-02-01 11:59:31,041 - __main__ - INFO -   📊 Détails: 29/29 (100%)
+2026-02-01 11:59:31,343 - __main__ - INFO - 📈 La Marsa: 576/971 annonces accumulées
+2026-02-01 11:59:31,343 - __main__ - INFO - ⏳ Pause de 4s avant page 20...
+2026-02-01 11:59:35,345 - __main__ - INFO - 📄 SCRAPING PAGE 20: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:20
+2026-02-01 11:59:37,611 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 11:59:37,611 - __main__ - INFO - Page 20: 35 cartes trouvées
+2026-02-01 11:59:37,912 - __main__ - INFO - ✅ PAGE 20: 30 annonces valides, 5 invalides
+2026-02-01 11:59:38,087 - __main__ - INFO - ✅ Page 20: 30 annonces trouvées
+2026-02-01 11:59:38,668 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-02-01 11:59:53,305 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-02-01 12:00:08,201 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-02-01 12:00:22,983 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-02-01 12:00:38,615 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-02-01 12:00:54,483 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-02-01 12:01:09,276 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-02-01 12:01:09,579 - __main__ - INFO - 📈 La Marsa: 606/971 annonces accumulées
+2026-02-01 12:01:09,581 - __main__ - INFO - ⏳ Pause de 2s avant page 21...
+2026-02-01 12:01:11,696 - __main__ - INFO - 📄 SCRAPING PAGE 21: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:21
+2026-02-01 12:01:13,381 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:01:13,381 - __main__ - INFO - Page 21: 35 cartes trouvées
+2026-02-01 12:01:13,569 - __main__ - INFO - ✅ PAGE 21: 31 annonces valides, 4 invalides
+2026-02-01 12:01:13,626 - __main__ - INFO - ✅ Page 21: 31 annonces trouvées
+2026-02-01 12:01:13,627 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 12:01:28,204 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 12:01:42,939 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 12:01:58,216 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 12:02:13,363 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 12:02:28,134 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 12:02:43,079 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 12:02:46,622 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 12:02:46,924 - __main__ - INFO - 📈 La Marsa: 637/971 annonces accumulées
+2026-02-01 12:02:46,924 - __main__ - INFO - ⏳ Pause de 2s avant page 22...
+2026-02-01 12:02:48,927 - __main__ - INFO - 📄 SCRAPING PAGE 22: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:22
+2026-02-01 12:02:51,478 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:02:51,478 - __main__ - INFO - Page 22: 35 cartes trouvées
+2026-02-01 12:02:51,883 - __main__ - INFO - ✅ PAGE 22: 30 annonces valides, 5 invalides
+2026-02-01 12:02:51,973 - __main__ - INFO - ✅ Page 22: 30 annonces trouvées
+2026-02-01 12:02:51,974 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-02-01 12:03:07,649 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-02-01 12:03:23,103 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-02-01 12:03:37,442 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-02-01 12:03:51,755 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-02-01 12:04:06,618 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-02-01 12:04:21,086 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-02-01 12:04:21,388 - __main__ - INFO - 📈 La Marsa: 667/971 annonces accumulées
+2026-02-01 12:04:21,388 - __main__ - INFO - ⏳ Pause de 2s avant page 23...
+2026-02-01 12:04:23,391 - __main__ - INFO - 📄 SCRAPING PAGE 23: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:23
+2026-02-01 12:04:25,931 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:04:25,932 - __main__ - INFO - Page 23: 35 cartes trouvées
+2026-02-01 12:04:26,301 - __main__ - INFO - ✅ PAGE 23: 32 annonces valides, 3 invalides
+2026-02-01 12:04:26,372 - __main__ - INFO - ✅ Page 23: 32 annonces trouvées
+2026-02-01 12:04:26,372 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 12:04:41,494 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 12:04:57,075 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 12:05:12,325 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 12:05:27,309 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 12:05:41,994 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 12:05:57,356 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 12:06:02,679 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 12:06:02,982 - __main__ - INFO - 📈 La Marsa: 699/971 annonces accumulées
+2026-02-01 12:06:02,982 - __main__ - INFO - ⏳ Pause de 2s avant page 24...
+2026-02-01 12:06:04,985 - __main__ - INFO - 📄 SCRAPING PAGE 24: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:24
+2026-02-01 12:06:07,363 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:06:07,363 - __main__ - INFO - Page 24: 35 cartes trouvées
+2026-02-01 12:06:07,688 - __main__ - INFO - ✅ PAGE 24: 29 annonces valides, 6 invalides
+2026-02-01 12:06:07,765 - __main__ - INFO - ✅ Page 24: 29 annonces trouvées
+2026-02-01 12:06:07,767 - __main__ - INFO - 🔍 Extraction des détails pour 29 annonces...
+2026-02-01 12:06:22,291 - __main__ - INFO -   📊 Détails: 5/29 (17%)
+2026-02-01 12:06:37,708 - __main__ - INFO -   📊 Détails: 10/29 (34%)
+2026-02-01 12:06:52,108 - __main__ - INFO -   📊 Détails: 15/29 (52%)
+2026-02-01 12:07:06,221 - __main__ - INFO -   📊 Détails: 20/29 (69%)
+2026-02-01 12:07:23,217 - __main__ - INFO -   📊 Détails: 25/29 (86%)
+2026-02-01 12:07:34,609 - __main__ - INFO -   📊 Détails: 29/29 (100%)
+2026-02-01 12:07:34,910 - __main__ - INFO - 📈 La Marsa: 728/971 annonces accumulées
+2026-02-01 12:07:34,910 - __main__ - INFO - ⏳ Pause de 4s avant page 25...
+2026-02-01 12:07:38,912 - __main__ - INFO - 📄 SCRAPING PAGE 25: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:25
+2026-02-01 12:07:41,062 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:07:41,062 - __main__ - INFO - Page 25: 35 cartes trouvées
+2026-02-01 12:07:41,338 - __main__ - INFO - ✅ PAGE 25: 32 annonces valides, 3 invalides
+2026-02-01 12:07:41,396 - __main__ - INFO - ✅ Page 25: 32 annonces trouvées
+2026-02-01 12:07:41,396 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 12:07:55,248 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 12:08:09,323 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 12:08:23,534 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 12:08:37,754 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 12:08:51,773 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 12:09:05,857 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 12:09:11,493 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 12:09:11,804 - __main__ - INFO - 📈 La Marsa: 760/971 annonces accumulées
+2026-02-01 12:09:11,805 - __main__ - INFO - ⏳ Pause de 2s avant page 26...
+2026-02-01 12:09:13,807 - __main__ - INFO - 📄 SCRAPING PAGE 26: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:26
+2026-02-01 12:09:15,794 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:09:15,808 - __main__ - INFO - Page 26: 35 cartes trouvées
+2026-02-01 12:09:16,078 - __main__ - INFO - ✅ PAGE 26: 28 annonces valides, 7 invalides
+2026-02-01 12:09:16,146 - __main__ - INFO - ✅ Page 26: 28 annonces trouvées
+2026-02-01 12:09:16,147 - __main__ - INFO - 🔍 Extraction des détails pour 28 annonces...
+2026-02-01 12:09:30,376 - __main__ - INFO -   📊 Détails: 5/28 (18%)
+2026-02-01 12:09:44,080 - __main__ - INFO -   📊 Détails: 10/28 (36%)
+2026-02-01 12:09:58,099 - __main__ - INFO -   📊 Détails: 15/28 (54%)
+2026-02-01 12:10:11,957 - __main__ - INFO -   📊 Détails: 20/28 (71%)
+2026-02-01 12:10:26,165 - __main__ - INFO -   📊 Détails: 25/28 (89%)
+2026-02-01 12:10:34,703 - __main__ - INFO -   📊 Détails: 28/28 (100%)
+2026-02-01 12:10:35,004 - __main__ - INFO - 📈 La Marsa: 788/971 annonces accumulées
+2026-02-01 12:10:35,005 - __main__ - INFO - ⏳ Pause de 2s avant page 27...
+2026-02-01 12:10:37,006 - __main__ - INFO - 📄 SCRAPING PAGE 27: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:27
+2026-02-01 12:10:39,178 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:10:39,178 - __main__ - INFO - Page 27: 35 cartes trouvées
+2026-02-01 12:10:39,554 - __main__ - INFO - ✅ PAGE 27: 29 annonces valides, 6 invalides
+2026-02-01 12:10:39,628 - __main__ - INFO - ✅ Page 27: 29 annonces trouvées
+2026-02-01 12:10:39,628 - __main__ - INFO - 🔍 Extraction des détails pour 29 annonces...
+2026-02-01 12:10:53,414 - __main__ - INFO -   📊 Détails: 5/29 (17%)
+2026-02-01 12:11:07,199 - __main__ - INFO -   📊 Détails: 10/29 (34%)
+2026-02-01 12:11:21,681 - __main__ - INFO -   📊 Détails: 15/29 (52%)
+2026-02-01 12:11:35,421 - __main__ - INFO -   📊 Détails: 20/29 (69%)
+2026-02-01 12:11:49,707 - __main__ - INFO -   📊 Détails: 25/29 (86%)
+2026-02-01 12:12:00,870 - __main__ - INFO -   📊 Détails: 29/29 (100%)
+2026-02-01 12:12:01,171 - __main__ - INFO - 📈 La Marsa: 817/971 annonces accumulées
+2026-02-01 12:12:01,171 - __main__ - INFO - ⏳ Pause de 2s avant page 28...
+2026-02-01 12:12:03,172 - __main__ - INFO - 📄 SCRAPING PAGE 28: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-louer:p:28
+2026-02-01 12:12:05,452 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:12:05,453 - __main__ - INFO - Page 28: 35 cartes trouvées
+2026-02-01 12:12:05,783 - __main__ - INFO - ✅ PAGE 28: 31 annonces valides, 4 invalides
+2026-02-01 12:12:05,861 - __main__ - INFO - ✅ Page 28: 31 annonces trouvées
+2026-02-01 12:12:05,862 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 12:12:19,689 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 12:12:34,201 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 12:12:52,265 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 12:13:19,090 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 12:13:35,881 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 12:13:51,917 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 12:13:54,983 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 12:13:55,285 - __main__ - INFO - 📈 La Marsa: 848/971 annonces accumulées
+2026-02-01 12:13:55,285 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR La Marsa
+2026-02-01 12:13:55,286 - __main__ - INFO - ✅ FIN SCRAPING La Marsa: 848 annonces
+2026-02-01 12:13:55,287 - __main__ - INFO - ✅ La Marsa: 848 annonces scrapées
+2026-02-01 12:13:55,288 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-02-01 12:14:00,289 - __main__ - INFO - 
+============================================================
+2026-02-01 12:14:00,289 - __main__ - INFO - 🎯 DÉBUT RÉGION: Carthage
+2026-02-01 12:14:00,290 - __main__ - INFO - ============================================================
+2026-02-01 12:14:00,291 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: Carthage
+2026-02-01 12:14:00,292 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/carthage/villas-et-maisons-de-luxe-a-louer
+2026-02-01 12:14:02,355 - __main__ - INFO - ✅ Détecté: 160 annonces au total
+2026-02-01 12:14:02,403 - __main__ - INFO - 📊 Estimation: 5 pages à 34 annonces/page
+2026-02-01 12:14:02,403 - __main__ - INFO - 📊 Carthage: 160 annonces détectées
+2026-02-01 12:14:02,403 - __main__ - INFO - 📄 Objectif: 160 annonces sur 5/5 pages
+2026-02-01 12:14:02,403 - __main__ - INFO - 📈 Estimation: 34 annonces par page
+2026-02-01 12:14:02,403 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/carthage/villas-et-maisons-de-luxe-a-louer
+2026-02-01 12:14:05,855 - __main__ - INFO - Total cartes uniques trouvées: 36
+2026-02-01 12:14:05,855 - __main__ - INFO - Page 1: 36 cartes trouvées
+2026-02-01 12:14:06,245 - __main__ - INFO - ✅ PAGE 1: 28 annonces valides, 8 invalides
+2026-02-01 12:14:06,320 - __main__ - INFO - ✅ Page 1: 28 annonces trouvées
+2026-02-01 12:14:06,320 - __main__ - INFO - 🔍 Extraction des détails pour 28 annonces...
+2026-02-01 12:14:20,893 - __main__ - INFO -   📊 Détails: 5/28 (18%)
+2026-02-01 12:14:36,685 - __main__ - INFO -   📊 Détails: 10/28 (36%)
+2026-02-01 12:14:51,706 - __main__ - INFO -   📊 Détails: 15/28 (54%)
+2026-02-01 12:15:06,582 - __main__ - INFO -   📊 Détails: 20/28 (71%)
+2026-02-01 12:15:23,605 - __main__ - INFO -   📊 Détails: 25/28 (89%)
+2026-02-01 12:15:33,323 - __main__ - INFO -   📊 Détails: 28/28 (100%)
+2026-02-01 12:15:33,626 - __main__ - INFO - 📈 Carthage: 28/160 annonces accumulées
+2026-02-01 12:15:33,626 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-02-01 12:15:35,627 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/carthage/villas-et-maisons-de-luxe-a-louer:p:2
+2026-02-01 12:15:37,964 - __main__ - INFO - Total cartes uniques trouvées: 36
+2026-02-01 12:15:37,969 - __main__ - INFO - Page 2: 36 cartes trouvées
+2026-02-01 12:15:38,303 - __main__ - INFO - ✅ PAGE 2: 29 annonces valides, 7 invalides
+2026-02-01 12:15:38,379 - __main__ - INFO - ✅ Page 2: 29 annonces trouvées
+2026-02-01 12:15:38,379 - __main__ - INFO - 🔍 Extraction des détails pour 29 annonces...
+2026-02-01 12:15:53,812 - __main__ - INFO -   📊 Détails: 5/29 (17%)
+2026-02-01 12:16:08,597 - __main__ - INFO -   📊 Détails: 10/29 (34%)
+2026-02-01 12:16:23,614 - __main__ - INFO -   📊 Détails: 15/29 (52%)
+2026-02-01 12:16:38,309 - __main__ - INFO -   📊 Détails: 20/29 (69%)
+2026-02-01 12:16:53,000 - __main__ - INFO -   📊 Détails: 25/29 (86%)
+2026-02-01 12:17:08,225 - __main__ - INFO -   📊 Détails: 29/29 (100%)
+2026-02-01 12:17:08,528 - __main__ - INFO - 📈 Carthage: 57/160 annonces accumulées
+2026-02-01 12:17:08,528 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-02-01 12:17:10,531 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/carthage/villas-et-maisons-de-luxe-a-louer:p:3
+2026-02-01 12:17:13,074 - __main__ - INFO - Total cartes uniques trouvées: 36
+2026-02-01 12:17:13,074 - __main__ - INFO - Page 3: 36 cartes trouvées
+2026-02-01 12:17:13,399 - __main__ - INFO - ✅ PAGE 3: 28 annonces valides, 8 invalides
+2026-02-01 12:17:13,467 - __main__ - INFO - ✅ Page 3: 28 annonces trouvées
+2026-02-01 12:17:13,467 - __main__ - INFO - 🔍 Extraction des détails pour 28 annonces...
+2026-02-01 12:17:27,654 - __main__ - INFO -   📊 Détails: 5/28 (18%)
+2026-02-01 12:17:41,874 - __main__ - INFO -   📊 Détails: 10/28 (36%)
+2026-02-01 12:17:57,602 - __main__ - INFO -   📊 Détails: 15/28 (54%)
+2026-02-01 12:18:12,516 - __main__ - INFO -   📊 Détails: 20/28 (71%)
+2026-02-01 12:18:27,386 - __main__ - INFO -   📊 Détails: 25/28 (89%)
+2026-02-01 12:18:37,369 - __main__ - INFO -   📊 Détails: 28/28 (100%)
+2026-02-01 12:18:37,671 - __main__ - INFO - 📈 Carthage: 85/160 annonces accumulées
+2026-02-01 12:18:37,671 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-02-01 12:18:39,673 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/carthage/villas-et-maisons-de-luxe-a-louer:p:4
+2026-02-01 12:18:42,085 - __main__ - INFO - Total cartes uniques trouvées: 36
+2026-02-01 12:18:42,085 - __main__ - INFO - Page 4: 36 cartes trouvées
+2026-02-01 12:18:42,480 - __main__ - INFO - ✅ PAGE 4: 27 annonces valides, 9 invalides
+2026-02-01 12:18:42,529 - __main__ - INFO - ✅ Page 4: 27 annonces trouvées
+2026-02-01 12:18:42,529 - __main__ - INFO - 🔍 Extraction des détails pour 27 annonces...
+2026-02-01 12:18:56,555 - __main__ - INFO -   📊 Détails: 5/27 (19%)
+2026-02-01 12:19:14,093 - __main__ - INFO -   📊 Détails: 10/27 (37%)
+2026-02-01 12:19:29,242 - __main__ - INFO -   📊 Détails: 15/27 (56%)
+2026-02-01 12:19:44,601 - __main__ - INFO -   📊 Détails: 20/27 (74%)
+2026-02-01 12:19:59,727 - __main__ - INFO -   📊 Détails: 25/27 (93%)
+2026-02-01 12:20:05,859 - __main__ - INFO -   📊 Détails: 27/27 (100%)
+2026-02-01 12:20:06,160 - __main__ - INFO - 📈 Carthage: 112/160 annonces accumulées
+2026-02-01 12:20:06,160 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-02-01 12:20:10,162 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/carthage/villas-et-maisons-de-luxe-a-louer:p:5
+2026-02-01 12:20:12,574 - __main__ - INFO - Total cartes uniques trouvées: 36
+2026-02-01 12:20:12,574 - __main__ - INFO - Page 5: 36 cartes trouvées
+2026-02-01 12:20:12,984 - __main__ - INFO - ✅ PAGE 5: 31 annonces valides, 5 invalides
+2026-02-01 12:20:13,184 - __main__ - INFO - ✅ Page 5: 31 annonces trouvées
+2026-02-01 12:20:13,184 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 12:20:27,806 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 12:20:45,462 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 12:20:59,934 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 12:21:14,391 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 12:21:28,968 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 12:21:43,303 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 12:21:46,392 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 12:21:46,694 - __main__ - INFO - 📈 Carthage: 143/160 annonces accumulées
+2026-02-01 12:21:46,694 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR Carthage
+2026-02-01 12:21:46,695 - __main__ - INFO - ✅ FIN SCRAPING Carthage: 143 annonces
+2026-02-01 12:21:46,696 - __main__ - INFO - ✅ Carthage: 143 annonces scrapées
+2026-02-01 12:21:46,697 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-02-01 12:21:51,699 - __main__ - INFO - 
+============================================================
+2026-02-01 12:21:51,699 - __main__ - INFO - 🎯 DÉBUT RÉGION: Hammamet
+2026-02-01 12:21:51,700 - __main__ - INFO - ============================================================
+2026-02-01 12:21:51,700 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: Hammamet
+2026-02-01 12:21:51,701 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-louer
+2026-02-01 12:21:53,590 - __main__ - INFO - ✅ Détecté: 139 annonces au total
+2026-02-01 12:21:53,639 - __main__ - INFO - 📊 Estimation: 5 pages à 34 annonces/page
+2026-02-01 12:21:53,639 - __main__ - INFO - 📊 Hammamet: 139 annonces détectées
+2026-02-01 12:21:53,639 - __main__ - INFO - 📄 Objectif: 139 annonces sur 5/5 pages
+2026-02-01 12:21:53,639 - __main__ - INFO - 📈 Estimation: 34 annonces par page
+2026-02-01 12:21:53,639 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-louer
+2026-02-01 12:21:56,425 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:21:56,426 - __main__ - INFO - Page 1: 35 cartes trouvées
+2026-02-01 12:21:56,870 - __main__ - INFO - ✅ PAGE 1: 33 annonces valides, 2 invalides
+2026-02-01 12:21:56,950 - __main__ - INFO - ✅ Page 1: 33 annonces trouvées
+2026-02-01 12:21:56,950 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-02-01 12:22:10,661 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-02-01 12:22:25,610 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-02-01 12:22:40,311 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-02-01 12:22:54,385 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-02-01 12:23:08,746 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-02-01 12:23:22,487 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-02-01 12:23:30,771 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-02-01 12:23:31,078 - __main__ - INFO - 📈 Hammamet: 33/139 annonces accumulées
+2026-02-01 12:23:31,078 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-02-01 12:23:33,080 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-louer:p:2
+2026-02-01 12:23:35,630 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:23:35,631 - __main__ - INFO - Page 2: 35 cartes trouvées
+2026-02-01 12:23:36,028 - __main__ - INFO - ✅ PAGE 2: 33 annonces valides, 2 invalides
+2026-02-01 12:23:36,110 - __main__ - INFO - ✅ Page 2: 33 annonces trouvées
+2026-02-01 12:23:36,111 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-02-01 12:23:49,545 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-02-01 12:24:04,503 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-02-01 12:24:18,521 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-02-01 12:24:32,912 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-02-01 12:24:46,826 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-02-01 12:25:01,859 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-02-01 12:25:12,056 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-02-01 12:25:12,357 - __main__ - INFO - 📈 Hammamet: 66/139 annonces accumulées
+2026-02-01 12:25:12,357 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-02-01 12:25:14,359 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-louer:p:3
+2026-02-01 12:25:16,882 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:25:16,882 - __main__ - INFO - Page 3: 35 cartes trouvées
+2026-02-01 12:25:17,394 - __main__ - INFO - ✅ PAGE 3: 33 annonces valides, 2 invalides
+2026-02-01 12:25:17,472 - __main__ - INFO - ✅ Page 3: 33 annonces trouvées
+2026-02-01 12:25:17,472 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-02-01 12:25:31,605 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-02-01 12:25:45,858 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-02-01 12:26:00,772 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-02-01 12:26:15,844 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-02-01 12:26:32,692 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-02-01 12:26:46,963 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-02-01 12:26:55,587 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-02-01 12:26:55,898 - __main__ - INFO - 📈 Hammamet: 99/139 annonces accumulées
+2026-02-01 12:26:55,898 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-02-01 12:26:57,900 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-louer:p:4
+2026-02-01 12:27:00,130 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:27:00,130 - __main__ - INFO - Page 4: 35 cartes trouvées
+2026-02-01 12:27:00,479 - __main__ - INFO - ✅ PAGE 4: 33 annonces valides, 2 invalides
+2026-02-01 12:27:00,570 - __main__ - INFO - ✅ Page 4: 33 annonces trouvées
+2026-02-01 12:27:00,570 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-02-01 12:27:14,298 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-02-01 12:27:28,744 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-02-01 12:27:42,641 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-02-01 12:27:58,197 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-02-01 12:28:11,854 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-02-01 12:28:25,664 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-02-01 12:28:33,981 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-02-01 12:28:34,283 - __main__ - INFO - 📈 Hammamet: 132/139 annonces accumulées
+2026-02-01 12:28:34,283 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-02-01 12:28:38,285 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-louer:p:5
+2026-02-01 12:28:40,607 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:28:40,607 - __main__ - INFO - Page 5: 35 cartes trouvées
+2026-02-01 12:28:40,971 - __main__ - INFO - ✅ PAGE 5: 7 annonces valides, 28 invalides
+2026-02-01 12:28:41,056 - __main__ - INFO - ✅ Page 5: 7 annonces trouvées
+2026-02-01 12:28:41,058 - __main__ - INFO - 🔍 Extraction des détails pour 7 annonces...
+2026-02-01 12:28:55,215 - __main__ - INFO -   📊 Détails: 5/7 (71%)
+2026-02-01 12:29:00,830 - __main__ - INFO -   📊 Détails: 7/7 (100%)
+2026-02-01 12:29:01,141 - __main__ - INFO - 📈 Hammamet: 139/139 annonces accumulées
+2026-02-01 12:29:01,141 - __main__ - INFO - 🎯 OBJECTIF ATTEINT POUR Hammamet: 139 annonces
+2026-02-01 12:29:01,141 - __main__ - INFO - ✅ FIN SCRAPING Hammamet: 139 annonces
+2026-02-01 12:29:01,141 - __main__ - INFO - ✅ Hammamet: 139 annonces scrapées
+2026-02-01 12:29:01,141 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-02-01 12:29:06,146 - __main__ - INFO - 
+============================================================
+2026-02-01 12:29:06,146 - __main__ - INFO - 🎯 DÉBUT RÉGION: La Soukra
+2026-02-01 12:29:06,146 - __main__ - INFO - ============================================================
+2026-02-01 12:29:06,146 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: La Soukra
+2026-02-01 12:29:06,146 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-louer
+2026-02-01 12:29:07,819 - __main__ - INFO - ✅ Détecté: 109 annonces au total
+2026-02-01 12:29:07,880 - __main__ - INFO - 📊 Estimation: 4 pages à 34 annonces/page
+2026-02-01 12:29:07,880 - __main__ - INFO - 📊 La Soukra: 109 annonces détectées
+2026-02-01 12:29:07,880 - __main__ - INFO - 📄 Objectif: 109 annonces sur 4/4 pages
+2026-02-01 12:29:07,880 - __main__ - INFO - 📈 Estimation: 34 annonces par page
+2026-02-01 12:29:07,880 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-louer
+2026-02-01 12:29:10,200 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:29:10,202 - __main__ - INFO - Page 1: 35 cartes trouvées
+2026-02-01 12:29:10,558 - __main__ - INFO - ✅ PAGE 1: 31 annonces valides, 4 invalides
+2026-02-01 12:29:10,633 - __main__ - INFO - ✅ Page 1: 31 annonces trouvées
+2026-02-01 12:29:10,633 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 12:29:24,373 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 12:29:38,551 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 12:29:52,924 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 12:30:06,890 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 12:30:20,983 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 12:30:34,754 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 12:30:37,562 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 12:30:37,865 - __main__ - INFO - 📈 La Soukra: 31/109 annonces accumulées
+2026-02-01 12:30:37,865 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-02-01 12:30:39,867 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-louer:p:2
+2026-02-01 12:30:41,952 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:30:41,952 - __main__ - INFO - Page 2: 35 cartes trouvées
+2026-02-01 12:30:42,297 - __main__ - INFO - ✅ PAGE 2: 31 annonces valides, 4 invalides
+2026-02-01 12:30:42,370 - __main__ - INFO - ✅ Page 2: 31 annonces trouvées
+2026-02-01 12:30:42,370 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-02-01 12:30:56,144 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-02-01 12:31:09,927 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-02-01 12:31:24,909 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-02-01 12:31:39,325 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-02-01 12:31:53,847 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-02-01 12:32:09,651 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-02-01 12:32:12,365 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-02-01 12:32:12,665 - __main__ - INFO - 📈 La Soukra: 62/109 annonces accumulées
+2026-02-01 12:32:12,665 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-02-01 12:32:14,667 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-louer:p:3
+2026-02-01 12:32:17,106 - __main__ - INFO - Total cartes uniques trouvées: 35
+2026-02-01 12:32:17,107 - __main__ - INFO - Page 3: 35 cartes trouvées
+2026-02-01 12:32:17,457 - __main__ - INFO - ✅ PAGE 3: 32 annonces valides, 3 invalides
+2026-02-01 12:32:17,526 - __main__ - INFO - ✅ Page 3: 32 annonces trouvées
+2026-02-01 12:32:17,526 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-02-01 12:32:31,629 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-02-01 12:32:46,246 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-02-01 12:33:00,738 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-02-01 12:33:15,732 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-02-01 12:33:30,493 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-02-01 12:33:46,056 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-02-01 12:33:51,772 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-02-01 12:33:52,074 - __main__ - INFO - 📈 La Soukra: 94/109 annonces accumulées
+2026-02-01 12:33:52,075 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-02-01 12:33:54,078 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-louer:p:4
+2026-02-01 12:33:55,902 - __main__ - INFO - Total cartes uniques trouvées: 16
+2026-02-01 12:33:55,902 - __main__ - INFO - Page 4: 16 cartes trouvées
+2026-02-01 12:33:56,030 - __main__ - INFO - ✅ PAGE 4: 13 annonces valides, 3 invalides
+2026-02-01 12:33:56,085 - __main__ - INFO - ✅ Page 4: 13 annonces trouvées
+2026-02-01 12:33:56,085 - __main__ - INFO - 🔍 Extraction des détails pour 13 annonces...
+2026-02-01 12:34:09,988 - __main__ - INFO -   📊 Détails: 5/13 (38%)
+2026-02-01 12:34:26,582 - __main__ - INFO -   📊 Détails: 10/13 (77%)
+2026-02-01 12:34:35,243 - __main__ - INFO -   📊 Détails: 13/13 (100%)
+2026-02-01 12:34:35,544 - __main__ - INFO - 📈 La Soukra: 107/109 annonces accumulées
+2026-02-01 12:34:35,544 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR La Soukra
+2026-02-01 12:34:35,544 - __main__ - INFO - ✅ FIN SCRAPING La Soukra: 107 annonces
+2026-02-01 12:34:35,544 - __main__ - INFO - ✅ La Soukra: 107 annonces scrapées
+2026-02-01 12:34:35,988 - __main__ - INFO - ✅ CSV SAUVEGARDÉ: mubawab_location_villas_complet_20260201_123435.csv
+2026-02-01 12:34:36,425 - __main__ - INFO - ✅ JSON SAUVEGARDÉ: mubawab_location_villas_complet_20260201_123435.json

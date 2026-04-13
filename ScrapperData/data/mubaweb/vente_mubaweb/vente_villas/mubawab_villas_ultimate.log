@@ -1,0 +1,729 @@
+2026-01-29 00:54:03,510 - __main__ - INFO - 🚀 DÉBUT SCRAPING COMPLET - 6 RÉGIONS
+2026-01-29 00:54:03,511 - __main__ - INFO - 
+============================================================
+2026-01-29 00:54:03,512 - __main__ - INFO - 🎯 DÉBUT RÉGION: Hammamet
+2026-01-29 00:54:03,513 - __main__ - INFO - ============================================================
+2026-01-29 00:54:03,513 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: Hammamet
+2026-01-29 00:54:03,514 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 00:54:07,083 - __main__ - INFO - ✅ Détecté: 525 annonces au total
+2026-01-29 00:54:07,166 - __main__ - INFO - 📊 Estimation: 16 pages à 34 annonces/page
+2026-01-29 00:54:07,166 - __main__ - INFO - 📊 Hammamet: 525 annonces détectées
+2026-01-29 00:54:07,167 - __main__ - INFO - 📄 Objectif: 525 annonces sur 16/16 pages
+2026-01-29 00:54:07,167 - __main__ - INFO - 📈 Estimation: 34 annonces par page
+2026-01-29 00:54:07,169 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 00:54:09,908 - __main__ - INFO - Total cartes uniques trouvées: 65
+2026-01-29 00:54:09,908 - __main__ - INFO - Page 1: 65 cartes trouvées
+2026-01-29 00:54:10,580 - __main__ - INFO - ✅ PAGE 1: 33 annonces valides, 32 invalides
+2026-01-29 00:54:10,674 - __main__ - INFO - ✅ Page 1: 33 annonces trouvées
+2026-01-29 00:54:10,675 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 00:54:25,193 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 00:54:40,014 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 00:54:54,869 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 00:55:09,634 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 00:55:25,871 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 00:55:42,863 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 00:55:52,410 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 00:55:52,711 - __main__ - INFO - 📈 Hammamet: 33/525 annonces accumulées
+2026-01-29 00:55:52,711 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-01-29 00:55:54,712 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:2
+2026-01-29 00:55:57,376 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 00:55:57,376 - __main__ - INFO - Page 2: 67 cartes trouvées
+2026-01-29 00:55:58,040 - __main__ - INFO - ✅ PAGE 2: 33 annonces valides, 34 invalides
+2026-01-29 00:55:58,119 - __main__ - INFO - ✅ Page 2: 33 annonces trouvées
+2026-01-29 00:55:58,119 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 00:56:13,212 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 00:56:28,744 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 00:56:44,445 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 00:57:00,754 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 00:57:15,871 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 00:57:32,539 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 00:57:43,175 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 00:57:43,477 - __main__ - INFO - 📈 Hammamet: 66/525 annonces accumulées
+2026-01-29 00:57:43,483 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-01-29 00:57:45,488 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:3
+2026-01-29 00:57:48,687 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 00:57:48,687 - __main__ - INFO - Page 3: 67 cartes trouvées
+2026-01-29 00:57:49,341 - __main__ - INFO - ✅ PAGE 3: 33 annonces valides, 34 invalides
+2026-01-29 00:57:49,427 - __main__ - INFO - ✅ Page 3: 33 annonces trouvées
+2026-01-29 00:57:49,432 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 00:58:06,957 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 00:58:27,192 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 00:58:47,508 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 00:59:06,655 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 00:59:25,585 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 00:59:43,621 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 00:59:52,362 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 00:59:52,666 - __main__ - INFO - 📈 Hammamet: 99/525 annonces accumulées
+2026-01-29 00:59:52,666 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-01-29 00:59:54,669 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:4
+2026-01-29 00:59:57,602 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 00:59:57,603 - __main__ - INFO - Page 4: 67 cartes trouvées
+2026-01-29 00:59:58,280 - __main__ - INFO - ✅ PAGE 4: 33 annonces valides, 34 invalides
+2026-01-29 00:59:58,367 - __main__ - INFO - ✅ Page 4: 33 annonces trouvées
+2026-01-29 00:59:58,367 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:00:14,612 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:00:29,644 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:00:44,834 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:01:03,269 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:01:18,337 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:01:33,606 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:01:43,501 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:01:43,812 - __main__ - INFO - 📈 Hammamet: 132/525 annonces accumulées
+2026-01-29 01:01:43,812 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-01-29 01:01:47,813 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:5
+2026-01-29 01:01:50,989 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:01:50,989 - __main__ - INFO - Page 5: 67 cartes trouvées
+2026-01-29 01:01:51,597 - __main__ - INFO - ✅ PAGE 5: 33 annonces valides, 34 invalides
+2026-01-29 01:01:51,671 - __main__ - INFO - ✅ Page 5: 33 annonces trouvées
+2026-01-29 01:01:51,672 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:02:11,938 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:02:33,288 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:02:51,999 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:03:11,988 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:03:30,993 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:04:10,484 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:04:22,141 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:04:22,442 - __main__ - INFO - 📈 Hammamet: 165/525 annonces accumulées
+2026-01-29 01:04:22,442 - __main__ - INFO - ⏳ Pause de 2s avant page 6...
+2026-01-29 01:04:24,444 - __main__ - INFO - 📄 SCRAPING PAGE 6: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:6
+2026-01-29 01:04:27,241 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:04:27,241 - __main__ - INFO - Page 6: 67 cartes trouvées
+2026-01-29 01:04:28,159 - __main__ - INFO - ✅ PAGE 6: 33 annonces valides, 34 invalides
+2026-01-29 01:04:28,227 - __main__ - INFO - ✅ Page 6: 33 annonces trouvées
+2026-01-29 01:04:28,227 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:04:42,852 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:05:01,373 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:05:21,481 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:05:46,156 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:06:07,246 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:06:24,272 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:06:34,145 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:06:34,450 - __main__ - INFO - 📈 Hammamet: 198/525 annonces accumulées
+2026-01-29 01:06:34,450 - __main__ - INFO - ⏳ Pause de 2s avant page 7...
+2026-01-29 01:06:36,453 - __main__ - INFO - 📄 SCRAPING PAGE 7: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:7
+2026-01-29 01:06:39,635 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:06:39,635 - __main__ - INFO - Page 7: 67 cartes trouvées
+2026-01-29 01:06:40,279 - __main__ - INFO - ✅ PAGE 7: 33 annonces valides, 34 invalides
+2026-01-29 01:06:40,355 - __main__ - INFO - ✅ Page 7: 33 annonces trouvées
+2026-01-29 01:06:40,356 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:07:04,961 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:07:23,669 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:07:41,233 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:07:58,643 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:08:14,936 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:08:31,579 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:08:42,326 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:08:42,628 - __main__ - INFO - 📈 Hammamet: 231/525 annonces accumulées
+2026-01-29 01:08:42,628 - __main__ - INFO - ⏳ Pause de 2s avant page 8...
+2026-01-29 01:08:44,634 - __main__ - INFO - 📄 SCRAPING PAGE 8: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:8
+2026-01-29 01:08:48,399 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:08:48,414 - __main__ - INFO - Page 8: 67 cartes trouvées
+2026-01-29 01:08:48,998 - __main__ - INFO - ✅ PAGE 8: 33 annonces valides, 34 invalides
+2026-01-29 01:08:49,072 - __main__ - INFO - ✅ Page 8: 33 annonces trouvées
+2026-01-29 01:08:49,073 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:09:08,433 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:09:29,840 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:09:48,596 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:10:03,761 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:10:18,468 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:10:33,333 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:10:42,597 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:10:42,902 - __main__ - INFO - 📈 Hammamet: 264/525 annonces accumulées
+2026-01-29 01:10:42,902 - __main__ - INFO - ⏳ Pause de 2s avant page 9...
+2026-01-29 01:10:44,904 - __main__ - INFO - 📄 SCRAPING PAGE 9: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:9
+2026-01-29 01:10:47,592 - __main__ - INFO - Total cartes uniques trouvées: 66
+2026-01-29 01:10:47,592 - __main__ - INFO - Page 9: 66 cartes trouvées
+2026-01-29 01:10:48,167 - __main__ - INFO - ✅ PAGE 9: 33 annonces valides, 33 invalides
+2026-01-29 01:10:48,248 - __main__ - INFO - ✅ Page 9: 33 annonces trouvées
+2026-01-29 01:10:48,248 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:11:06,784 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:11:22,231 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:11:37,383 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:11:52,462 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:12:09,989 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:12:27,110 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:12:36,683 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:12:36,985 - __main__ - INFO - 📈 Hammamet: 297/525 annonces accumulées
+2026-01-29 01:12:36,985 - __main__ - INFO - ⏳ Pause de 4s avant page 10...
+2026-01-29 01:12:40,988 - __main__ - INFO - 📄 SCRAPING PAGE 10: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:10
+2026-01-29 01:12:43,918 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:12:43,918 - __main__ - INFO - Page 10: 67 cartes trouvées
+2026-01-29 01:12:44,485 - __main__ - INFO - ✅ PAGE 10: 33 annonces valides, 34 invalides
+2026-01-29 01:12:44,584 - __main__ - INFO - ✅ Page 10: 33 annonces trouvées
+2026-01-29 01:12:44,584 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:13:03,445 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:13:25,236 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:13:53,211 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:14:19,359 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:14:42,006 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:15:20,421 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:15:52,223 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:15:52,529 - __main__ - INFO - 📈 Hammamet: 330/525 annonces accumulées
+2026-01-29 01:15:52,529 - __main__ - INFO - ⏳ Pause de 2s avant page 11...
+2026-01-29 01:15:54,530 - __main__ - INFO - 📄 SCRAPING PAGE 11: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:11
+2026-01-29 01:16:00,183 - __main__ - INFO - Total cartes uniques trouvées: 66
+2026-01-29 01:16:00,183 - __main__ - INFO - Page 11: 66 cartes trouvées
+2026-01-29 01:16:00,795 - __main__ - INFO - ✅ PAGE 11: 33 annonces valides, 33 invalides
+2026-01-29 01:16:00,866 - __main__ - INFO - ✅ Page 11: 33 annonces trouvées
+2026-01-29 01:16:00,866 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:16:30,239 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:16:53,189 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:17:15,036 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:17:35,635 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:17:53,060 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:18:09,984 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:18:20,306 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:18:20,607 - __main__ - INFO - 📈 Hammamet: 363/525 annonces accumulées
+2026-01-29 01:18:20,607 - __main__ - INFO - ⏳ Pause de 2s avant page 12...
+2026-01-29 01:18:22,609 - __main__ - INFO - 📄 SCRAPING PAGE 12: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:12
+2026-01-29 01:18:25,332 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:18:25,332 - __main__ - INFO - Page 12: 67 cartes trouvées
+2026-01-29 01:18:25,916 - __main__ - INFO - ✅ PAGE 12: 33 annonces valides, 34 invalides
+2026-01-29 01:18:26,025 - __main__ - INFO - ✅ Page 12: 33 annonces trouvées
+2026-01-29 01:18:26,025 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:18:41,059 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:18:59,287 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:19:26,339 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:19:43,848 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:19:59,448 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:20:15,820 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:20:24,848 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:20:25,151 - __main__ - INFO - 📈 Hammamet: 396/525 annonces accumulées
+2026-01-29 01:20:25,151 - __main__ - INFO - ⏳ Pause de 2s avant page 13...
+2026-01-29 01:20:27,154 - __main__ - INFO - 📄 SCRAPING PAGE 13: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:13
+2026-01-29 01:20:29,934 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:20:29,934 - __main__ - INFO - Page 13: 67 cartes trouvées
+2026-01-29 01:20:30,549 - __main__ - INFO - ✅ PAGE 13: 33 annonces valides, 34 invalides
+2026-01-29 01:20:30,643 - __main__ - INFO - ✅ Page 13: 33 annonces trouvées
+2026-01-29 01:20:30,643 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:20:45,685 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:21:04,040 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:21:21,606 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:21:40,385 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:22:02,124 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:22:20,457 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:22:32,557 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:22:32,861 - __main__ - INFO - 📈 Hammamet: 429/525 annonces accumulées
+2026-01-29 01:22:32,861 - __main__ - INFO - ⏳ Pause de 2s avant page 14...
+2026-01-29 01:22:34,867 - __main__ - INFO - 📄 SCRAPING PAGE 14: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:14
+2026-01-29 01:22:38,350 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 01:22:38,350 - __main__ - INFO - Page 14: 67 cartes trouvées
+2026-01-29 01:22:38,962 - __main__ - INFO - ✅ PAGE 14: 33 annonces valides, 34 invalides
+2026-01-29 01:22:39,043 - __main__ - INFO - ✅ Page 14: 33 annonces trouvées
+2026-01-29 01:22:39,043 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:23:01,488 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:23:32,552 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:23:56,867 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:24:32,674 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:24:53,485 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:25:15,751 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:25:25,313 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:25:25,614 - __main__ - INFO - 📈 Hammamet: 462/525 annonces accumulées
+2026-01-29 01:25:25,614 - __main__ - INFO - ⏳ Pause de 4s avant page 15...
+2026-01-29 01:25:29,615 - __main__ - INFO - 📄 SCRAPING PAGE 15: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:15
+2026-01-29 01:25:32,856 - __main__ - INFO - Total cartes uniques trouvées: 66
+2026-01-29 01:25:32,856 - __main__ - INFO - Page 15: 66 cartes trouvées
+2026-01-29 01:25:33,500 - __main__ - INFO - ✅ PAGE 15: 33 annonces valides, 33 invalides
+2026-01-29 01:25:33,575 - __main__ - INFO - ✅ Page 15: 33 annonces trouvées
+2026-01-29 01:25:33,576 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:25:49,207 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:26:05,804 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:26:22,476 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:26:38,610 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:26:56,382 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:27:15,073 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:27:24,355 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:27:24,666 - __main__ - INFO - 📈 Hammamet: 495/525 annonces accumulées
+2026-01-29 01:27:24,686 - __main__ - INFO - ⏳ Pause de 2s avant page 16...
+2026-01-29 01:27:26,711 - __main__ - INFO - 📄 SCRAPING PAGE 16: https://www.mubawab.tn/fr/st/hammamet/villas-et-maisons-de-luxe-a-vendre:p:16
+2026-01-29 01:27:29,818 - __main__ - INFO - Total cartes uniques trouvées: 58
+2026-01-29 01:27:29,822 - __main__ - INFO - Page 16: 58 cartes trouvées
+2026-01-29 01:27:30,309 - __main__ - INFO - ✅ PAGE 16: 29 annonces valides, 29 invalides
+2026-01-29 01:27:30,403 - __main__ - INFO - ✅ Page 16: 29 annonces trouvées
+2026-01-29 01:27:30,404 - __main__ - INFO - 🔍 Extraction des détails pour 29 annonces...
+2026-01-29 01:27:45,213 - __main__ - INFO -   📊 Détails: 5/29 (17%)
+2026-01-29 01:28:00,235 - __main__ - INFO -   📊 Détails: 10/29 (34%)
+2026-01-29 01:28:14,943 - __main__ - INFO -   📊 Détails: 15/29 (52%)
+2026-01-29 01:28:29,823 - __main__ - INFO -   📊 Détails: 20/29 (69%)
+2026-01-29 01:28:44,750 - __main__ - INFO -   📊 Détails: 25/29 (86%)
+2026-01-29 01:28:56,705 - __main__ - INFO -   📊 Détails: 29/29 (100%)
+2026-01-29 01:28:57,012 - __main__ - INFO - 📈 Hammamet: 524/525 annonces accumulées
+2026-01-29 01:28:57,012 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR Hammamet
+2026-01-29 01:28:57,012 - __main__ - INFO - ✅ FIN SCRAPING Hammamet: 524 annonces
+2026-01-29 01:28:57,012 - __main__ - INFO - ✅ Hammamet: 524 annonces scrapées
+2026-01-29 01:28:57,012 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-01-29 01:29:02,015 - __main__ - INFO - 
+============================================================
+2026-01-29 01:29:02,015 - __main__ - INFO - 🎯 DÉBUT RÉGION: La Marsa
+2026-01-29 01:29:02,015 - __main__ - INFO - ============================================================
+2026-01-29 01:29:02,015 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: La Marsa
+2026-01-29 01:29:02,015 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 01:29:04,105 - __main__ - INFO - ✅ Détecté: 247 annonces au total
+2026-01-29 01:29:04,183 - __main__ - INFO - 📊 Estimation: 8 pages à 35 annonces/page
+2026-01-29 01:29:04,183 - __main__ - INFO - 📊 La Marsa: 247 annonces détectées
+2026-01-29 01:29:04,183 - __main__ - INFO - 📄 Objectif: 247 annonces sur 8/8 pages
+2026-01-29 01:29:04,183 - __main__ - INFO - 📈 Estimation: 35 annonces par page
+2026-01-29 01:29:04,193 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 01:29:06,808 - __main__ - INFO - Total cartes uniques trouvées: 55
+2026-01-29 01:29:06,808 - __main__ - INFO - Page 1: 55 cartes trouvées
+2026-01-29 01:29:07,321 - __main__ - INFO - ✅ PAGE 1: 30 annonces valides, 25 invalides
+2026-01-29 01:29:07,406 - __main__ - INFO - ✅ Page 1: 30 annonces trouvées
+2026-01-29 01:29:07,407 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-01-29 01:29:21,890 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-01-29 01:29:36,693 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-01-29 01:29:51,503 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-01-29 01:30:09,882 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-01-29 01:30:33,153 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-01-29 01:30:52,167 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-01-29 01:30:52,474 - __main__ - INFO - 📈 La Marsa: 30/247 annonces accumulées
+2026-01-29 01:30:52,474 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-01-29 01:30:54,475 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre:p:2
+2026-01-29 01:30:57,171 - __main__ - INFO - Total cartes uniques trouvées: 62
+2026-01-29 01:30:57,171 - __main__ - INFO - Page 2: 62 cartes trouvées
+2026-01-29 01:30:57,801 - __main__ - INFO - ✅ PAGE 2: 33 annonces valides, 29 invalides
+2026-01-29 01:30:57,877 - __main__ - INFO - ✅ Page 2: 33 annonces trouvées
+2026-01-29 01:30:57,877 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:31:12,587 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:31:27,498 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:31:42,180 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:31:58,531 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:32:13,227 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:32:29,392 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:32:38,498 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:32:38,812 - __main__ - INFO - 📈 La Marsa: 63/247 annonces accumulées
+2026-01-29 01:32:38,812 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-01-29 01:32:40,813 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre:p:3
+2026-01-29 01:32:43,929 - __main__ - INFO - Total cartes uniques trouvées: 61
+2026-01-29 01:32:43,929 - __main__ - INFO - Page 3: 61 cartes trouvées
+2026-01-29 01:32:44,499 - __main__ - INFO - ✅ PAGE 3: 33 annonces valides, 28 invalides
+2026-01-29 01:32:44,575 - __main__ - INFO - ✅ Page 3: 33 annonces trouvées
+2026-01-29 01:32:44,576 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:33:03,747 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:33:25,903 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:33:43,544 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:33:59,547 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:34:15,779 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:34:32,599 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:34:44,334 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:34:44,636 - __main__ - INFO - 📈 La Marsa: 96/247 annonces accumulées
+2026-01-29 01:34:44,636 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-01-29 01:34:46,637 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre:p:4
+2026-01-29 01:34:51,469 - __main__ - INFO - Total cartes uniques trouvées: 58
+2026-01-29 01:34:51,469 - __main__ - INFO - Page 4: 58 cartes trouvées
+2026-01-29 01:34:51,983 - __main__ - INFO - ✅ PAGE 4: 33 annonces valides, 25 invalides
+2026-01-29 01:34:52,067 - __main__ - INFO - ✅ Page 4: 33 annonces trouvées
+2026-01-29 01:34:52,069 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:35:13,005 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:35:29,784 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:35:44,777 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:35:59,542 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:36:14,206 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:36:29,217 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:36:38,049 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:36:38,365 - __main__ - INFO - 📈 La Marsa: 129/247 annonces accumulées
+2026-01-29 01:36:38,365 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-01-29 01:36:42,367 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre:p:5
+2026-01-29 01:36:45,019 - __main__ - INFO - Total cartes uniques trouvées: 62
+2026-01-29 01:36:45,035 - __main__ - INFO - Page 5: 62 cartes trouvées
+2026-01-29 01:36:45,786 - __main__ - INFO - ✅ PAGE 5: 33 annonces valides, 29 invalides
+2026-01-29 01:36:45,861 - __main__ - INFO - ✅ Page 5: 33 annonces trouvées
+2026-01-29 01:36:45,862 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:37:00,451 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:37:15,800 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:37:30,539 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:37:45,175 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:38:00,146 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:38:15,073 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:38:24,068 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:38:24,378 - __main__ - INFO - 📈 La Marsa: 162/247 annonces accumulées
+2026-01-29 01:38:24,379 - __main__ - INFO - ⏳ Pause de 2s avant page 6...
+2026-01-29 01:38:26,381 - __main__ - INFO - 📄 SCRAPING PAGE 6: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre:p:6
+2026-01-29 01:38:28,856 - __main__ - INFO - Total cartes uniques trouvées: 63
+2026-01-29 01:38:28,856 - __main__ - INFO - Page 6: 63 cartes trouvées
+2026-01-29 01:38:29,452 - __main__ - INFO - ✅ PAGE 6: 33 annonces valides, 30 invalides
+2026-01-29 01:38:29,531 - __main__ - INFO - ✅ Page 6: 33 annonces trouvées
+2026-01-29 01:38:29,532 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:38:44,113 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:38:58,714 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:39:13,579 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:39:28,538 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:39:44,063 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:40:00,352 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:40:09,411 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:40:09,715 - __main__ - INFO - 📈 La Marsa: 195/247 annonces accumulées
+2026-01-29 01:40:09,715 - __main__ - INFO - ⏳ Pause de 2s avant page 7...
+2026-01-29 01:40:11,718 - __main__ - INFO - 📄 SCRAPING PAGE 7: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre:p:7
+2026-01-29 01:40:14,467 - __main__ - INFO - Total cartes uniques trouvées: 58
+2026-01-29 01:40:14,467 - __main__ - INFO - Page 7: 58 cartes trouvées
+2026-01-29 01:40:15,046 - __main__ - INFO - ✅ PAGE 7: 33 annonces valides, 25 invalides
+2026-01-29 01:40:15,139 - __main__ - INFO - ✅ Page 7: 33 annonces trouvées
+2026-01-29 01:40:15,139 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:40:29,828 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:40:44,651 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:40:59,438 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:41:14,192 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:41:29,060 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:41:43,828 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:41:52,759 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:41:53,062 - __main__ - INFO - 📈 La Marsa: 228/247 annonces accumulées
+2026-01-29 01:41:53,062 - __main__ - INFO - ⏳ Pause de 2s avant page 8...
+2026-01-29 01:41:55,064 - __main__ - INFO - 📄 SCRAPING PAGE 8: https://www.mubawab.tn/fr/st/la-marsa/villas-et-maisons-de-luxe-a-vendre:p:8
+2026-01-29 01:41:56,953 - __main__ - INFO - Total cartes uniques trouvées: 34
+2026-01-29 01:41:56,953 - __main__ - INFO - Page 8: 34 cartes trouvées
+2026-01-29 01:41:57,264 - __main__ - INFO - ✅ PAGE 8: 16 annonces valides, 18 invalides
+2026-01-29 01:41:57,304 - __main__ - INFO - ✅ Page 8: 16 annonces trouvées
+2026-01-29 01:41:57,304 - __main__ - INFO - 🔍 Extraction des détails pour 16 annonces...
+2026-01-29 01:42:11,763 - __main__ - INFO -   📊 Détails: 5/16 (31%)
+2026-01-29 01:42:26,542 - __main__ - INFO -   📊 Détails: 10/16 (62%)
+2026-01-29 01:42:41,261 - __main__ - INFO -   📊 Détails: 15/16 (94%)
+2026-01-29 01:42:44,294 - __main__ - INFO -   📊 Détails: 16/16 (100%)
+2026-01-29 01:42:44,607 - __main__ - INFO - 📈 La Marsa: 244/247 annonces accumulées
+2026-01-29 01:42:44,607 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR La Marsa
+2026-01-29 01:42:44,608 - __main__ - INFO - ✅ FIN SCRAPING La Marsa: 244 annonces
+2026-01-29 01:42:44,608 - __main__ - INFO - ✅ La Marsa: 244 annonces scrapées
+2026-01-29 01:42:44,609 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-01-29 01:42:49,610 - __main__ - INFO - 
+============================================================
+2026-01-29 01:42:49,610 - __main__ - INFO - 🎯 DÉBUT RÉGION: La Soukra
+2026-01-29 01:42:49,610 - __main__ - INFO - ============================================================
+2026-01-29 01:42:49,610 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: La Soukra
+2026-01-29 01:42:49,610 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 01:42:51,673 - __main__ - INFO - ✅ Détecté: 192 annonces au total
+2026-01-29 01:42:51,761 - __main__ - INFO - 📊 Estimation: 6 pages à 35 annonces/page
+2026-01-29 01:42:51,762 - __main__ - INFO - 📊 La Soukra: 192 annonces détectées
+2026-01-29 01:42:51,768 - __main__ - INFO - 📄 Objectif: 192 annonces sur 6/6 pages
+2026-01-29 01:42:51,773 - __main__ - INFO - 📈 Estimation: 35 annonces par page
+2026-01-29 01:42:51,777 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 01:42:54,579 - __main__ - INFO - Total cartes uniques trouvées: 65
+2026-01-29 01:42:54,579 - __main__ - INFO - Page 1: 65 cartes trouvées
+2026-01-29 01:42:55,152 - __main__ - INFO - ✅ PAGE 1: 32 annonces valides, 33 invalides
+2026-01-29 01:42:55,224 - __main__ - INFO - ✅ Page 1: 32 annonces trouvées
+2026-01-29 01:42:55,225 - __main__ - INFO - 🔍 Extraction des détails pour 32 annonces...
+2026-01-29 01:43:10,571 - __main__ - INFO -   📊 Détails: 5/32 (16%)
+2026-01-29 01:43:27,320 - __main__ - INFO -   📊 Détails: 10/32 (31%)
+2026-01-29 01:43:42,482 - __main__ - INFO -   📊 Détails: 15/32 (47%)
+2026-01-29 01:43:57,802 - __main__ - INFO -   📊 Détails: 20/32 (62%)
+2026-01-29 01:44:12,545 - __main__ - INFO -   📊 Détails: 25/32 (78%)
+2026-01-29 01:44:27,484 - __main__ - INFO -   📊 Détails: 30/32 (94%)
+2026-01-29 01:44:33,938 - __main__ - INFO -   📊 Détails: 32/32 (100%)
+2026-01-29 01:44:34,242 - __main__ - INFO - 📈 La Soukra: 32/192 annonces accumulées
+2026-01-29 01:44:34,242 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-01-29 01:44:36,244 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-vendre:p:2
+2026-01-29 01:44:39,116 - __main__ - INFO - Total cartes uniques trouvées: 65
+2026-01-29 01:44:39,116 - __main__ - INFO - Page 2: 65 cartes trouvées
+2026-01-29 01:44:39,712 - __main__ - INFO - ✅ PAGE 2: 31 annonces valides, 34 invalides
+2026-01-29 01:44:39,805 - __main__ - INFO - ✅ Page 2: 31 annonces trouvées
+2026-01-29 01:44:39,806 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-01-29 01:44:54,944 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-01-29 01:45:10,246 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-01-29 01:45:25,990 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-01-29 01:45:42,737 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-01-29 01:45:57,951 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-01-29 01:46:13,128 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-01-29 01:46:15,970 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-01-29 01:46:16,275 - __main__ - INFO - 📈 La Soukra: 63/192 annonces accumulées
+2026-01-29 01:46:16,275 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-01-29 01:46:18,276 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-vendre:p:3
+2026-01-29 01:46:20,806 - __main__ - INFO - Total cartes uniques trouvées: 62
+2026-01-29 01:46:20,806 - __main__ - INFO - Page 3: 62 cartes trouvées
+2026-01-29 01:46:21,493 - __main__ - INFO - ✅ PAGE 3: 33 annonces valides, 29 invalides
+2026-01-29 01:46:21,573 - __main__ - INFO - ✅ Page 3: 33 annonces trouvées
+2026-01-29 01:46:21,574 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:46:36,583 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:46:53,157 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:47:09,274 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:47:25,006 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:47:40,232 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:47:55,695 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:48:07,378 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:48:07,680 - __main__ - INFO - 📈 La Soukra: 96/192 annonces accumulées
+2026-01-29 01:48:07,680 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-01-29 01:48:09,681 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-vendre:p:4
+2026-01-29 01:48:12,648 - __main__ - INFO - Total cartes uniques trouvées: 65
+2026-01-29 01:48:12,648 - __main__ - INFO - Page 4: 65 cartes trouvées
+2026-01-29 01:48:13,259 - __main__ - INFO - ✅ PAGE 4: 33 annonces valides, 32 invalides
+2026-01-29 01:48:13,342 - __main__ - INFO - ✅ Page 4: 33 annonces trouvées
+2026-01-29 01:48:13,342 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:48:34,636 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:48:51,134 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:49:22,435 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:49:40,080 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:50:13,732 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:50:29,053 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:50:40,103 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:50:40,405 - __main__ - INFO - 📈 La Soukra: 129/192 annonces accumulées
+2026-01-29 01:50:40,405 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-01-29 01:50:44,408 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-vendre:p:5
+2026-01-29 01:50:47,112 - __main__ - INFO - Total cartes uniques trouvées: 63
+2026-01-29 01:50:47,112 - __main__ - INFO - Page 5: 63 cartes trouvées
+2026-01-29 01:50:47,756 - __main__ - INFO - ✅ PAGE 5: 33 annonces valides, 30 invalides
+2026-01-29 01:50:47,832 - __main__ - INFO - ✅ Page 5: 33 annonces trouvées
+2026-01-29 01:50:47,832 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:51:02,783 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:51:18,907 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:51:35,531 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:51:52,684 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:52:08,323 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:52:23,738 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:52:33,999 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:52:34,313 - __main__ - INFO - 📈 La Soukra: 162/192 annonces accumulées
+2026-01-29 01:52:34,313 - __main__ - INFO - ⏳ Pause de 2s avant page 6...
+2026-01-29 01:52:36,315 - __main__ - INFO - 📄 SCRAPING PAGE 6: https://www.mubawab.tn/fr/st/la-soukra/villas-et-maisons-de-luxe-a-vendre:p:6
+2026-01-29 01:52:39,447 - __main__ - INFO - Total cartes uniques trouvées: 53
+2026-01-29 01:52:39,447 - __main__ - INFO - Page 6: 53 cartes trouvées
+2026-01-29 01:52:39,948 - __main__ - INFO - ✅ PAGE 6: 27 annonces valides, 26 invalides
+2026-01-29 01:52:40,018 - __main__ - INFO - ✅ Page 6: 27 annonces trouvées
+2026-01-29 01:52:40,018 - __main__ - INFO - 🔍 Extraction des détails pour 27 annonces...
+2026-01-29 01:52:54,957 - __main__ - INFO -   📊 Détails: 5/27 (19%)
+2026-01-29 01:53:10,388 - __main__ - INFO -   📊 Détails: 10/27 (37%)
+2026-01-29 01:53:24,873 - __main__ - INFO -   📊 Détails: 15/27 (56%)
+2026-01-29 01:53:39,788 - __main__ - INFO -   📊 Détails: 20/27 (74%)
+2026-01-29 01:53:55,110 - __main__ - INFO -   📊 Détails: 25/27 (93%)
+2026-01-29 01:54:01,215 - __main__ - INFO -   📊 Détails: 27/27 (100%)
+2026-01-29 01:54:01,520 - __main__ - INFO - 📈 La Soukra: 189/192 annonces accumulées
+2026-01-29 01:54:01,520 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR La Soukra
+2026-01-29 01:54:01,520 - __main__ - INFO - ✅ FIN SCRAPING La Soukra: 189 annonces
+2026-01-29 01:54:01,520 - __main__ - INFO - ✅ La Soukra: 189 annonces scrapées
+2026-01-29 01:54:01,520 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-01-29 01:54:06,525 - __main__ - INFO - 
+============================================================
+2026-01-29 01:54:06,527 - __main__ - INFO - 🎯 DÉBUT RÉGION: Ariana Ville
+2026-01-29 01:54:06,527 - __main__ - INFO - ============================================================
+2026-01-29 01:54:06,527 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: Ariana Ville
+2026-01-29 01:54:06,527 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/ariana-ville/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 01:54:08,544 - __main__ - INFO - ✅ Détecté: 171 annonces au total
+2026-01-29 01:54:08,599 - __main__ - INFO - 📊 Estimation: 5 pages à 35 annonces/page
+2026-01-29 01:54:08,600 - __main__ - INFO - 📊 Ariana Ville: 171 annonces détectées
+2026-01-29 01:54:08,601 - __main__ - INFO - 📄 Objectif: 171 annonces sur 5/5 pages
+2026-01-29 01:54:08,601 - __main__ - INFO - 📈 Estimation: 35 annonces par page
+2026-01-29 01:54:08,602 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/ariana-ville/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 01:54:13,372 - __main__ - INFO - Total cartes uniques trouvées: 64
+2026-01-29 01:54:13,372 - __main__ - INFO - Page 1: 64 cartes trouvées
+2026-01-29 01:54:13,929 - __main__ - INFO - ✅ PAGE 1: 30 annonces valides, 34 invalides
+2026-01-29 01:54:13,999 - __main__ - INFO - ✅ Page 1: 30 annonces trouvées
+2026-01-29 01:54:14,000 - __main__ - INFO - 🔍 Extraction des détails pour 30 annonces...
+2026-01-29 01:54:29,313 - __main__ - INFO -   📊 Détails: 5/30 (17%)
+2026-01-29 01:54:44,276 - __main__ - INFO -   📊 Détails: 10/30 (33%)
+2026-01-29 01:54:59,045 - __main__ - INFO -   📊 Détails: 15/30 (50%)
+2026-01-29 01:55:14,099 - __main__ - INFO -   📊 Détails: 20/30 (67%)
+2026-01-29 01:55:28,773 - __main__ - INFO -   📊 Détails: 25/30 (83%)
+2026-01-29 01:55:45,961 - __main__ - INFO -   📊 Détails: 30/30 (100%)
+2026-01-29 01:55:46,274 - __main__ - INFO - 📈 Ariana Ville: 30/171 annonces accumulées
+2026-01-29 01:55:46,274 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-01-29 01:55:48,276 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/ariana-ville/villas-et-maisons-de-luxe-a-vendre:p:2
+2026-01-29 01:55:50,788 - __main__ - INFO - Total cartes uniques trouvées: 62
+2026-01-29 01:55:50,788 - __main__ - INFO - Page 2: 62 cartes trouvées
+2026-01-29 01:55:51,298 - __main__ - INFO - ✅ PAGE 2: 33 annonces valides, 29 invalides
+2026-01-29 01:55:51,378 - __main__ - INFO - ✅ Page 2: 33 annonces trouvées
+2026-01-29 01:55:51,379 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:56:06,098 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:56:21,000 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:56:36,154 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:56:51,293 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:57:06,376 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:57:21,255 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:57:30,070 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:57:30,374 - __main__ - INFO - 📈 Ariana Ville: 63/171 annonces accumulées
+2026-01-29 01:57:30,374 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-01-29 01:57:32,376 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/ariana-ville/villas-et-maisons-de-luxe-a-vendre:p:3
+2026-01-29 01:57:34,666 - __main__ - INFO - Total cartes uniques trouvées: 65
+2026-01-29 01:57:34,666 - __main__ - INFO - Page 3: 65 cartes trouvées
+2026-01-29 01:57:35,165 - __main__ - INFO - ✅ PAGE 3: 33 annonces valides, 32 invalides
+2026-01-29 01:57:35,247 - __main__ - INFO - ✅ Page 3: 33 annonces trouvées
+2026-01-29 01:57:35,247 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:57:49,806 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:58:04,392 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 01:58:19,226 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 01:58:34,108 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 01:58:48,925 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 01:59:05,831 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 01:59:16,772 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 01:59:17,074 - __main__ - INFO - 📈 Ariana Ville: 96/171 annonces accumulées
+2026-01-29 01:59:17,074 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-01-29 01:59:19,076 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/ariana-ville/villas-et-maisons-de-luxe-a-vendre:p:4
+2026-01-29 01:59:21,781 - __main__ - INFO - Total cartes uniques trouvées: 66
+2026-01-29 01:59:21,781 - __main__ - INFO - Page 4: 66 cartes trouvées
+2026-01-29 01:59:22,267 - __main__ - INFO - ✅ PAGE 4: 33 annonces valides, 33 invalides
+2026-01-29 01:59:22,345 - __main__ - INFO - ✅ Page 4: 33 annonces trouvées
+2026-01-29 01:59:22,345 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 01:59:40,459 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 01:59:58,258 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 02:00:13,753 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 02:00:29,623 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 02:00:48,113 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 02:01:04,955 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 02:01:15,206 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 02:01:15,516 - __main__ - INFO - 📈 Ariana Ville: 129/171 annonces accumulées
+2026-01-29 02:01:15,516 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-01-29 02:01:19,517 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/ariana-ville/villas-et-maisons-de-luxe-a-vendre:p:5
+2026-01-29 02:01:22,209 - __main__ - INFO - Total cartes uniques trouvées: 68
+2026-01-29 02:01:22,209 - __main__ - INFO - Page 5: 68 cartes trouvées
+2026-01-29 02:01:22,740 - __main__ - INFO - ✅ PAGE 5: 33 annonces valides, 35 invalides
+2026-01-29 02:01:22,813 - __main__ - INFO - ✅ Page 5: 33 annonces trouvées
+2026-01-29 02:01:22,813 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 02:01:37,904 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 02:01:53,431 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 02:02:09,061 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 02:02:24,634 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 02:02:39,673 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 02:03:02,635 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 02:03:13,691 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 02:03:14,022 - __main__ - INFO - 📈 Ariana Ville: 162/171 annonces accumulées
+2026-01-29 02:03:14,022 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR Ariana Ville
+2026-01-29 02:03:14,022 - __main__ - INFO - ✅ FIN SCRAPING Ariana Ville: 162 annonces
+2026-01-29 02:03:14,022 - __main__ - INFO - ✅ Ariana Ville: 162 annonces scrapées
+2026-01-29 02:03:14,022 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-01-29 02:03:19,025 - __main__ - INFO - 
+============================================================
+2026-01-29 02:03:19,027 - __main__ - INFO - 🎯 DÉBUT RÉGION: Djerba
+2026-01-29 02:03:19,027 - __main__ - INFO - ============================================================
+2026-01-29 02:03:19,029 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: Djerba
+2026-01-29 02:03:19,031 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/djerba/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 02:03:21,929 - __main__ - INFO - ✅ Détecté: 147 annonces au total
+2026-01-29 02:03:21,999 - __main__ - INFO - 📊 Estimation: 5 pages à 34 annonces/page
+2026-01-29 02:03:22,000 - __main__ - INFO - 📊 Djerba: 147 annonces détectées
+2026-01-29 02:03:22,000 - __main__ - INFO - 📄 Objectif: 147 annonces sur 5/5 pages
+2026-01-29 02:03:22,002 - __main__ - INFO - 📈 Estimation: 34 annonces par page
+2026-01-29 02:03:22,003 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/djerba/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 02:03:25,624 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 02:03:25,624 - __main__ - INFO - Page 1: 67 cartes trouvées
+2026-01-29 02:03:26,342 - __main__ - INFO - ✅ PAGE 1: 25 annonces valides, 42 invalides
+2026-01-29 02:03:26,427 - __main__ - INFO - ✅ Page 1: 25 annonces trouvées
+2026-01-29 02:03:26,427 - __main__ - INFO - 🔍 Extraction des détails pour 25 annonces...
+2026-01-29 02:03:44,077 - __main__ - INFO -   📊 Détails: 5/25 (20%)
+2026-01-29 02:04:01,265 - __main__ - INFO -   📊 Détails: 10/25 (40%)
+2026-01-29 02:04:22,253 - __main__ - INFO -   📊 Détails: 15/25 (60%)
+2026-01-29 02:04:42,208 - __main__ - INFO -   📊 Détails: 20/25 (80%)
+2026-01-29 02:05:01,640 - __main__ - INFO -   📊 Détails: 25/25 (100%)
+2026-01-29 02:05:01,957 - __main__ - INFO - 📈 Djerba: 25/147 annonces accumulées
+2026-01-29 02:05:01,957 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-01-29 02:05:03,958 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/djerba/villas-et-maisons-de-luxe-a-vendre:p:2
+2026-01-29 02:05:08,123 - __main__ - INFO - Total cartes uniques trouvées: 66
+2026-01-29 02:05:08,123 - __main__ - INFO - Page 2: 66 cartes trouvées
+2026-01-29 02:05:08,782 - __main__ - INFO - ✅ PAGE 2: 31 annonces valides, 35 invalides
+2026-01-29 02:05:08,874 - __main__ - INFO - ✅ Page 2: 31 annonces trouvées
+2026-01-29 02:05:08,875 - __main__ - INFO - 🔍 Extraction des détails pour 31 annonces...
+2026-01-29 02:05:28,884 - __main__ - INFO -   📊 Détails: 5/31 (16%)
+2026-01-29 02:05:48,570 - __main__ - INFO -   📊 Détails: 10/31 (32%)
+2026-01-29 02:06:07,991 - __main__ - INFO -   📊 Détails: 15/31 (48%)
+2026-01-29 02:06:27,057 - __main__ - INFO -   📊 Détails: 20/31 (65%)
+2026-01-29 02:06:47,233 - __main__ - INFO -   📊 Détails: 25/31 (81%)
+2026-01-29 02:07:06,602 - __main__ - INFO -   📊 Détails: 30/31 (97%)
+2026-01-29 02:07:10,394 - __main__ - INFO -   📊 Détails: 31/31 (100%)
+2026-01-29 02:07:10,695 - __main__ - INFO - 📈 Djerba: 56/147 annonces accumulées
+2026-01-29 02:07:10,695 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-01-29 02:07:12,735 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/djerba/villas-et-maisons-de-luxe-a-vendre:p:3
+2026-01-29 02:07:16,647 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 02:07:16,647 - __main__ - INFO - Page 3: 67 cartes trouvées
+2026-01-29 02:07:17,259 - __main__ - INFO - ✅ PAGE 3: 33 annonces valides, 34 invalides
+2026-01-29 02:07:17,343 - __main__ - INFO - ✅ Page 3: 33 annonces trouvées
+2026-01-29 02:07:17,343 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 02:07:36,596 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 02:07:55,699 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 02:08:14,207 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 02:08:33,165 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 02:08:52,698 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 02:09:11,595 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 02:09:22,524 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 02:09:22,837 - __main__ - INFO - 📈 Djerba: 89/147 annonces accumulées
+2026-01-29 02:09:22,837 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-01-29 02:09:24,838 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/djerba/villas-et-maisons-de-luxe-a-vendre:p:4
+2026-01-29 02:09:28,912 - __main__ - INFO - Total cartes uniques trouvées: 66
+2026-01-29 02:09:28,912 - __main__ - INFO - Page 4: 66 cartes trouvées
+2026-01-29 02:09:29,568 - __main__ - INFO - ✅ PAGE 4: 33 annonces valides, 33 invalides
+2026-01-29 02:09:29,658 - __main__ - INFO - ✅ Page 4: 33 annonces trouvées
+2026-01-29 02:09:29,658 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 02:09:49,254 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 02:10:08,436 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 02:10:27,672 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 02:10:48,170 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 02:11:07,348 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 02:11:26,638 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 02:11:39,014 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 02:11:39,315 - __main__ - INFO - 📈 Djerba: 122/147 annonces accumulées
+2026-01-29 02:11:39,315 - __main__ - INFO - ⏳ Pause de 4s avant page 5...
+2026-01-29 02:11:43,317 - __main__ - INFO - 📄 SCRAPING PAGE 5: https://www.mubawab.tn/fr/st/djerba/villas-et-maisons-de-luxe-a-vendre:p:5
+2026-01-29 02:11:45,836 - __main__ - INFO - Total cartes uniques trouvées: 31
+2026-01-29 02:11:45,836 - __main__ - INFO - Page 5: 31 cartes trouvées
+2026-01-29 02:11:46,120 - __main__ - INFO - ✅ PAGE 5: 15 annonces valides, 16 invalides
+2026-01-29 02:11:46,180 - __main__ - INFO - ✅ Page 5: 15 annonces trouvées
+2026-01-29 02:11:46,181 - __main__ - INFO - 🔍 Extraction des détails pour 15 annonces...
+2026-01-29 02:12:04,133 - __main__ - INFO -   📊 Détails: 5/15 (33%)
+2026-01-29 02:12:22,679 - __main__ - INFO -   📊 Détails: 10/15 (67%)
+2026-01-29 02:12:42,146 - __main__ - INFO -   📊 Détails: 15/15 (100%)
+2026-01-29 02:12:42,453 - __main__ - INFO - 📈 Djerba: 137/147 annonces accumulées
+2026-01-29 02:12:42,453 - __main__ - INFO - 📄 DERNIÈRE PAGE ATTEINTE POUR Djerba
+2026-01-29 02:12:42,453 - __main__ - INFO - ✅ FIN SCRAPING Djerba: 137 annonces
+2026-01-29 02:12:42,453 - __main__ - INFO - ✅ Djerba: 137 annonces scrapées
+2026-01-29 02:12:42,453 - __main__ - INFO - ⏳ Pause de 5s avant région suivante...
+2026-01-29 02:12:47,456 - __main__ - INFO - 
+============================================================
+2026-01-29 02:12:47,456 - __main__ - INFO - 🎯 DÉBUT RÉGION: El Menzah
+2026-01-29 02:12:47,456 - __main__ - INFO - ============================================================
+2026-01-29 02:12:47,456 - __main__ - INFO - 🚀 DÉBUT SCRAPING RÉGION: El Menzah
+2026-01-29 02:12:47,456 - __main__ - INFO - Détection pour: https://www.mubawab.tn/fr/st/el-menzah/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 02:12:49,820 - __main__ - INFO - ✅ Détecté: 111 annonces au total
+2026-01-29 02:12:50,042 - __main__ - INFO - 📊 Estimation: 4 pages à 35 annonces/page
+2026-01-29 02:12:50,046 - __main__ - INFO - 📊 El Menzah: 111 annonces détectées
+2026-01-29 02:12:50,046 - __main__ - INFO - 📄 Objectif: 111 annonces sur 4/4 pages
+2026-01-29 02:12:50,048 - __main__ - INFO - 📈 Estimation: 35 annonces par page
+2026-01-29 02:12:50,050 - __main__ - INFO - 📄 SCRAPING PAGE 1: https://www.mubawab.tn/fr/st/el-menzah/villas-et-maisons-de-luxe-a-vendre
+2026-01-29 02:12:53,569 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 02:12:53,569 - __main__ - INFO - Page 1: 67 cartes trouvées
+2026-01-29 02:12:54,071 - __main__ - INFO - ✅ PAGE 1: 33 annonces valides, 34 invalides
+2026-01-29 02:12:54,142 - __main__ - INFO - ✅ Page 1: 33 annonces trouvées
+2026-01-29 02:12:54,143 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 02:13:12,058 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 02:13:31,471 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 02:13:50,549 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 02:14:09,181 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 02:14:28,706 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 02:14:48,737 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 02:15:00,848 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 02:15:01,149 - __main__ - INFO - 📈 El Menzah: 33/111 annonces accumulées
+2026-01-29 02:15:01,149 - __main__ - INFO - ⏳ Pause de 2s avant page 2...
+2026-01-29 02:15:03,150 - __main__ - INFO - 📄 SCRAPING PAGE 2: https://www.mubawab.tn/fr/st/el-menzah/villas-et-maisons-de-luxe-a-vendre:p:2
+2026-01-29 02:15:06,680 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 02:15:06,680 - __main__ - INFO - Page 2: 67 cartes trouvées
+2026-01-29 02:15:07,270 - __main__ - INFO - ✅ PAGE 2: 33 annonces valides, 34 invalides
+2026-01-29 02:15:07,343 - __main__ - INFO - ✅ Page 2: 33 annonces trouvées
+2026-01-29 02:15:07,344 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 02:15:26,961 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 02:15:46,726 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 02:16:06,338 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 02:16:26,518 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 02:16:45,678 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 02:17:04,532 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 02:17:15,806 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 02:17:16,114 - __main__ - INFO - 📈 El Menzah: 66/111 annonces accumulées
+2026-01-29 02:17:16,114 - __main__ - INFO - ⏳ Pause de 2s avant page 3...
+2026-01-29 02:17:18,141 - __main__ - INFO - 📄 SCRAPING PAGE 3: https://www.mubawab.tn/fr/st/el-menzah/villas-et-maisons-de-luxe-a-vendre:p:3
+2026-01-29 02:17:21,258 - __main__ - INFO - Total cartes uniques trouvées: 67
+2026-01-29 02:17:21,258 - __main__ - INFO - Page 3: 67 cartes trouvées
+2026-01-29 02:17:21,781 - __main__ - INFO - ✅ PAGE 3: 33 annonces valides, 34 invalides
+2026-01-29 02:17:21,845 - __main__ - INFO - ✅ Page 3: 33 annonces trouvées
+2026-01-29 02:17:21,845 - __main__ - INFO - 🔍 Extraction des détails pour 33 annonces...
+2026-01-29 02:17:41,680 - __main__ - INFO -   📊 Détails: 5/33 (15%)
+2026-01-29 02:18:01,894 - __main__ - INFO -   📊 Détails: 10/33 (30%)
+2026-01-29 02:18:21,150 - __main__ - INFO -   📊 Détails: 15/33 (45%)
+2026-01-29 02:18:40,739 - __main__ - INFO -   📊 Détails: 20/33 (61%)
+2026-01-29 02:19:00,974 - __main__ - INFO -   📊 Détails: 25/33 (76%)
+2026-01-29 02:19:19,354 - __main__ - INFO -   📊 Détails: 30/33 (91%)
+2026-01-29 02:19:30,791 - __main__ - INFO -   📊 Détails: 33/33 (100%)
+2026-01-29 02:19:31,099 - __main__ - INFO - 📈 El Menzah: 99/111 annonces accumulées
+2026-01-29 02:19:31,099 - __main__ - INFO - ⏳ Pause de 2s avant page 4...
+2026-01-29 02:19:33,103 - __main__ - INFO - 📄 SCRAPING PAGE 4: https://www.mubawab.tn/fr/st/el-menzah/villas-et-maisons-de-luxe-a-vendre:p:4
+2026-01-29 02:19:35,715 - __main__ - INFO - Total cartes uniques trouvées: 26
+2026-01-29 02:19:35,715 - __main__ - INFO - Page 4: 26 cartes trouvées
+2026-01-29 02:19:35,934 - __main__ - INFO - ✅ PAGE 4: 12 annonces valides, 14 invalides
+2026-01-29 02:19:35,992 - __main__ - INFO - ✅ Page 4: 12 annonces trouvées
+2026-01-29 02:19:35,992 - __main__ - INFO - 🔍 Extraction des détails pour 12 annonces...
+2026-01-29 02:19:53,450 - __main__ - INFO -   📊 Détails: 5/12 (42%)
+2026-01-29 02:20:11,789 - __main__ - INFO -   📊 Détails: 10/12 (83%)
+2026-01-29 02:20:19,667 - __main__ - INFO -   📊 Détails: 12/12 (100%)
+2026-01-29 02:20:19,968 - __main__ - INFO - 📈 El Menzah: 111/111 annonces accumulées
+2026-01-29 02:20:19,968 - __main__ - INFO - 🎯 OBJECTIF ATTEINT POUR El Menzah: 111 annonces
+2026-01-29 02:20:19,968 - __main__ - INFO - ✅ FIN SCRAPING El Menzah: 111 annonces
+2026-01-29 02:20:19,968 - __main__ - INFO - ✅ El Menzah: 111 annonces scrapées
+2026-01-29 02:20:20,337 - __main__ - INFO - ✅ CSV SAUVEGARDÉ: mubawab_villas_luxe_complet_20260129_022019.csv
+2026-01-29 02:20:20,759 - __main__ - INFO - ✅ JSON SAUVEGARDÉ: mubawab_villas_luxe_complet_20260129_022019.json
