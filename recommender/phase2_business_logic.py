@@ -178,6 +178,10 @@ def extract_budget_from_query(query: str) -> Optional[float]:
     generic_budget = re.search(r"(budget|max|maximum|jusqu a|jusqu'a)\s*(de)?\s*(\d+(?:\.\d+)?)", q)
     if generic_budget:
         return float(generic_budget.group(3))
+    m = re.search(r"budget\s*(\d+(?:\.\d+)?)", q)
+    if m:
+        return float(m.group(1))
+    
 
     return None
 
@@ -341,6 +345,8 @@ class UserIntent:
     budget_max: Optional[float] = None
     rooms: Optional[int] = None
     min_surface: Optional[float] = None
+    amenities: Optional[List[str]] = None
+    preferences: Optional[List[str]] = None
 
 def extract_city_from_query(query: str) -> Optional[str]:
     q = normalize_text(query)
@@ -389,6 +395,8 @@ def parse_user_intent(query: str) -> UserIntent:
         budget_max=budget_max,
         rooms=extract_rooms_from_query(query),
         min_surface=extract_min_surface_from_query(query),
+        amenities=[],
+        preferences=[],
     )
 
 
@@ -451,24 +459,7 @@ def prepare_phase2_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-def surface_score(surface, requested_min):
-    if requested_min is None:
-        return 0.5
 
-    if surface is None:
-        return 0.0
-
-    if surface < requested_min:
-        return 0.0
-
-    ratio = surface / requested_min
-
-    if ratio <= 1.2:
-        return 1.0
-    elif ratio <= 1.5:
-        return 0.8
-    else:
-        return 0.6
 # =========================================================
 # 7) FILTRES MÉTIER
 # =========================================================
@@ -482,14 +473,18 @@ def apply_business_filters(df: pd.DataFrame, intent: UserIntent) -> pd.DataFrame
         if temp.empty:
             effective_contract = "location"
 
-    # =========================
+        # =========================
     # NIVEAU 1 : STRICT
     # =========================
     filtered = df.copy()
 
     if effective_contract:
-        filtered = filtered[filtered["contract_clean"] == effective_contract]
-
+        if effective_contract == "location_vacances":
+            filtered = filtered[
+                filtered["contract_clean"].isin(["location_vacances", "location"])
+            ]
+        else:
+            filtered = filtered[filtered["contract_clean"] == effective_contract]
     if intent.city:
         filtered = filtered[filtered["city_clean"] == intent.city]
 
@@ -508,15 +503,10 @@ def apply_business_filters(df: pd.DataFrame, intent: UserIntent) -> pd.DataFrame
             (filtered["price_clean"] <= intent.budget_max)
         ]
 
-        # AVANT
-    if intent.min_surface is not None:
-        filtered = filtered[filtered["surface_clean"] >= intent.min_surface]
+    # on ne filtre plus la surface ici ; on la laisse au ranking
 
-    # APRÈS
-    # on ne filtre plus, on laisse au ranking
-
-        if not filtered.empty:
-         return filtered
+    if not filtered.empty:
+        return filtered
 
     # =========================
     # NIVEAU 2 : RELAX TYPE
@@ -632,10 +622,12 @@ def room_score(pieces: Optional[int], requested: Optional[int]) -> float:
 def surface_score(surface: Optional[float], requested_min: Optional[float]) -> float:
     if requested_min is None:
         return 0.5
+
     if surface is None:
         return 0.0
+
     if surface < requested_min:
-        return 0.0
+        return -1.0
 
     ratio = surface / requested_min
     if ratio <= 1.2:
@@ -673,7 +665,14 @@ def city_score(actual_city: Optional[str], requested_city: Optional[str]) -> flo
 def contract_score(actual_contract: str, requested_contract: Optional[str]) -> float:
     if requested_contract is None:
         return 0.5
-    return 1.0 if actual_contract == requested_contract else 0.0
+    if requested_contract == "location_vacances":
+        if actual_contract == "location_vacances":
+            return 1.0
+        if actual_contract == "location":
+            return 0.8
+        return 0.0
+
+    return 1.0 if actual_contract == requested_contract else 0.0    
 
 
 def amenity_columns(df: pd.DataFrame) -> List[str]:
@@ -695,7 +694,211 @@ def amenity_score(row: pd.Series) -> float:
         return 0.5
 
     return min(1.0, sum(vals) / max(1, len(vals)) + 0.3)
+def violates_critical_constraints(row: pd.Series, intent: UserIntent) -> bool:
+    """
+    Retourne True si le bien viole un critère critique demandé par l'utilisateur.
+    Pour l’instant, on considère critiques :
+    - surface minimale
+    - type demandé
+    """
 
+    # 1. Surface minimale
+    if intent.min_surface is not None:
+        surface = row.get("surface_clean")
+        if surface is None or pd.isna(surface) or surface < intent.min_surface:
+            return True
+
+    # 2. Type demandé
+    if intent.property_type is not None:
+        actual_type = row.get("type_clean")
+        if actual_type != intent.property_type:
+            return True
+
+    return False
+def relax_intent_for_alternatives(intent: UserIntent) -> UserIntent:
+    """
+    Construit une version plus souple de l'intent.
+    On garde les contraintes les plus structurantes :
+    - contrat
+    - ville
+    - budget
+    On relâche les contraintes secondaires :
+    - type
+    - surface
+    """
+
+    return UserIntent(
+        contract=intent.contract,
+        city=intent.city,
+        property_type=None,
+        budget_min=intent.budget_min,
+        budget_max=intent.budget_max,
+        rooms=intent.rooms,
+        min_surface=None,
+        amenities=intent.amenities or [],
+        preferences=intent.preferences or [],
+    )
+def build_global_explanation(intent: UserIntent, used_relaxation: bool) -> str:
+    parts = []
+
+    if intent.contract:
+        parts.append(f"contrat = {intent.contract}")
+    if intent.city:
+        parts.append(f"ville = {intent.city}")
+    if intent.property_type:
+        parts.append(f"type = {intent.property_type}")
+    if intent.budget_max is not None:
+        parts.append(f"budget max = {int(intent.budget_max)} TND")
+    if intent.min_surface is not None:
+        parts.append(f"surface min = {int(intent.min_surface)} m²")
+
+    criteria_text = ", ".join(parts) if parts else "critères généraux"
+
+    if used_relaxation:
+        return (
+            f"Aucun bien ne correspond strictement à tous les critères demandés ({criteria_text}). "
+            f"Le système a donc proposé les alternatives les plus proches en conservant les contraintes majeures."
+        )
+
+    return f"Les résultats ont été sélectionnés selon les critères demandés ({criteria_text})."
+def get_relaxed_criteria(original_intent: UserIntent, relaxed_intent: UserIntent) -> List[str]:
+    relaxed = []
+
+    if original_intent.property_type is not None and relaxed_intent.property_type is None:
+        relaxed.append("type")
+
+    if original_intent.min_surface is not None and relaxed_intent.min_surface is None:
+        relaxed.append("surface")
+
+    return relaxed
+
+def recommend_properties_from_understanding(
+    df: pd.DataFrame,
+    understanding: Dict[str, Any],
+    top_k: int = 5
+) -> Dict[str, Any]:
+
+    prepared = prepare_phase2_dataframe(df)
+
+    intent = UserIntent(
+        contract=understanding.get("contract"),
+        city=understanding.get("city"),
+        property_type=understanding.get("property_type"),
+        budget_min=understanding.get("budget_min"),
+        budget_max=understanding.get("budget_max"),
+        rooms=understanding.get("rooms"),
+        min_surface=understanding.get("min_surface"),
+        amenities=understanding.get("amenities", []),
+        preferences=understanding.get("preferences", []),
+    )
+
+    # =========================
+    # 1. Recherche stricte
+    # =========================
+    filtered = apply_business_filters(prepared, intent)
+    ranked = rank_listings(filtered, intent, top_k=top_k)
+
+    used_relaxation = False
+    message = None
+
+    # =========================
+    # 2. Déclencher relaxation intelligente si besoin
+    # =========================
+    should_relax = False
+
+    if ranked.empty:
+        should_relax = True
+    elif len(ranked) < 3:
+        top_row = ranked.iloc[0]
+        if violates_critical_constraints(top_row, intent):
+            should_relax = True
+
+    if should_relax:
+        relaxed_intent = relax_intent_for_alternatives(intent)
+        filtered_relaxed = apply_business_filters(prepared, relaxed_intent)
+        ranked_relaxed = rank_listings(filtered_relaxed, relaxed_intent, top_k=top_k)
+
+        if not ranked_relaxed.empty:
+            ranked = ranked_relaxed
+            filtered = filtered_relaxed
+            used_relaxation = True
+            message = (
+                "Aucun bien ne correspond strictement à tous les critères. "
+                "Voici les alternatives les plus proches selon la ville, le budget et le contrat."
+            )
+
+    relaxed_criteria = []
+    if used_relaxation:
+        relaxed_criteria = get_relaxed_criteria(intent, relaxed_intent)
+
+    global_explanation = build_global_explanation(intent, used_relaxation)
+
+    results = [build_result_card(row, intent) for _, row in ranked.iterrows()]
+
+    return {
+        "intent": understanding,
+        "total_after_filters": int(len(filtered)),
+        "used_relaxation": used_relaxation,
+        "message": message,
+        "global_explanation": global_explanation,
+        "relaxed_criteria": relaxed_criteria,
+        "results": results,
+    }
+def listing_text(row: pd.Series) -> str:
+    return normalize_text(
+        str(row.get("titre", "")) + " " + str(row.get("description", ""))
+    )
+
+
+def amenity_match_score(row: pd.Series, intent: UserIntent) -> float:
+    requested = intent.amenities or []
+    if not requested:
+        return 0.5
+
+    text = listing_text(row)
+    matches = 0
+
+    for amenity in requested:
+        if amenity in text:
+            matches += 1
+
+    return matches / len(requested)
+
+
+def preference_score(row: pd.Series, intent: UserIntent) -> float:
+    prefs = intent.preferences or []
+    if not prefs:
+        return 0.5
+
+    text = listing_text(row)
+    score = 0.0
+    count = 0
+
+    for pref in prefs:
+        count += 1
+
+        if pref == "vacation":
+            if any(k in text for k in ["vacances", "estival", "saisonnier", "bord de mer", "plage"]):
+                score += 1.0
+        elif pref == "small_budget":
+            price = row.get("price_clean")
+            if price is not None and pd.notna(price):
+                if intent.budget_max is not None and price <= intent.budget_max * 0.9:
+                    score += 1.0
+                elif intent.budget_max is None:
+                    score += 0.5
+        elif pref == "family":
+            pieces = row.get("pieces_clean")
+            surface = row.get("surface_clean")
+            if (pieces is not None and pieces >= 3) or (surface is not None and surface >= 120):
+                score += 1.0
+        elif pref == "near_sea":
+            if any(k in text for k in ["mer", "plage", "bord de mer", "pieds dans l'eau"]):
+                score += 1.0
+        else:
+            score += 0.5
+
+    return score / count if count > 0 else 0.5
 
 def compute_listing_score(row: pd.Series, intent: UserIntent) -> Tuple[float, Dict[str, float]]:
     scores = {
@@ -705,28 +908,27 @@ def compute_listing_score(row: pd.Series, intent: UserIntent) -> Tuple[float, Di
         "budget": budget_score(row["price_clean"], intent.budget_max),
         "rooms": room_score(row["pieces_clean"], intent.rooms),
         "surface": surface_score(row["surface_clean"], intent.min_surface),
-        "amenities": amenity_score(row),
-        "piscine": 1.0 if detect_piscine(row) else 0.0,
-        "surface": surface_score(row["surface_clean"], intent.min_surface),
+        "amenities": amenity_match_score(row, intent),
+        "preferences": preference_score(row, intent),
+        "piscine": piscine_score(row, intent),
         "data_quality": 0.0 if row["price_suspect"] else 1.0,
     }
 
     weights = {
-        "contract": 0.25,
-        "city": 0.20,
-        "type": 0.25,
-        "budget": 0.20,
-        "rooms": 0.08,
-        "surface": 0.07,
-        "amenities": 0.03,
+        "contract": 0.22,
+        "city": 0.18,
+        "type": 0.20,
+        "budget": 0.18,
+        "rooms": 0.06,
+        "surface": 0.12,
+        "amenities": 0.08,
+        "preferences": 0.08,
         "piscine": 0.05,
-        "surface": 0.15,
-        "data_quality": 0.02,
+        "data_quality": 0.03,
     }
 
     total = sum(scores[k] * weights[k] for k in scores)
     return total, scores
-
 
 def rank_listings(df: pd.DataFrame, intent: UserIntent, top_k: int = 10) -> pd.DataFrame:
     if df.empty:
@@ -749,7 +951,7 @@ def rank_listings(df: pd.DataFrame, intent: UserIntent, top_k: int = 10) -> pd.D
     return ranked
 
 def piscine_score(row, intent):
-    if not hasattr(intent, "amenities") or "piscine" not in intent.amenities:
+    if not intent.amenities or "piscine" not in intent.amenities:
         return 0.5
 
     text = normalize_text(str(row.get("titre", "")) + " " + str(row.get("description", "")))
@@ -761,8 +963,77 @@ def piscine_score(row, intent):
 # =========================================================
 # 9) SORTIE CHATBOT
 # =========================================================
+def build_result_explanation(row: pd.Series, breakdown: Dict[str, float], intent: UserIntent) -> str:
+    matched = []
+    missing = []
 
-def build_result_card(row: pd.Series) -> Dict[str, Any]:
+    if breakdown.get("contract", 0) >= 1:
+        matched.append("le contrat")
+    else:
+        missing.append("le contrat")
+
+    if breakdown.get("city", 0) >= 1:
+        matched.append("la ville")
+    else:
+        missing.append("la ville")
+
+    if breakdown.get("type", 0) >= 1:
+        matched.append("le type de bien")
+    elif intent.property_type is not None:
+        missing.append("le type de bien")
+
+    if breakdown.get("budget", 0) >= 0.7:
+        matched.append("le budget")
+    elif intent.budget_max is not None:
+        missing.append("le budget")
+
+    if breakdown.get("surface", 0) >= 0.9:
+        matched.append("la surface")
+    elif intent.min_surface is not None:
+        missing.append("la surface")
+
+    if breakdown.get("piscine", 0) >= 1:
+        matched.append("la piscine")
+    elif intent.amenities and "piscine" in intent.amenities:
+        missing.append("la piscine")
+
+    if matched:
+        explanation = "Ce bien respecte bien " + ", ".join(matched)
+    else:
+        explanation = "Ce bien constitue un compromis global acceptable"
+
+    if missing:
+        explanation += ". En revanche, il ne respecte pas totalement " + ", ".join(missing)
+
+    # Ajouter les amenities réellement détectées
+    requested_amenities = intent.amenities or []
+    if requested_amenities:
+        text = listing_text(row)
+        found = [a for a in requested_amenities if a in text]
+        if found:
+            explanation += ". Il inclut également : " + ", ".join(found)
+
+    # Ajouter les préférences implicites
+    if intent.preferences:
+        matched_prefs = []
+        if breakdown.get("preferences", 0) >= 0.8:
+            matched_prefs.append("préférences implicites")
+        if matched_prefs:
+            explanation += ". Il est aussi cohérent avec vos préférences implicites"
+        if "family" in intent.preferences:
+            pieces = row.get("pieces_clean")
+            surface = row.get("surface_clean")
+
+            if (pieces is not None and pieces >= 3) or (surface is not None and surface >= 120):
+                explanation += ". Ce bien est adapté à un usage familial"    
+        if "near_sea" in intent.preferences:
+            text = listing_text(row)
+            if any(k in text for k in ["mer", "plage", "bord de mer"]):
+                explanation += ". Il est situé à proximité de la mer"        
+
+    return explanation + "."
+
+def build_result_card(row: pd.Series, intent: Optional[UserIntent] = None) -> Dict[str, Any]:
     breakdown = row.get("score_breakdown", {})
 
     reasons = []
@@ -783,6 +1054,10 @@ def build_result_card(row: pd.Series) -> Dict[str, Any]:
     if not reasons:
         reasons.append("bon compromis global")
 
+    explanation = None
+    if intent is not None:
+        explanation = build_result_explanation(row, breakdown, intent)
+
     return {
         "title": row.get("titre"),
         "city": row.get("city_clean"),
@@ -793,10 +1068,10 @@ def build_result_card(row: pd.Series) -> Dict[str, Any]:
         "rooms": row.get("pieces_clean"),
         "score": round(float(row.get("ranking_score", 0.0)), 4),
         "reasons": reasons,
+        "explanation": explanation,
         "url": row.get("url"),
         "price_per_m2": row.get("price_per_m2"),
     }
-
 
 def recommend_properties(df: pd.DataFrame, user_query: str, top_k: int = 5) -> Dict[str, Any]:
     prepared = prepare_phase2_dataframe(df)
