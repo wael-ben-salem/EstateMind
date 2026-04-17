@@ -1,7 +1,23 @@
+import os
 import pandas as pd
 
-DATA_PATH = "data_cleaned/tunisia_realestate_cleaned.csv"
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+CANDIDATE_PATHS = [
+    #os.path.join(BASE_DIR, "EstateMind-master", "data_cleaned", "tunisia_realestate_cleaned.csv"),
+    os.path.join(BASE_DIR, "data_cleaned", "tunisia_realestate_cleaned.csv"),
+]
+
+DATA_PATH = None
+for path in CANDIDATE_PATHS:
+    if os.path.exists(path):
+        DATA_PATH = path
+        break
+
+if DATA_PATH is None:
+    raise FileNotFoundError(
+        "Impossible de trouver tunisia_realestate_cleaned.csv dans les emplacements attendus."
+    )
 CORE_COLUMNS = [
     "prix",
     "ville",
@@ -58,6 +74,7 @@ def load_raw_data():
     Charge le dataset brut complet.
     Sert au diagnostic et à l'analyse.
     """
+    print(f"[INFO] Chargement dataset : {DATA_PATH}")
     return pd.read_csv(DATA_PATH, low_memory=False)
 
 
