@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EstateMind — Recommandation Immobilière IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C9932A;--gold2:#E8B84B;--gold3:#F5D080;
+  --bg:#080C14;--bg2:#0D1320;--bg3:#111827;
+  --glass:rgba(255,255,255,0.04);--glass2:rgba(255,255,255,0.07);
+  --border:rgba(201,147,42,0.2);--border2:rgba(255,255,255,0.08);
+  --text:#F0EDE8;--text2:#9AA3B2;--text3:#6B7688;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* GRAIN OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4;pointer-events:none;z-index:0
+}
+
+.app{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:1}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar{
+  background:var(--bg2);border-right:1px solid var(--border);
+  padding:0;display:flex;flex-direction:column;
+  position:sticky;top:0;height:100vh;overflow:hidden
+}
+.sidebar-logo{padding:2rem 1.5rem 1.5rem;border-bottom:1px solid var(--border2)}
+.logo-mark{display:flex;align-items:center;gap:10px;margin-bottom:0.5rem}
+.logo-icon{
+  width:36px;height:36px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px
+}
+.logo-text{
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;
+  background:linear-gradient(135deg,var(--gold2),var(--gold3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.logo-sub{font-size:0.72rem;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase}
+
+.sidebar-stats{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border2)}
+.stat-row{display:flex;justify-content:space-between;margin-bottom:0.8rem}
+.stat-item{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold2)}
+.stat-lbl{font-size:0.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em}
+
+.sidebar-filters{padding:1.2rem 1.5rem;flex:1;overflow-y:auto}
+.filter-title{
+  font-size:0.72rem;color:var(--gold);text-transform:uppercase;
+  letter-spacing:0.12em;margin-bottom:1rem;font-weight:600
+}
+.filter-group{margin-bottom:1.4rem}
+.filter-label{font-size:0.78rem;color:var(--text2);margin-bottom:0.6rem;font-weight:500}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  padding:4px 10px;border-radius:999px;border:1px solid var(--border2);
+  font-size:0.73rem;color:var(--text2);cursor:pointer;transition:all 0.2s;background:transparent
+}
+.chip:hover,.chip.active{border-color:var(--gold);color:var(--gold);background:rgba(201,147,42,0.1)}
+.price-slider{width:100%;accent-color:var(--gold);margin:0.4rem 0;cursor:pointer}
+.price-vals{display:flex;justify-content:space-between;font-size:0.73rem;color:var(--text3)}
+
+.sidebar-suggest{padding:1.2rem 1.5rem;border-top:1px solid var(--border2)}
+.suggest-title{
+  font-size:0.72rem;color:var(--gold);text-transform:uppercase;
+  letter-spacing:0.12em;margin-bottom:0.8rem;font-weight:600
+}
+.suggest-item{
+  padding:7px 10px;border-radius:8px;font-size:0.78rem;
+  color:var(--text2);cursor:pointer;transition:all 0.2s;line-height:1.4;margin-bottom:4px
+}
+.suggest-item:hover{background:var(--glass2);color:var(--text)}
+
+/* ===================== MAIN ===================== */
+.main{display:flex;flex-direction:column;overflow:hidden}
+
+/* TOP BAR */
+.topbar{
+  display:flex;align-items:center;gap:1rem;
+  padding:1.2rem 1.8rem;border-bottom:1px solid var(--border2);background:var(--bg2)
+}
+.search-wrap{flex:1;position:relative}
+.search-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:var(--gold);font-size:16px
+}
+.search-input{
+  width:100%;padding:0.75rem 1rem 0.75rem 2.8rem;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:14px;color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:all 0.25s
+}
+.search-input::placeholder{color:var(--text3)}
+.search-input:focus{border-color:var(--gold2);background:rgba(201,147,42,0.06)}
+.btn-search{
+  padding:0.75rem 1.6rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:14px;color:#0D0A05;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;
+  cursor:pointer;transition:all 0.25s;white-space:nowrap
+}
+.btn-search:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,147,42,0.3)}
+.btn-search:active{transform:scale(0.98)}
+.view-toggle{
+  display:flex;background:var(--glass);
+  border:1px solid var(--border2);border-radius:10px;overflow:hidden
+}
+.view-btn{
+  padding:0.6rem 0.9rem;border:none;background:transparent;
+  color:var(--text3);cursor:pointer;font-size:14px;transition:all 0.2s
+}
+.view-btn.active{background:var(--glass2);color:var(--gold)}
+
+/* CONTENT AREA */
+.content{display:grid;grid-template-columns:1fr 400px;flex:1;overflow:hidden}
+
+/* RESULTS PANEL */
+.results-panel{overflow-y:auto;padding:1.5rem;background:var(--bg)}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.results-count{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700}
+.results-count span{color:var(--gold2)}
+.sort-select{
+  padding:6px 10px;background:var(--glass);
+  border:1px solid var(--border2);border-radius:8px;
+  color:var(--text2);font-size:0.8rem;outline:none;cursor:pointer
+}
+.sort-select option{background:var(--bg2);color:var(--text)}
+
+/* CLASSIFICATION TAG */
+.classification-bar{
+  display:flex;align-items:center;gap:10px;margin-bottom:1.2rem;
+  padding:0.8rem 1rem;background:rgba(201,147,42,0.06);
+  border:1px solid rgba(201,147,42,0.2);border-radius:12px
+}
+.class-tag{
+  padding:3px 10px;border-radius:999px;font-size:0.72rem;
+  font-weight:600;text-transform:uppercase;letter-spacing:0.08em
+}
+.class-purchase{background:rgba(201,147,42,0.2);color:var(--gold2)}
+.class-rental{background:rgba(30,144,255,0.2);color:#60A5FA}
+.class-vacation{background:rgba(34,197,94,0.2);color:#4ADE80}
+.class-text{font-size:0.82rem;color:var(--text2)}
+
+/* RESULT CARDS */
+.result-card{
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:20px;padding:1.2rem;margin-bottom:0.9rem;
+  cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden
+}
+.result-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity 0.3s
+}
+.result-card:hover{
+  border-color:var(--border);transform:translateX(3px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.3)
+}
+.result-card:hover::before{opacity:1}
+.result-card.highlighted{border-color:rgba(201,147,42,0.4);background:rgba(201,147,42,0.04)}
+
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.8rem}
+.card-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.3;flex:1;margin-right:0.8rem}
+.score-badge{
+  min-width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(201,147,42,0.15),rgba(232,184,75,0.1));
+  border:1px solid rgba(201,147,42,0.3);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0
+}
+.score-num{font-size:1rem;font-weight:700;color:var(--gold2);line-height:1}
+.score-lbl{font-size:0.6rem;color:var(--text3);text-transform:uppercase}
+
+.card-price{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold2);margin-bottom:0.7rem;font-weight:700}
+.card-meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.8rem}
+.meta-pill{
+  padding:3px 9px;border-radius:999px;
+  background:var(--glass2);border:1px solid var(--border2);
+  font-size:0.72rem;color:var(--text2)
+}
+.card-reasons{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:0.7rem}
+.reason-pill{
+  padding:3px 9px;border-radius:999px;
+  background:rgba(201,147,42,0.1);border:1px solid rgba(201,147,42,0.2);
+  font-size:0.7rem;color:var(--gold)
+}
+.card-explanation{
+  font-size:0.8rem;color:var(--text3);line-height:1.5;
+  border-left:2px solid rgba(201,147,42,0.3);padding-left:0.7rem
+}
+.card-link{
+  display:inline-block;margin-top:0.6rem;font-size:0.78rem;
+  color:var(--gold);text-decoration:none;transition:color 0.2s
+}
+.card-link:hover{color:var(--gold2)}
+
+/* RELAXATION NOTICE */
+.relax-notice{
+  padding:0.6rem 1rem;background:rgba(245,158,11,0.08);
+  border:1px solid rgba(245,158,11,0.2);border-radius:10px;
+  font-size:0.78rem;color:#FCD34D;margin-bottom:0.8rem
+}
+
+/* RIGHT PANEL */
+.right-panel{
+  border-left:1px solid var(--border2);display:flex;
+  flex-direction:column;overflow:hidden;background:var(--bg2)
+}
+.panel-tabs{display:flex;border-bottom:1px solid var(--border2)}
+.panel-tab{
+  flex:1;padding:0.9rem;text-align:center;font-size:0.82rem;
+  font-weight:500;cursor:pointer;color:var(--text3);
+  border-bottom:2px solid transparent;transition:all 0.2s
+}
+.panel-tab.active{color:var(--gold2);border-bottom-color:var(--gold2)}
+
+/* MAP */
+.map-container{flex:1;position:relative;display:none;overflow:hidden}
+.map-container.visible{display:block}
+.map-bg{
+  width:100%;height:100%;min-height:300px;
+  background:var(--bg);position:relative;overflow:hidden
+}
+.map-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,147,42,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,147,42,0.04) 1px,transparent 1px);
+  background-size:40px 40px
+}
+.map-pin{
+  position:absolute;cursor:pointer;transition:all 0.3s;
+  transform:translate(-50%,-100%)
+}
+.map-pin:hover{z-index:10}
+.pin-body{
+  border-radius:50% 50% 50% 0;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  transform:rotate(-45deg);border:2px solid rgba(255,255,255,0.2);
+  box-shadow:0 4px 16px rgba(201,147,42,0.4);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s
+}
+.map-pin:hover .pin-body{
+  transform:rotate(-45deg) scale(1.15);
+  box-shadow:0 8px 24px rgba(201,147,42,0.6)
+}
+.pin-inner{transform:rotate(45deg);font-size:11px;font-weight:700;color:#0D0A05}
+.pin-tooltip{
+  position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+  padding:8px 12px;font-size:0.75rem;white-space:nowrap;
+  pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:20;min-width:160px
+}
+.map-pin:hover .pin-tooltip{opacity:1}
+.tooltip-title{font-weight:600;color:var(--text);margin-bottom:2px}
+.tooltip-price{color:var(--gold2);font-size:0.82rem}
+.map-legend{
+  position:absolute;bottom:1rem;left:1rem;
+  background:rgba(13,19,32,0.9);border:1px solid var(--border2);
+  border-radius:10px;padding:8px 12px;font-size:0.7rem;
+  color:var(--text3);backdrop-filter:blur(10px)
+}
+.map-no-data{
+  display:flex;align-items:center;justify-content:center;
+  height:100%;min-height:300px;color:var(--text3);
+  font-size:0.85rem;flex-direction:column;gap:0.8rem;text-align:center
+}
+
+/* CHAT */
+.chat-container{flex:1;display:none;flex-direction:column;overflow:hidden}
+.chat-container.visible{display:flex}
+.chat-messages{
+  flex:1;overflow-y:auto;padding:1.2rem;
+  display:flex;flex-direction:column;gap:0.8rem
+}
+.msg{
+  max-width:85%;border-radius:16px;padding:0.7rem 1rem;
+  font-size:0.82rem;line-height:1.5;animation:fadeUp 0.3s ease
+}
+.msg.ai{
+  align-self:flex-start;background:var(--glass2);
+  border:1px solid var(--border2);color:var(--text)
+}
+.msg.user{
+  align-self:flex-end;
+  background:linear-gradient(135deg,rgba(201,147,42,0.2),rgba(232,184,75,0.12));
+  border:1px solid rgba(201,147,42,0.3);color:var(--text)
+}
+.msg.loading{
+  align-self:flex-start;background:var(--glass2);
+  border:1px solid var(--border2);padding:0.9rem 1rem
+}
+.typing-dots{display:flex;gap:4px;align-items:center}
+.typing-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);animation:dot 1.4s infinite
+}
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes dot{
+  0%,60%,100%{transform:scale(0.7);opacity:0.4}
+  30%{transform:scale(1);opacity:1}
+}
+.msg-sender{
+  font-size:0.68rem;color:var(--text3);margin-bottom:4px;
+  font-weight:600;text-transform:uppercase;letter-spacing:0.08em
+}
+.chat-input-wrap{
+  padding:1rem;border-top:1px solid var(--border2);
+  display:flex;gap:8px;align-items:flex-end
+}
+.chat-input{
+  flex:1;padding:0.65rem 0.9rem;background:var(--glass);
+  border:1px solid var(--border2);border-radius:12px;
+  color:var(--text);font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;outline:none;resize:none;
+  max-height:100px;transition:border-color 0.2s
+}
+.chat-input:focus{border-color:var(--gold)}
+.chat-input::placeholder{color:var(--text3)}
+.btn-send{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;font-size:14px;transition:all 0.2s;flex-shrink:0
+}
+.btn-send:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(201,147,42,0.4)}
+
+/* SUMMARY BAR */
+.summary-bar{
+  padding:0.8rem 1.5rem;background:rgba(201,147,42,0.04);
+  border-bottom:1px solid rgba(201,147,42,0.15);
+  font-size:0.82rem;color:var(--text2);line-height:1.5;display:none
+}
+.summary-bar.visible{display:block}
+.summary-bar strong{color:var(--gold2)}
+
+/* HERO WELCOME */
+.hero-welcome{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;height:100%;padding:3rem;text-align:center
+}
+.hero-icon{font-size:4rem;margin-bottom:1.5rem;filter:drop-shadow(0 0 20px rgba(201,147,42,0.3))}
+.hero-title{
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:0.8rem;
+  background:linear-gradient(135deg,var(--gold2),var(--gold3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.hero-sub{font-size:0.9rem;color:var(--text3);line-height:1.7;max-width:380px}
+.hero-queries{display:flex;flex-direction:column;gap:8px;margin-top:2rem;width:100%;max-width:420px}
+.hero-query{
+  padding:0.7rem 1rem;background:var(--glass);border:1px solid var(--border2);
+  border-radius:12px;font-size:0.82rem;color:var(--text2);
+  cursor:pointer;transition:all 0.25s;text-align:left
+}
+.hero-query:hover{border-color:var(--border);color:var(--text);background:var(--glass2)}
+
+/* LOADING */
+.loading-state{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;height:200px;gap:1rem
+}
+.loading-ring{
+  width:40px;height:40px;border:2px solid var(--border2);
+  border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite
+}
+.loading-text{font-size:0.82rem;color:var(--text3)}
+
+/* ANALYSIS */
+.analysis-inner{padding:1.5rem;height:100%;overflow-y:auto}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(201,147,42,0.2);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:rgba(201,147,42,0.4)}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">
+        <div class="logo-icon">🏡</div>
+        <div class="logo-text">EstateMind</div>
+      </div>
+      <div class="logo-sub">Recommandation IA · Tunisie</div>
+    </div>
+
+    <div class="sidebar-stats">
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num" id="stat-props">—</div>
+          <div class="stat-lbl">Biens</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-cities">—</div>
+          <div class="stat-lbl">Villes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-score">—</div>
+          <div class="stat-lbl">Score moy.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-filters">
+      <div class="filter-title">Affiner la recherche</div>
+
+      <div class="filter-group">
+        <div class="filter-label">Type de bien</div>
+        <div class="filter-chips">
+          <div class="chip active" data-filter="type" data-val="all">Tous</div>
+          <div class="chip" data-filter="type" data-val="appartement">Appartement</div>
+          <div class="chip" data-filter="type" data-val="maison">Maison</div>
+          <div class="chip" data-filter="type" data-val="villa">Villa</div>
+          <div class="chip" data-filter="type" data-val="studio">Studio</div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-label">Contrat</div>
+        <div class="filter-chips">
+          <div class="chip active" data-filter="contract" data-val="all">Tous</div>
+          <div class="chip" data-filter="contract" data-val="vente">Vente</div>
+          <div class="chip" data-filter="contract" data-val="location">Location</div>
+          <div class="chip" data-filter="contract" data-val="vacances">Vacances</div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-label">Budget max</div>
+        <input type="range" class="price-slider" min="500" max="2000000" value="2000000" id="price-slider" step="500">
+        <div class="price-vals">
+          <span>0</span>
+          <span id="price-max-lbl">Illimité</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-suggest">
+      <div class="suggest-title">Suggestions</div>
+      <div class="suggest-item" onclick="fillAndSearch('appartement meublé à La Marsa 1200 DT')">🏙️ Appt meublé La Marsa 1200 DT</div>
+      <div class="suggest-item" onclick="fillAndSearch('maison vacances à Hammamet avec piscine')">🏊 Maison vacances Hammamet piscine</div>
+      <div class="suggest-item" onclick="fillAndSearch('maison familiale à Sousse budget 300000')">🏠 Familiale Sousse 300 000 DT</div>
+      <div class="suggest-item" onclick="fillAndSearch('villa proche mer à Hammamet')">🌊 Villa bord de mer Hammamet</div>
+      <div class="suggest-item" onclick="fillAndSearch('studio étudiant à Tunis centre')">🎓 Studio étudiant Tunis centre</div>
+    </div>
+  </div>
+
+  <!-- ===================== MAIN ===================== -->
+  <div class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          class="search-input"
+          id="main-search"
+          placeholder="Ex: appartement meublé à La Marsa 1200 DT..."
+          value="appartement meublé à La Marsa 1200 DT"
+        >
+      </div>
+      <button class="btn-search" onclick="runSearch()">Rechercher →</button>
+      <div class="view-toggle">
+        <button class="view-btn active" id="vbtn-grid" onclick="setView('grid')" title="Grille">▦</button>
+        <button class="view-btn" id="vbtn-list" onclick="setView('list')" title="Liste">☰</button>
+      </div>
+    </div>
+
+    <div class="summary-bar" id="summary-bar"></div>
+
+    <div class="content">
+
+      <!-- RESULTS PANEL -->
+      <div class="results-panel" id="results-panel">
+        <div class="hero-welcome" id="hero-welcome">
+          <div class="hero-icon">🏡</div>
+          <div class="hero-title">Bienvenue sur EstateMind</div>
+          <div class="hero-sub">Décrivez votre bien idéal en langage naturel. Notre moteur IA analyse, classe et vous présente les meilleures opportunités immobilières tunisiennes.</div>
+          <div class="hero-queries">
+            <div class="hero-query" onclick="fillAndSearch('appartement meublé à La Marsa 1200 DT')">🏙️ appartement meublé à La Marsa 1200 DT</div>
+            <div class="hero-query" onclick="fillAndSearch('maison vacances à Hammamet avec piscine')">🏊 maison vacances à Hammamet avec piscine</div>
+            <div class="hero-query" onclick="fillAndSearch('maison familiale à Sousse budget 300000')">🏠 maison familiale à Sousse budget 300 000 DT</div>
+            <div class="hero-query" onclick="fillAndSearch('villa proche mer à Hammamet')">🌊 villa proche de la mer à Hammamet</div>
+          </div>
+        </div>
+        <div id="results-area" style="display:none"></div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+        <div class="panel-tabs">
+          <div class="panel-tab active" id="tab-map" onclick="switchTab('map')">🗺️ Carte</div>
+          <div class="panel-tab" id="tab-chat" onclick="switchTab('chat')">💬 Assistant</div>
+          <div class="panel-tab" id="tab-analysis" onclick="switchTab('analysis')">📊 Analyse</div>
+        </div>
+
+        <!-- MAP TAB -->
+        <div class="map-container visible" id="tab-map-panel">
+          <div class="map-bg" id="map-bg">
+            <div class="map-grid"></div>
+            <div id="map-no-data" class="map-no-data">
+              <div style="font-size:2.5rem">🗺️</div>
+              <div>Lancez une recherche pour<br>voir les biens sur la carte</div>
+            </div>
+            <div id="map-pins"></div>
+            <div class="map-legend" id="map-legend" style="display:none">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+                <div style="width:10px;height:10px;background:var(--gold2);border-radius:50%"></div>
+                <span>Biens recommandés</span>
+              </div>
+              <div style="font-size:0.65rem;color:var(--text3);margin-top:2px">Survolez pour les détails</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHAT TAB -->
+        <div class="chat-container" id="tab-chat-panel">
+          <div class="chat-messages" id="chat-messages">
+            <div class="msg ai">
+              <div class="msg-sender">Assistant EstateMind</div>
+              Bonjour ! Je suis votre assistant immobilier intelligent. Lancez une recherche ou posez-moi directement vos questions sur le marché tunisien. 🏡
+            </div>
+          </div>
+          <div class="chat-input-wrap">
+            <textarea
+              class="chat-input"
+              id="chat-input"
+              rows="1"
+              placeholder="Posez une question sur vos résultats..."
+            ></textarea>
+            <button class="btn-send" onclick="sendChat()">➤</button>
+          </div>
+        </div>
+
+        <!-- ANALYSIS TAB -->
+        <div class="map-container" id="tab-analysis-panel">
+          <div class="analysis-inner" id="analysis-content">
+            <div class="map-no-data">
+              <div style="font-size:2.5rem">📊</div>
+              <div>L'analyse détaillée apparaîtra<br>après votre première recherche</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /right-panel -->
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script>
+/* ==========================================================
+   MOCK DATA — remplacez par votre vrai run_recommender_pipeline()
+   ========================================================== */
+const MOCK_DATA = {
+  "appartement meublé à La Marsa 1200 DT": {
+    status: "success",
+    classification: { label: "Location meublée", intent: "rental" },
+    summary: "5 appartements meublés trouvés à La Marsa dans votre budget de 1 200 DT/mois.",
+    user_message: "Voici les meilleures opportunités de location meublée à La Marsa correspondant à votre budget.",
+    understanding: { budget: 1200, currency: "DT/mois", ville: "La Marsa", meublé: true, type: "appartement", contrat: "location" },
+    recommendation: { global_explanation: "Sélection basée sur le rapport qualité-prix, la localisation et les équipements.", used_relaxation: false },
+    results: [
+      { title:"Bel appartement meublé vue mer La Marsa", price:"1 150 DT/mois", city:"La Marsa", property_type:"Appartement", contract:"Location", surface:"85 m²", rooms:"3", score:"9.2", explanation:"Localisation premium, meublé complet, proche transports.", reasons:["Vue mer","Meublé complet","Proche centre"], latitude:36.878, longitude:10.194, url:"#" },
+      { title:"F2 meublé résidence sécurisée La Marsa", price:"1 100 DT/mois", city:"La Marsa", property_type:"Appartement", contract:"Location", surface:"65 m²", rooms:"2", score:"8.7", explanation:"Résidence avec gardien, parking, connexion rapide Tunis.", reasons:["Gardien 24h","Parking inclus","Calme"], latitude:36.874, longitude:10.191, url:"#" },
+      { title:"Duplex meublé terrasse La Marsa Corniche", price:"1 200 DT/mois", city:"La Marsa", property_type:"Appartement", contract:"Location", surface:"95 m²", rooms:"3", score:"8.5", explanation:"Terrasse privée, vue dégagée, à deux pas de la plage.", reasons:["Terrasse","Vue dégagée","2 min plage"], latitude:36.881, longitude:10.197, url:"#" },
+      { title:"Studio meublé moderne La Marsa Plage", price:"950 DT/mois", city:"La Marsa", property_type:"Studio", contract:"Location", surface:"42 m²", rooms:"1", score:"7.9", explanation:"Idéal pour célibataire, décoré avec goût, charges incluses.", reasons:["Charges incluses","Design moderne"], latitude:36.876, longitude:10.188, url:"#" },
+      { title:"Appartement familial meublé La Marsa", price:"1 180 DT/mois", city:"La Marsa", property_type:"Appartement", contract:"Location", surface:"110 m²", rooms:"4", score:"7.6", explanation:"Grand espace familial, quartier calme, école à proximité.", reasons:["Grand espace","École proche","Calme"], latitude:36.871, longitude:10.200, url:"#" },
+    ]
+  },
+  "maison vacances à Hammamet avec piscine": {
+    status: "success",
+    classification: { label: "Location vacances", intent: "vacation" },
+    summary: "4 villas et maisons de vacances avec piscine à Hammamet.",
+    user_message: "Sélection de maisons de vacances à Hammamet, toutes avec piscine privée.",
+    understanding: { type: "maison", ville: "Hammamet", équipement: "piscine", contrat: "vacances" },
+    recommendation: { global_explanation: "Classement par score global : emplacement, piscine, état du bien.", used_relaxation: false },
+    results: [
+      { title:"Villa luxe piscine chauffée Hammamet Nord", price:"3 500 DT/sem", city:"Hammamet", property_type:"Villa", contract:"Vacances", surface:"280 m²", rooms:"5", score:"9.5", explanation:"Villa d'exception avec piscine chauffée, jardin tropical, 300m plage.", reasons:["Piscine chauffée","Jardin","300m plage","Luxe"], latitude:36.396, longitude:10.541, url:"#" },
+      { title:"Maison traditionnelle piscine Hammamet centre", price:"2 200 DT/sem", city:"Hammamet", property_type:"Maison", contract:"Vacances", surface:"180 m²", rooms:"4", score:"8.8", explanation:"Charme authentique, piscine, à 5 min de la médina.", reasons:["Authentique","5 min médina","Piscine"], latitude:36.401, longitude:10.538, url:"#" },
+      { title:"Villa moderne piscine Hammamet Yasmine", price:"4 100 DT/sem", city:"Yasmine Hammamet", property_type:"Villa", contract:"Vacances", surface:"320 m²", rooms:"6", score:"8.3", explanation:"Zone résidentielle premium, piscine XXL, proche golfs et marina.", reasons:["Zone premium","Piscine XXL","Marina proche"], latitude:36.360, longitude:10.564, url:"#" },
+      { title:"Maison familiale piscine Hammamet Sud", price:"1 800 DT/sem", city:"Hammamet", property_type:"Maison", contract:"Vacances", surface:"160 m²", rooms:"4", score:"7.8", explanation:"Excellent rapport qualité-prix, piscine spacieuse, grande terrasse.", reasons:["Bon rapport Q/P","Terrasse spacieuse"], latitude:36.382, longitude:10.547, url:"#" },
+    ]
+  },
+  "maison familiale à Sousse budget 300000": {
+    status: "success",
+    classification: { label: "Achat résidentiel", intent: "purchase" },
+    summary: "5 maisons familiales à vendre à Sousse dans un budget de 300 000 DT.",
+    user_message: "Voici les meilleures maisons familiales à Sousse dans votre budget d'achat de 300 000 DT.",
+    understanding: { budget: 300000, currency: "DT", ville: "Sousse", type: "maison", contrat: "vente", profil: "famille" },
+    recommendation: { global_explanation: "Sélection optimisée pour les familles : surface, proximité écoles, sécurité du quartier.", used_relaxation: false },
+    results: [
+      { title:"Maison S+4 avec jardin Sahloul Sousse", price:"285 000 DT", city:"Sahloul", property_type:"Maison", contract:"Vente", surface:"200 m²", rooms:"5", score:"9.1", explanation:"Quartier résidentiel prisé, jardin, garage, proche toutes commodités.", reasons:["Jardin","Garage","Quartier calme","Écoles proches"], latitude:35.855, longitude:10.608, url:"#" },
+      { title:"Villa plain-pied Khezama Sousse Est", price:"295 000 DT", city:"Khezama", property_type:"Villa", contract:"Vente", surface:"220 m²", rooms:"5", score:"8.9", explanation:"Plain-pied idéal famille, grand terrain, exposition sud.", reasons:["Plain-pied","Grand terrain","Exposition sud"], latitude:35.862, longitude:10.617, url:"#" },
+      { title:"Maison R+1 Hammam Sousse bord de mer", price:"298 000 DT", city:"Hammam Sousse", property_type:"Maison", contract:"Vente", surface:"175 m²", rooms:"4", score:"8.4", explanation:"Proximité mer, quartier résidentiel, terrasse vue dégagée.", reasons:["Proche mer","Terrasse","Vue dégagée"], latitude:35.860, longitude:10.598, url:"#" },
+      { title:"Maison traditionnelle Kalâa Kébira Sousse", price:"210 000 DT", city:"Kalâa Kébira", property_type:"Maison", contract:"Vente", surface:"190 m²", rooms:"5", score:"7.7", explanation:"Budget attractif, grande surface, potentiel rénovation.", reasons:["Prix attractif","Grande surface","Potentiel"], latitude:35.874, longitude:10.540, url:"#" },
+      { title:"Duplex neuf Sousse Riadh", price:"299 000 DT", city:"Sousse", property_type:"Appartement", contract:"Vente", surface:"155 m²", rooms:"4", score:"7.4", explanation:"Neuf, livraison immédiate, résidence gardée avec ascenseur.", reasons:["Neuf","Résidence sécurisée","Ascenseur"], latitude:35.836, longitude:10.635, url:"#" },
+    ]
+  },
+  "villa proche mer à Hammamet": {
+    status: "success",
+    classification: { label: "Achat prestige", intent: "purchase" },
+    summary: "4 villas en bord de mer ou très proche côte à Hammamet.",
+    user_message: "Sélection exclusive de villas proches de la mer à Hammamet.",
+    understanding: { type: "villa", ville: "Hammamet", critère: "proche mer", contrat: "vente" },
+    recommendation: { global_explanation: "Classées par distance à la mer et qualité architecturale.", used_relaxation: false },
+    results: [
+      { title:"Villa pieds dans l'eau Hammamet Corniche", price:"1 250 000 DT", city:"Hammamet", property_type:"Villa", contract:"Vente", surface:"400 m²", rooms:"6", score:"9.8", explanation:"Accès direct plage privée, vue 180°, architecture contemporaine.", reasons:["Plage privée","Vue 180°","Contemporain","Accès direct mer"], latitude:36.393, longitude:10.535, url:"#" },
+      { title:"Villa avec piscine 50m de la plage Hammamet", price:"850 000 DT", city:"Hammamet", property_type:"Villa", contract:"Vente", surface:"300 m²", rooms:"5", score:"9.1", explanation:"50m de la plage, piscine à débordement, terrasses multiples.", reasons:["50m plage","Piscine débordement","Terrasses"], latitude:36.398, longitude:10.542, url:"#" },
+      { title:"Belle villa Yasmine Hammamet vue mer", price:"750 000 DT", city:"Yasmine Hammamet", property_type:"Villa", contract:"Vente", surface:"260 m²", rooms:"5", score:"8.6", explanation:"Zone Yasmine, résidence de standing, vue mer partielle.", reasons:["Zone Yasmine","Standing","Vue mer"], latitude:36.363, longitude:10.567, url:"#" },
+      { title:"Maison de maître front de mer Nabeul", price:"480 000 DT", city:"Nabeul", property_type:"Villa", contract:"Vente", surface:"230 m²", rooms:"5", score:"7.9", explanation:"Front de mer Nabeul, authenticité, jardin en bord de plage.", reasons:["Front de mer","Authenticité","Jardin"], latitude:36.455, longitude:10.734, url:"#" },
+    ]
+  },
+  "studio étudiant à Tunis centre": {
+    status: "success",
+    classification: { label: "Location étudiant", intent: "rental" },
+    summary: "4 studios à louer à Tunis centre, idéals pour étudiants.",
+    user_message: "Voici les meilleurs studios pour étudiant à Tunis centre.",
+    understanding: { type: "studio", ville: "Tunis", profil: "étudiant", contrat: "location" },
+    recommendation: { global_explanation: "Sélection optimisée : prix, accès transports, proximité universités.", used_relaxation: false },
+    results: [
+      { title:"Studio meublé Lafayette Tunis", price:"650 DT/mois", city:"Tunis", property_type:"Studio", contract:"Location", surface:"35 m²", rooms:"1", score:"8.9", explanation:"Centre Lafayette, meublé, internet inclus, proche métro.", reasons:["Centre ville","Métro 3 min","Internet inclus","Meublé"], latitude:36.816, longitude:10.173, url:"#" },
+      { title:"Studio neuf El Menzah 6 Tunis", price:"700 DT/mois", city:"El Menzah", property_type:"Studio", contract:"Location", surface:"40 m²", rooms:"1", score:"8.4", explanation:"Résidence récente, calme, proche cité universitaire.", reasons:["Neuf","Calme","Cité U proche"], latitude:36.848, longitude:10.168, url:"#" },
+      { title:"Studio Bab Bhar Tunis Médina", price:"580 DT/mois", city:"Tunis", property_type:"Studio", contract:"Location", surface:"30 m²", rooms:"1", score:"7.8", explanation:"Idéalement situé, chargé d'histoire, accès rapide centre.", reasons:["Bien situé","Prix attractif","Médina"], latitude:36.800, longitude:10.177, url:"#" },
+      { title:"Studio Charguia 2 Tunis Nord", price:"620 DT/mois", city:"Charguia", property_type:"Studio", contract:"Location", surface:"38 m²", rooms:"1", score:"7.3", explanation:"Proche aéroport, zone d'affaires, transport en commun.", reasons:["Zone d'affaires","Transport commun"], latitude:36.860, longitude:10.195, url:"#" },
+    ]
+  }
+};
+
+/* ==========================================================
+   STATE
+   ========================================================== */
+let currentResults = [];
+let activeTab = 'map';
+let filterType = 'all';
+let filterContract = 'all';
+let filterPrice = 2000000;
+
+/* ==========================================================
+   HELPERS
+   ========================================================== */
+function fillQuery(q) {
+  document.getElementById('main-search').value = q;
+}
+
+function fillAndSearch(q) {
+  fillQuery(q);
+  runSearch();
+}
+
+function getClassCss(intent) {
+  if (intent === 'rental') return 'class-rental';
+  if (intent === 'vacation') return 'class-vacation';
+  return 'class-purchase';
+}
+
+function extractPrice(pStr) {
+  if (!pStr) return 999999999;
+  const nums = pStr.replace(/\s/g, '').match(/\d+/g);
+  return nums ? parseInt(nums.join('')) : 999999999;
+}
+
+/* ==========================================================
+   SEARCH
+   ========================================================== */
+function runSearch() {
+  const q = document.getElementById('main-search').value.trim();
+  if (!q) return;
+
+  document.getElementById('hero-welcome').style.display = 'none';
+  document.getElementById('results-area').style.display = 'block';
+  document.getElementById('results-area').innerHTML = `
+    <div class="loading-state">
+      <div class="loading-ring"></div>
+      <div class="loading-text">Analyse de votre requête en cours...</div>
+    </div>`;
+
+  // -------------------------------------------------------
+    fetch('/api/recommend', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: q, top_k: 10 })
+  })
+  .then(r => {
+      if (!r.ok) throw new Error('Erreur serveur ' + r.status);
+      return r.json();
+  })
+  .then(data => {
+      currentResults = data.results || [];
+
+      renderResults(data);
+      const mappableResults = (data.results || []).filter(
+        r => r.latitude !== null && r.longitude !== null && r.latitude !== undefined && r.longitude !== undefined
+      );
+
+      renderMap(mappableResults);
+      renderAnalysis(data);
+      updateStats(data.results || []);
+
+      addChatMsg(
+          'ai',
+          `🔍 ${data.user_message || data.summary || 'Résultats chargés.'}`
+      );
+  })
+  .catch(err => {
+      document.getElementById('results-area').innerHTML = `
+          <div style="text-align:center;padding:3rem;color:var(--text3)">
+              <div style="font-size:2rem;margin-bottom:1rem">⚠️</div>
+              <div>Impossible de joindre le moteur.</div>
+              <small>${err.message}</small>
+          </div>`;
+  });
+}
+
+/* ==========================================================
+   STATS
+   ========================================================== */
+function updateStats(results) {
+  const cities = [...new Set(results.map(r => r.city))];
+  const avgScore = results.length
+    ? (results.reduce((a, b) => a + parseFloat(b.score || 0), 0) / results.length).toFixed(1)
+    : '—';
+  document.getElementById('stat-props').textContent = results.length;
+  document.getElementById('stat-cities').textContent = cities.length;
+  document.getElementById('stat-score').textContent = avgScore;
+}
+
+/* ==========================================================
+   RENDER RESULTS
+   ========================================================== */
+function renderResults(data) {
+  const sb = document.getElementById('summary-bar');
+  sb.innerHTML = `<strong>Assistant :</strong> ${data.user_message}`;
+  sb.classList.add('visible');
+
+  const area = document.getElementById('results-area');
+  let html = `
+    <div class="results-header">
+    <div class="results-count">
+      <span>${data.results.length}</span> biens affichés
+      <div style="font-size:0.8rem;color:var(--text3);font-family:'DM Sans',sans-serif;margin-top:4px;">
+        ${data.recommendation?.total_after_filters ?? data.results.length} biens compatibles au total
+      </div>
+    </div>      
+      <select class="sort-select" onchange="sortResults(this.value)">
+        <option value="score">Score ↓</option>
+        <option value="price_asc">Prix ↑</option>
+        <option value="price_desc">Prix ↓</option>
+      </select>
+    </div>
+    <div class="classification-bar">
+      <span class="class-tag ${getClassCss(data.understanding?.contract)}">${data.classification.label}</span>
+      <span class="class-text">${
+        data.understanding
+          ? `Ville: <strong>${data.understanding.city || '—'}</strong> · Budget: <strong>${data.understanding.budget_max || '—'}</strong> · Contrat: <strong>${data.understanding.contract || '—'}</strong>`
+          : (data.summary || '').slice(0, 80) + '...'
+      }</span>
+    </div>`;
+
+  if (data.recommendation?.used_relaxation) {
+    html += `<div class="relax-notice">⚡ Critères légèrement assouplis. ${data.recommendation.message || ''}</div>`;
+  }
+  if (data.recommendation?.global_explanation) {
+  html += `
+    <div class="relax-notice" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.25);color:#93C5FD">
+      🧠 ${data.recommendation.global_explanation}
+    </div>`;
+}
+
+  data.results.forEach((r, i) => { html += renderCard(r, i); });
+  area.innerHTML = html;
+}
+
+function renderCard(r, idx) {
+  const reasons = (r.reasons || []).map(rr => `<span class="reason-pill">${rr}</span>`).join('');
+  const linkHtml = r.url && r.url !== '#'
+    ? `<a class="card-link" href="${r.url}" target="_blank">Voir l'annonce →</a>`
+    : '';
+  return `
+    <div class="result-card" onclick="highlightPin(${idx})">
+      <div class="card-top">
+        <div class="card-title">${r.title || 'Bien immobilier'}</div>
+        <div class="score-badge">
+          <div class="score-num">${r.score}</div>
+          <div class="score-lbl">Score</div>
+        </div>
+      </div>
+      <div class="card-price">${r.price || 'Prix N/D'}</div>
+      <div class="card-meta">
+        <span class="meta-pill">📍 ${r.city || '—'}</span>
+        <span class="meta-pill">🏠 ${r.property_type || '—'}</span>
+        <span class="meta-pill">📋 ${r.contract || '—'}</span>
+        <span class="meta-pill">📐 ${r.surface || '—'}</span>
+        <span class="meta-pill">🚪 ${r.rooms || '—'} pièces</span>
+      </div>
+      ${reasons ? `<div class="card-reasons">${reasons}</div>` : ''}
+    <div style="font-size:0.68rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem">
+      Explication IA
+    </div>
+    <div class="card-explanation">${r.explanation || ''}</div>      
+          
+    ${linkHtml}
+    </div>`;
+}
+
+/* ==========================================================
+   SORT
+   ========================================================== */
+function sortResults(method) {
+  if (!currentResults.length) return;
+  let sorted = [...currentResults];
+  if (method === 'score') sorted.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+  else if (method === 'price_asc') sorted.sort((a, b) => extractPrice(a.price) - extractPrice(b.price));
+  else if (method === 'price_desc') sorted.sort((a, b) => extractPrice(b.price) - extractPrice(a.price));
+  const area = document.getElementById('results-area');
+  const header = area.querySelector('.results-header').outerHTML;
+  const classBar = area.querySelector('.classification-bar').outerHTML;
+  area.innerHTML = header + classBar + sorted.map((r, i) => renderCard(r, i)).join('');
+}
+
+/* ==========================================================
+   MAP
+   ========================================================== */
+function renderMap(results) {
+  const pinsDiv = document.getElementById('map-pins');
+  const noData = document.getElementById('map-no-data');
+  const legend = document.getElementById('map-legend');
+  const mapBg = document.getElementById('map-bg');
+
+  const validResults = (results || []).filter(r =>
+    r.latitude !== null &&
+    r.longitude !== null &&
+    r.latitude !== undefined &&
+    r.longitude !== undefined &&
+    !isNaN(parseFloat(r.latitude)) &&
+    !isNaN(parseFloat(r.longitude))
+  );
+
+  if (!validResults.length) {
+    noData.style.display = 'flex';
+    noData.innerHTML = `
+      <div style="font-size:2.5rem">🗺️</div>
+      <div>Aucune coordonnée exploitable n'est disponible<br>pour les biens actuellement affichés.</div>
+    `;
+    pinsDiv.innerHTML = '';
+    legend.style.display = 'none';
+    return;
+  }
+
+  noData.style.display = 'none';
+  legend.style.display = 'block';
+
+  const lats = validResults.map(r => parseFloat(r.latitude));
+  const lons = validResults.map(r => parseFloat(r.longitude));
+
+  const minLat = Math.min(...lats);
+  const maxLat = Math.max(...lats);
+  const minLon = Math.min(...lons);
+  const maxLon = Math.max(...lons);
+
+  const padLat = (maxLat - minLat) * 0.25 || 0.025;
+  const padLon = (maxLon - minLon) * 0.25 || 0.025;
+
+  const mapW = 380;
+  const mapH = 340;
+
+  function toX(lon) {
+    return ((lon - minLon + padLon) / (maxLon - minLon + 2 * padLon)) * mapW;
+  }
+
+  function toY(lat) {
+    return (1 - (lat - minLat + padLat) / (maxLat - minLat + 2 * padLat)) * mapH;
+  }
+
+  mapBg.style.minHeight = mapH + 'px';
+
+  pinsDiv.innerHTML = validResults.map((r, i) => {
+    const lat = parseFloat(r.latitude);
+    const lon = parseFloat(r.longitude);
+
+    const x = toX(lon);
+    const y = toY(lat);
+
+    const score = parseFloat(r.score || 0);
+    const safeScore = isNaN(score) ? 0 : score;
+    const size = Math.max(28, Math.min(42, safeScore * 4.2));
+
+    return `
+      <div class="map-pin" id="pin-${i}" style="left:${x}px;top:${y}px">
+        <div class="pin-body" style="width:${size}px;height:${size}px">
+          <div class="pin-inner">${i + 1}</div>
+        </div>
+        <div class="pin-tooltip">
+          <div class="tooltip-title">${(r.title || '').slice(0, 28)}${(r.title || '').length > 28 ? '…' : ''}</div>
+          <div class="tooltip-price">${r.price || '—'} · Score: ${r.score || '—'}</div>
+          <div style="font-size:0.68rem;color:var(--text3);margin-top:3px">${r.city || ''}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function highlightPin(idx) {
+  document.querySelectorAll('.map-pin .pin-body').forEach(p => {
+    p.style.boxShadow = '0 4px 16px rgba(201,147,42,0.4)';
+  });
+  const pin = document.getElementById('pin-' + idx);
+  if (pin) {
+    pin.querySelector('.pin-body').style.boxShadow = '0 0 0 4px rgba(201,147,42,0.5), 0 8px 24px rgba(201,147,42,0.6)';
+    switchTab('map');
+  }
+}
+
+/* ==========================================================
+   ANALYSIS
+   ========================================================== */
+function renderAnalysis(data) {
+  const area = document.getElementById('analysis-content');
+  const u = data.understanding || {};
+  const results = data.results;
+  const scores = results.map(r => parseFloat(r.score || 0));
+  const avgScore = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+  const maxScore = Math.max(...scores).toFixed(1);
+  const cities = [...new Set(results.map(r => r.city))];
+
+  area.innerHTML = `
+    <div style="font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1.2rem;font-weight:600">Analyse de la requête</div>
+    <div style="background:var(--glass);border:1px solid var(--border2);border-radius:14px;padding:1rem;margin-bottom:1rem">
+      <div style="font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem">Paramètres détectés</div>
+      ${Object.entries(u).map(([k, v]) => `
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2);font-size:0.8rem">
+          <span style="color:var(--text3)">${k}</span>
+          <span style="color:var(--gold2);font-weight:500">${v}</span>
+        </div>`).join('')}
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem">
+      <div style="background:var(--glass);border:1px solid var(--border2);border-radius:12px;padding:0.9rem;text-align:center">
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold2)">${avgScore}</div>
+        <div style="font-size:0.7rem;color:var(--text3);text-transform:uppercase">Score moyen</div>
+      </div>
+      <div style="background:var(--glass);border:1px solid var(--border2);border-radius:12px;padding:0.9rem;text-align:center">
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold2)">${maxScore}</div>
+        <div style="font-size:0.7rem;color:var(--text3);text-transform:uppercase">Meilleur score</div>
+      </div>
+    </div>
+    <div style="background:var(--glass);border:1px solid var(--border2);border-radius:14px;padding:1rem;margin-bottom:1rem">
+      <div style="font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem">Distribution des scores</div>
+      ${results.map((r, i) => `
+        <div style="margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem;margin-bottom:3px">
+            <span style="color:var(--text2)">${i + 1}. ${(r.title || '').slice(0, 22)}…</span>
+            <span style="color:var(--gold2);font-weight:600">${r.score}</span>
+          </div>
+          <div style="height:4px;background:var(--glass2);border-radius:999px">
+            <div style="height:4px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:999px;width:${(parseFloat(r.score) / 10) * 100}%"></div>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div style="background:var(--glass);border:1px solid var(--border2);border-radius:14px;padding:1rem">
+      <div style="font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem">Villes couvertes</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        ${cities.map(c => `<span style="padding:4px 10px;border-radius:999px;background:rgba(201,147,42,0.1);border:1px solid rgba(201,147,42,0.2);font-size:0.73rem;color:var(--gold)">${c}</span>`).join('')}
+      </div>
+    </div>`;
+}
+
+/* ==========================================================
+   TABS
+   ========================================================== */
+function switchTab(tab) {
+  activeTab = tab;
+  ['map', 'chat', 'analysis'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+    const panel = document.getElementById('tab-' + t + '-panel');
+    if (t === 'chat') {
+      panel.style.display = (t === tab) ? 'flex' : 'none';
+    } else {
+      panel.style.display = (t === tab) ? 'block' : 'none';
+    }
+    if (t === tab) panel.classList.add('visible');
+    else panel.classList.remove('visible');
+  });
+}
+
+/* ==========================================================
+   CHAT
+   ========================================================== */
+const CHAT_RESPONSES = {
+  prix: [
+    "Les prix varient selon la localisation et le standing. Pour votre recherche, le meilleur rapport qualité-prix est le bien n°1 avec un score de {top_score}.",
+    "En moyenne, les biens affichés ont un score de {top_score}/10. Je vous recommande de visiter en priorité les 2-3 premiers résultats."
+  ],
+  quartier: [
+    "La Marsa, Sahloul et Hammamet Nord sont les zones les plus prisées. Pour votre budget, {ville} offre un excellent potentiel.",
+    "Les quartiers recommandés pour votre profil sont les zones résidentielles calmes proches des commodités."
+  ],
+  score: [
+    "Le score est calculé sur plusieurs critères : localisation, rapport qualité-prix, équipements, et correspondance à votre requête.",
+    "Un score au-dessus de 8.5 indique un excellent match. Le meilleur bien affiché a un score de {top_score}/10."
+  ],
+  default: [
+    "Je peux vous donner plus de détails sur l'un des biens affichés. Lequel vous intéresse le plus ?",
+    "N'hésitez pas à affiner votre recherche — ajoutez un budget ou une zone spécifique pour de meilleurs résultats.",
+    "Les résultats actuels correspondent bien à votre demande. Souhaitez-vous voir des biens similaires dans d'autres zones ?"
+  ]
+};
+
+function addChatMsg(type, text) {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `msg ${type}`;
+  div.innerHTML = type === 'ai'
+    ? `<div class="msg-sender">Assistant EstateMind</div>${text}`
+    : `<div class="msg-sender">Vous</div>${text}`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function addTypingIndicator() {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg loading';
+  div.id = 'typing-indicator';
+  div.innerHTML = `<div class="typing-dots"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTypingIndicator() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  addChatMsg('user', msg);
+  switchTab('chat');
+  addTypingIndicator();
+
+  setTimeout(() => {
+    removeTypingIndicator();
+    const topScore = currentResults[0]?.score || '—';
+    const ville = currentResults[0]?.city || '—';
+    const lower = msg.toLowerCase();
+    let resp;
+    if (lower.includes('prix') || lower.includes('budget') || lower.includes('coût')) resp = CHAT_RESPONSES.prix;
+    else if (lower.includes('quartier') || lower.includes('zone') || lower.includes('ville')) resp = CHAT_RESPONSES.quartier;
+    else if (lower.includes('score') || lower.includes('classement') || lower.includes('meilleur')) resp = CHAT_RESPONSES.score;
+    else resp = CHAT_RESPONSES.default;
+    const template = resp[Math.floor(Math.random() * resp.length)];
+    const text = template.replace('{top_score}', topScore).replace('{ville}', ville);
+    addChatMsg('ai', text);
+  }, 1100);
+}
+
+/* ==========================================================
+   FILTERS
+   ========================================================== */
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', function () {
+    const filter = this.dataset.filter;
+    document.querySelectorAll(`[data-filter="${filter}"]`).forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    if (filter === 'type') filterType = this.dataset.val;
+    if (filter === 'contract') filterContract = this.dataset.val;
+  });
+});
+
+const priceSlider = document.getElementById('price-slider');
+const priceLbl = document.getElementById('price-max-lbl');
+priceSlider.addEventListener('input', function () {
+  const v = parseInt(this.value);
+  filterPrice = v;
+  priceLbl.textContent = v >= 2000000 ? 'Illimité' : v.toLocaleString('fr-TN') + ' DT';
+});
+
+/* ==========================================================
+   VIEW TOGGLE
+   ========================================================== */
+function setView(v) {
+  document.getElementById('vbtn-grid').classList.toggle('active', v === 'grid');
+  document.getElementById('vbtn-list').classList.toggle('active', v === 'list');
+}
+
+/* ==========================================================
+   KEYBOARD SHORTCUTS
+   ========================================================== */
+document.getElementById('main-search').addEventListener('keydown', e => {
+  if (e.key === 'Enter') runSearch();
+});
+document.getElementById('chat-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+</script>
+</body>
+</html>

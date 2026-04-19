@@ -805,7 +805,7 @@ def recommend_properties_from_understanding(
     # 2. Déclencher relaxation intelligente si besoin
     # =========================
     should_relax = False
-
+    
     if ranked.empty:
         should_relax = True
     elif len(ranked) < 3:
@@ -1071,6 +1071,8 @@ def build_result_card(row: pd.Series, intent: Optional[UserIntent] = None) -> Di
         "explanation": explanation,
         "url": row.get("url"),
         "price_per_m2": row.get("price_per_m2"),
+        "latitude": row.get("latitude"),
+        "longitude": row.get("longitude"),
     }
 
 def recommend_properties(df: pd.DataFrame, user_query: str, top_k: int = 5) -> Dict[str, Any]:

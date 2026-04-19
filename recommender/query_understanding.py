@@ -110,16 +110,32 @@ def extract_budget_range_from_query(query: str) -> Tuple[Optional[float], Option
 def extract_budget_from_query(query: str) -> Optional[float]:
     q = normalize_text(query)
 
+    # 150 md
+    m = re.search(r"(\d+(?:\.\d+)?)\s*md\b", q)
+    if m:
+        return float(m.group(1)) * 1000
+
+    # 2 million / 2 millions
+    m = re.search(r"(\d+(?:\.\d+)?)\s*(million|millions)\b", q)
+    if m:
+        return float(m.group(1)) * 1000
+
+    # 1200 dt / 1200 tnd / 1200 dinars
     m = re.search(r"(\d+(?:\.\d+)?)\s*(dt|tnd|dinar|dinars)\b", q)
     if m:
         return float(m.group(1))
 
+    # max 1200 / maximum 1200 / moins de 1200
     m = re.search(r"(max|maximum|jusqu a|jusqu'a|moins de|pas plus de)\s*(\d+(?:\.\d+)?)", q)
     if m:
         return float(m.group(2))
 
-    return None
+    # budget 300000 / budget de 300000
+    m = re.search(r"budget\s*(?:de\s*)?(\d+(?:\.\d+)?)", q)
+    if m:
+        return float(m.group(1))
 
+    return None
 
 def extract_city_from_query(query: str) -> Optional[str]:
     q = normalize_text(query)

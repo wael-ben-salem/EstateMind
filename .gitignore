@@ -133,3 +133,9 @@ docker-compose.override.yml
 
 # MinIO/S3 cache
 .minio/
+
+
+# --- Exceptions recommender (Farah) ---
+!recommender/estatemind_ui.html
+!data_cleaned/
+!data_cleaned/*.csv
