@@ -133,3 +133,4 @@ docker-compose.override.yml
 
 # MinIO/S3 cache
 .minio/
+PiEnv/
