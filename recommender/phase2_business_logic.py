@@ -74,6 +74,7 @@ PRICE_RULES = {
 # =========================================================
 # 2) OUTILS DE NORMALISATION
 # =========================================================
+
 def extract_budget_range_from_query(query: str) -> Tuple[Optional[float], Optional[float]]:
     q = normalize_text(query)
 
