@@ -1,0 +1,34 @@
+# Dossiers du projet non liés au recommender
+agent/
+agent_price/
+airflow/
+EstateMind-master/
+notebooks/
+scraper/
+ScrapperData/
+spark/
+
+# Fichiers inutiles
+*.ipynb
+*.zip
+*.yaml
+README.md
+PROJECT_DOCUMENTATION.md
+DEPLOYMENT_GUIDE.md
+.gitattributes
+.gitignore
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environnements virtuels
+venv/
+env/
+.env/
+
+# VS Code
+.vscode/
