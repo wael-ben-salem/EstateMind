@@ -1,0 +1,54 @@
+# docker-compose.yml
+# Run both EstateMind microservices together:
+#   docker compose up --build
+#
+# Price service  → http://localhost:8001
+# Anomaly service → http://localhost:8002
+
+version: "3.9"
+
+services:
+
+  price-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn price_service:app --host 0.0.0.0 --port 8001
+    ports:
+      - "8001:8001"
+    environment:
+      MODEL_DIR: /app/model_artefacts
+      DATA_PATH: /app/data/tunisia_realestate_cleaned.csv
+    volumes:
+      - ./data:/app/data          # mount your CSV here
+      - ./model_artefacts:/app/model_artefacts
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  anomaly-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn anomaly_service:app --host 0.0.0.0 --port 8002
+    ports:
+      - "8002:8002"
+    environment:
+      MODEL_DIR: /app/model_artefacts
+      DATA_PATH: /app/data/tunisia_realestate_cleaned.csv
+      REPORT_PATH: /app/outputs/anomaly_report.csv
+      MAP_PATH: /app/outputs/anomaly_map.html
+    volumes:
+      - ./data:/app/data
+      - ./model_artefacts:/app/model_artefacts
+      - ./outputs:/app/outputs
+    depends_on:
+      price-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
