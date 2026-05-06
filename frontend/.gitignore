@@ -3,6 +3,8 @@
 node_modules/
 dist/
 coverage/
+.tsbuildinfo
+tsconfig.tsbuildinfo
 .DS_Store
 .vscode
 .idea

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
   plugins: [react()],
@@ -10,6 +11,11 @@ export default defineConfig({
       usePolling: true,
     }
   },
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
   build: {
     outDir: 'dist',
     sourcemap: false,
@@ -17,8 +23,10 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor': ['react', 'react-dom', 'react-router-dom'],
-          'antd': ['antd'],
-          'charts': ['recharts', 'chart.js', 'react-chartjs-2']
+          'mui': ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
+          'charts': ['recharts', 'd3'],
+          'workflow': ['reactflow'],
+          'realtime': ['socket.io-client']
         }
       }
     }
