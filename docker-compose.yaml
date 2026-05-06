@@ -66,6 +66,39 @@ services:
       exit 0
       "
 
+  # Backend API service for data queries
+  backend:
+    build: ./backend
+    container_name: estateMind-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - DATABASE_URL=postgresql://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW_API_URL=http://airflow:8080/api/v1
+      - AIRFLOW_DAG_ID=tayara_ai_agent_pipeline
+      - AIRFLOW_USERNAME=admin
+      - AIRFLOW_PASSWORD=admin
+    depends_on:
+      - postgres
+      - airflow
+
+  # React frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: estateMind-frontend
+    ports:
+      - "8082:80"
+    depends_on:
+      - airflow
+      - backend
+    environment:
+      REACT_APP_API_URL: http://localhost/api
+      REACT_APP_AIRFLOW_URL: http://localhost/airflow/api
+    restart: always
+
 volumes:
   postgres-db-volume:
     external: true

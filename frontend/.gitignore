@@ -1,0 +1,14 @@
+.env.local
+.env.*.local
+node_modules/
+dist/
+coverage/
+.DS_Store
+.vscode
+.idea
+*.swp
+*.swo
+npm-debug.log
+yarn-error.log
+.env
+.env.production
