@@ -26,7 +26,6 @@ spark = (
 
 df = spark.read.option("multiline", "true").json(INPUT_PATH)
 
-# 1) Basic cleaning + normalization + safe casting
 clean_df = (
     df.dropDuplicates(["id"])
       .withColumn("title", trim(col("title")))
@@ -68,12 +67,6 @@ clean_df = (
       .withColumn("location", regexp_replace(col("location"), "À", "A"))
       .withColumn("location", regexp_replace(col("location"), "Â", "A"))
 
-      .withColumn("title_clean", upper(regexp_replace(col("title"), r"[^\w\s]", " ")))
-      .withColumn("description_clean", upper(regexp_replace(col("description"), r"[^\w\s]", " ")))
-      .withColumn("ville_clean", upper(regexp_replace(col("ville"), r"[^\w\s]", " ")))
-      .withColumn("quartier_clean", upper(regexp_replace(col("quartier"), r"[^\w\s]", " ")))
-      .withColumn("delegation_clean", upper(regexp_replace(col("delegation"), r"[^\w\s]", " ")))
-
       .withColumn("price_num", expr("try_cast(price as double)"))
       .withColumn("superficie_num", expr("try_cast(superficie as double)"))
       .withColumn("nbr_chambres_num", expr("try_cast(nbr_chambres as double)"))
@@ -88,41 +81,63 @@ clean_df = (
           "pub_hours_ago",
           expr("try_cast(regexp_extract(lower(pub_date), '(\\\\d+)', 1) as int)")
       )
-
-      # standardize transaction types
       .withColumn(
           "transaction_type_std",
-          when(
-              lower(col("transaction_type")).isin("a vendre", "à vendre", "vente", "بيع"),
-              "A vendre"
-          ).when(
-              lower(col("transaction_type")).isin("a louer", "à louer", "location", "كراء", "إيجار", "3", "38", "45"),
-              "A louer"
-          ).otherwise(None)
+          when(lower(col("transaction_type")).isin("a vendre", "à vendre", "vente", "بيع"), "A vendre")
+          .when(lower(col("transaction_type")).isin("a louer", "à louer", "location", "كراء", "إيجار", "3", "38", "45"), "A louer")
+          .otherwise(None)
       )
       .withColumn(
           "transaction_type_extrait_std",
-          when(
-              lower(col("transaction_type_extrait")).isin("a vendre", "à vendre", "vente", "بيع"),
-              "A vendre"
-          ).when(
-              lower(col("transaction_type_extrait")).isin("a louer", "à louer", "location", "كراء", "إيجار", "3", "38", "45"),
-              "A louer"
-          ).otherwise(None)
+          when(lower(col("transaction_type_extrait")).isin("a vendre", "à vendre", "vente", "بيع"), "A vendre")
+          .when(lower(col("transaction_type_extrait")).isin("a louer", "à louer", "location", "كراء", "إيجار", "3", "38", "45"), "A louer")
+          .otherwise(None)
       )
 )
 
-# 2) Build final business columns
 clean_df = (
     clean_df
       .withColumn("superficie_finale", coalesce(col("superficie_num"), col("surface_extraite_num")))
       .withColumn("nbr_chambres_final", coalesce(col("nbr_chambres_num"), col("nb_chambres_extrait_num")))
       .withColumn("nbr_sdb_final", coalesce(col("nbr_sdb_num"), col("nb_sdb_extrait_num")))
       .withColumn("transaction_type_final", coalesce(col("transaction_type_std"), col("transaction_type_extrait_std")))
-      .withColumn("location_finale", coalesce(col("quartier"), col("delegation"), col("ville"), col("location")))
+      .withColumn(
+          "location_finale_raw",
+          coalesce(
+              col("matched_locality_name"),
+              col("quartier"),
+              col("delegation"),
+              col("ville"),
+              col("location")
+          )
+      )
 )
 
-# 3) Calculate price per m²
+clean_df = (
+    clean_df
+      .withColumn("location_finale", upper(trim(regexp_replace(col("location_finale_raw"), r"\s+", " "))))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "É", "E"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "È", "E"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "Ê", "E"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "À", "A"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "Â", "A"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "Ù", "U"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "Û", "U"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "Ô", "O"))
+      .withColumn("location_finale", regexp_replace(col("location_finale"), "Î", "I"))
+
+      .withColumn("location_finale", when(col("location_finale") == "SOUKRA", "LA SOUKRA").otherwise(col("location_finale")))
+      .withColumn("location_finale", when(col("location_finale") == "BARDO2", "LE BARDO").otherwise(col("location_finale")))
+
+      .withColumn("location_finale", when(col("location_finale") == "أريانة الصغرى", "ARIANA SOGHRA").otherwise(col("location_finale")))
+      .withColumn("location_finale", when(col("location_finale") == "المحمدية", "MOHAMMADIA").otherwise(col("location_finale")))
+      .withColumn("location_finale", when(col("location_finale") == "حي النسيم", "HAY ENNASSIM").otherwise(col("location_finale")))
+      .withColumn("location_finale", when(col("location_finale") == "الزغوانية", "ZAGHOUANIA").otherwise(col("location_finale")))
+      .withColumn("location_finale", when(col("location_finale") == "نصر الله", "NASRALLAH").otherwise(col("location_finale")))
+      .withColumn("location_finale", when(col("location_finale") == "حبل عباس", "HABEL ABBES").otherwise(col("location_finale")))
+      .withColumn("location_finale", when(col("location_finale") == "القصرين", "KASSERINE").otherwise(col("location_finale")))
+)
+
 clean_df = (
     clean_df
       .withColumn(
@@ -136,43 +151,22 @@ clean_df = (
       )
 )
 
-# 4) Null-out obvious anomalies
 clean_df = (
     clean_df
-      .withColumn(
-          "price_num",
-          when((col("price_num") <= 0) | (col("price_num") > 100000000), None).otherwise(col("price_num"))
-      )
-      .withColumn(
-          "superficie_finale",
-          when((col("superficie_finale") <= 0) | (col("superficie_finale") > 100000), None).otherwise(col("superficie_finale"))
-      )
-      .withColumn(
-          "price_per_m2",
-          when((col("price_per_m2") <= 0) | (col("price_per_m2") > 1000000), None).otherwise(col("price_per_m2"))
-      )
+      .withColumn("price_num", when((col("price_num") <= 0) | (col("price_num") > 100000000), None).otherwise(col("price_num")))
+      .withColumn("superficie_finale", when((col("superficie_finale") <= 0) | (col("superficie_finale") > 100000), None).otherwise(col("superficie_finale")))
+      .withColumn("price_per_m2", when((col("price_per_m2") <= 0) | (col("price_per_m2") > 1000000), None).otherwise(col("price_per_m2")))
 )
 
-# 5) Quality flags
 clean_df = (
     clean_df
       .withColumn("is_price_suspicious", when(col("price_num").isNull(), True).otherwise(False))
       .withColumn("is_surface_suspicious", when(col("superficie_finale").isNull(), True).otherwise(False))
-      .withColumn(
-          "is_city_missing",
-          when(col("ville").isNull() | (length(trim(col("ville"))) == 0), True).otherwise(False)
-      )
-      .withColumn(
-          "is_transaction_missing",
-          when(col("transaction_type_final").isNull() | (length(trim(col("transaction_type_final"))) == 0), True).otherwise(False)
-      )
-      .withColumn(
-          "is_geo_missing",
-          when(col("latitude").isNull() | col("longitude").isNull(), True).otherwise(False)
-      )
+      .withColumn("is_city_missing", when(col("ville").isNull() | (length(trim(col("ville"))) == 0), True).otherwise(False))
+      .withColumn("is_transaction_missing", when(col("transaction_type_final").isNull() | (length(trim(col("transaction_type_final"))) == 0), True).otherwise(False))
+      .withColumn("is_geo_missing", when(col("latitude").isNull() | col("longitude").isNull(), True).otherwise(False))
 )
 
-# 6) Drop rows with null/empty ville
 filtered_df = (
     clean_df.filter(col("id").isNotNull())
             .filter(col("title").isNotNull())
@@ -180,7 +174,6 @@ filtered_df = (
             .filter(length(trim(col("ville"))) > 0)
 )
 
-# 7) Build stricter analytics subset
 analytics_df = (
     filtered_df.filter(col("price_num").isNotNull())
                .filter(col("superficie_finale").isNotNull())
@@ -189,7 +182,6 @@ analytics_df = (
                .filter(~col("is_surface_suspicious"))
 )
 
-# 8) Aggregation
 agg_df = (
     analytics_df.groupBy("location_finale", "transaction_type_final")
                 .avg("price_num", "superficie_finale", "price_per_m2")
@@ -198,80 +190,44 @@ agg_df = (
                 .withColumnRenamed("avg(price_per_m2)", "avg_price_per_m2")
 )
 
-# 9) Export tables to pandas
 clean_pd = filtered_df.select(
-    "id",
-    "title",
-    "description",
-    "location",
-    "location_finale",
-    "transaction_type",
-    "transaction_type_final",
-    "price_num",
-    "superficie_num",
-    "superficie_finale",
-    "nbr_chambres_num",
-    "nbr_chambres_final",
-    "nbr_sdb_num",
-    "nbr_sdb_final",
-    "image_count",
-    "pub_hours_ago",
-    "price_per_m2",
-    "scraped_at",
-    "published_at_from_id",
-    "num_etage",
-    "adresse_raw",
-    "ville",
-    "quartier",
-    "delegation",
-    "gouvernorat",
-    "matched_state",
-    "matched_delegation",
-    "matched_locality_name",
-    "matched_postal_code",
-    "latitude",
-    "longitude",
-    "geo_match_level",
-    "geo_source",
-    "type_bien_extrait",
-    "usage_extrait",
-    "titre_foncier_extrait",
-    "source_extraction",
-    "extraction_confidence",
-    "is_price_suspicious",
-    "is_surface_suspicious",
-    "is_city_missing",
-    "is_transaction_missing",
-    "is_geo_missing"
+    "id", "title", "description", "location", "location_finale",
+    "transaction_type", "transaction_type_final",
+    "price_num", "superficie_num", "superficie_finale",
+    "nbr_chambres_num", "nbr_chambres_final",
+    "nbr_sdb_num", "nbr_sdb_final",
+    "image_count", "pub_hours_ago", "price_per_m2",
+    "scraped_at", "published_at_from_id",
+    "num_etage", "adresse_raw",
+    "ville", "quartier", "delegation", "gouvernorat",
+    "matched_state", "matched_delegation", "matched_locality_name", "matched_postal_code",
+    "latitude", "longitude", "geo_match_level", "geo_source",
+    "type_bien_extrait", "usage_extrait", "titre_foncier_extrait",
+    "source_extraction", "extraction_confidence",
+    "is_price_suspicious", "is_surface_suspicious", "is_city_missing",
+    "is_transaction_missing", "is_geo_missing"
 ).toPandas()
 
 analytics_pd = analytics_df.select(
-    "id",
-    "title",
-    "location_finale",
-    "transaction_type_final",
-    "price_num",
-    "superficie_finale",
-    "price_per_m2",
-    "ville",
-    "latitude",
-    "longitude",
-    "type_bien_extrait",
-    "usage_extrait"
+    "id", "title", "location_finale", "transaction_type_final",
+    "price_num", "superficie_finale", "price_per_m2",
+    "ville", "latitude", "longitude",
+    "type_bien_extrait", "usage_extrait"
 ).toPandas()
 
 agg_pd = agg_df.toPandas()
 
-# 10) Write to PostgreSQL
 engine = create_engine(POSTGRES_URL)
 
 clean_pd["id"] = clean_pd["id"].astype(str)
 clean_pd = clean_pd.drop_duplicates(subset=["id"]).copy()
-print(f"Rows to load into clean_tayara: {len(clean_pd)}")
+print(f"Rows to insert into clean_tayara: {len(clean_pd)}")
 
-# full refresh so old dirty rows are removed
-clean_pd.to_sql("clean_tayara", engine, if_exists="replace", index=False)
-print(f"Recreated clean_tayara with {len(clean_pd)} rows.")
+if not clean_pd.empty:
+    clean_pd.to_sql("clean_tayara", engine, if_exists="append", index=False, method="multi")
+    print(f"Inserted {len(clean_pd)} rows into clean_tayara.")
+else:
+    print("No new rows to insert into clean_tayara.")
 
 analytics_pd.to_sql("clean_tayara_analytics", engine, if_exists="replace", index=False)
 agg_pd.to_sql("agg_price_by_location", engine, if_exists="replace", index=False)

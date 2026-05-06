@@ -68,3 +68,5 @@ services:
 
 volumes:
   postgres-db-volume:
+    external: true
+    name: etl_postgres-db-volume
