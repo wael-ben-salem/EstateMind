@@ -14,7 +14,7 @@ const pool = new Pool({
 });
 
 const AIRFLOW_BASE_URL =
-  process.env.AIRFLOW_API_URL || 'http://airflow:8080/api/v1';
+  process.env.AIRFLOW_API_URL || 'http://airflow-api-server:8080/api/v1';
 
 const AIRFLOW_DAG_ID =
   process.env.AIRFLOW_DAG_ID || 'tayara_ai_agent_pipeline';
