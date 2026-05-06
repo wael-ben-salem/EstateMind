@@ -1,0 +1,32 @@
+services:
+  realestate-law-agent:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: realestate-law-agent:v1.0
+    container_name: realestate-law-agent-container
+    ports:
+      - "${HOST_PORT:-8000}:8000"
+    volumes:
+      # Syncs your entire project folder for hot-reloading
+      - .:/app
+      # Ensures your database and logs persist on your Windows machine
+      - ./data:/app/data
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      # Limits CPU threads for Docling/Torch stability
+      - OMP_NUM_THREADS=1
+    # This command overrides the Dockerfile CMD to enable auto-reload
+    command: uvicorn run_api:app --host 0.0.0.0 --port 8000 --reload
+
+  # Optional: If you want to run Qdrant locally instead of using their cloud
+  # qdrant:
+  #   image: qdrant/qdrant:latest
+  #   ports:
+  #     - "6333:6333"
+  #   volumes:
+  #     - ./qdrant_data:/qdrant/storage

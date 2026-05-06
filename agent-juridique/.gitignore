@@ -1,0 +1,37 @@
+# --- Python & Environments ---
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+.venv/
+
+# --- Data Science & Large Files ---
+# Don't track the raw scraped data or your processed JSONL files
+*.jsonl
+*.csv
+*.xlsx
+*.pdf
+# If you create a 'data' folder, ignore its contents
+data/
+
+# --- NLP / Model Weights ---
+# Ignore downloaded BERT/CamemBERT models or fine-tuned weights
+models/
+.cache/
+huggingface/
+
+# --- VS Code & System Files ---
+.vscode/
+.history/
+.DS_Store
+Thumbs.db
+
+# --- Jupyter Notebooks ---
+.ipynb_checkpoints
+
+# --- Scrapy / Scraping logs ---
+*.log

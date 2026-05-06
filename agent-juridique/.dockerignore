@@ -1,0 +1,32 @@
+# --- Environment & Virtual Envs ---
+.venv/
+venv/
+.env
+*.egg-info/
+mon_projet_legal.egg-info/
+
+# --- Python Junk ---
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Data & Logs (Use Volumes for these instead!) ---
+data/
+logs/
+database/
+
+# --- Development / Documentation ---
+notebooks/
+tests/
+.git/
+.gitignore
+.antigravity/
+.vscode/
+
+# --- Docker specific ---
+Dockerfile
+.dockerignore
+docker-compose.yml

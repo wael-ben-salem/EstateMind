@@ -1,0 +1,11 @@
+python-dotenv
+docling
+qdrant-client
+cohere 
+pydantic 
+pymupdf
+openai
+numpy
+fastapi
+uvicorn
+python-multipart
