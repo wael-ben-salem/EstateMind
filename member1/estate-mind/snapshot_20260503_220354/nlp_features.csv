@@ -1,0 +1,6 @@
+,nlp_transaction_negociable,nlp_transaction_urgent,nlp_transaction_first_owner_or_new_mentioned,nlp_transaction_developer_or_promoter_mentioned,nlp_transaction_legal_title_or_status_mentioned,nlp_transaction_legal_title_hint,nlp_property_subtype,nlp_property_furnished,nlp_property_semi_furnished,nlp_property_condition,nlp_property_orientation_mentioned,nlp_property_duplex_penthouse_garden_level_mentioned,nlp_comfort_air_conditioning,nlp_comfort_heating_mentioned,nlp_comfort_double_glazing_mentioned,nlp_comfort_finishing_quality_hint,nlp_location_neighborhood_or_zone,nlp_location_proximity_count,nlp_location_proximity_str,nlp_location_nuisance_or_negative_mentioned,nlp_usage_primary_residence_likely,nlp_usage_investment_likely,nlp_usage_furnished_rental_likely,nlp_standing_luxury_level,nlp_standing_features_count,nlp_standing_features_str,nlp_signals_listing_too_vague,nlp_signals_incoherence_price_vs_surface_hint,nlp_signals_spam_or_low_quality_hint,nlp_signals_extraction_confidence
+1874,,,,,,,,,,,,,,,,,,0,,,,,,,0,,True,,,0.05
+3114,,,,,,,,,,,,,,,,,,0,,,,,,,0,,True,,,0.05
+3949,,,,,,,,,,,,,,,,,,0,,,,,,,0,,True,,,0.05
+3536,,,,,,,,,,,,,,,,,,0,,,,,,,0,,True,,,0.05
+1178,,,,,,,,,,,,,,,,,,0,,,,,,,0,,True,,,0.05

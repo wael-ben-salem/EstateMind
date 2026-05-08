@@ -1,0 +1,11 @@
+# API service dependencies. PyTorch + CUDA come from the base image
+# (`pytorch/pytorch:*-cuda*-cudnn*-runtime`), so they're not installed here.
+transformers>=4.40,<5
+huggingface-hub
+accelerate
+sentencepiece
+pillow
+fastapi
+uvicorn[standard]
+python-multipart
+requests

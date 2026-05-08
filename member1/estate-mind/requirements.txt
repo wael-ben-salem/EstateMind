@@ -1,0 +1,19 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.9.2
+
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.2
+lightgbm==4.5.0
+catboost==1.2.7
+shap==0.46.0
+joblib==1.4.2
+pyyaml==6.0.2
+
+# CLIP style classifier + BGE embeddings (CPU)
+torch==2.4.1
+transformers==4.45.2
+sentence-transformers==3.1.1
+pillow==10.4.0

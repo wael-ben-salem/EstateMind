@@ -1,0 +1,7 @@
+# Big visualization assets — not needed in the image (compose mounts artifacts as volumes).
+*.png
+*.zip
+snapshot_20260503_220354/visualizations/
+__pycache__/
+*.pyc
+.env

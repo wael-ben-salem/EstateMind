@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "description": "Single source of truth for the React app. When an agent moves (URL/port changes), edit only this file.",
+    "updated": "2026-05-04"
+  },
+  "agents": {
+    "captioner": {
+      "owner": "you",
+      "transport": "docker-local",
+      "baseUrl": "http://localhost:8000",
+      "endpoints": {
+        "health": { "method": "GET", "path": "/healthz" },
+        "captionOnly": { "method": "POST", "path": "/caption-only", "body": "multipart files=@image" },
+        "captionListing": { "method": "POST", "path": "/caption-listing", "body": "multipart files=@image" }
+      },
+      "notes": "GPU-backed BLIP-2; first call ~100-175s while model loads"
+    },
+    "outliers": {
+      "owner": "member1",
+      "transport": "docker-local",
+      "baseUrl": "http://localhost:8001",
+      "endpoints": {
+        "health": { "method": "GET", "path": "/healthz" },
+        "artifactsStatus": { "method": "GET", "path": "/artifacts" },
+        "manifest": { "method": "GET", "path": "/manifest" },
+        "detectPocket": { "method": "POST", "path": "/detect-pocket", "body": "json" },
+        "findComparables": { "method": "POST", "path": "/find-comparables", "body": "json" },
+        "poiScore": { "method": "POST", "path": "/poi-score", "body": "json" },
+        "styleClassify": { "method": "POST", "path": "/style-classify", "body": "multipart file=@image" },
+        "priceKeywords": { "method": "GET", "path": "/price-keywords" },
+        "map": { "method": "GET", "path": "/map" }
+      },
+      "notes": "Only 2/11 of member1's pickles load currently; the 5 custom-class endpoints (pocket/rag/poi/style/lexicon) will return 503 until member1 ships his .py source files"
+    },
+    "lawagent": {
+      "owner": "member2",
+      "transport": "docker-local",
+      "baseUrl": "http://localhost:8002",
+      "endpoints": {
+        "ask": { "method": "POST", "path": "/agent/ask", "body": "multipart query=<text> [file=<pdf>]" },
+        "analyzeContract": { "method": "POST", "path": "/analyze/contract", "body": "multipart file=<pdf>" },
+        "docs": { "method": "GET", "path": "/docs" }
+      },
+      "notes": "Field name is lowercase 'query' (NOT 'Query'). Stack: Qdrant + Cohere; needs API keys in .env."
+    },
+    "price": {
+      "owner": "member3-sirinehj",
+      "transport": "docker-local",
+      "baseUrl": "http://localhost:8003",
+      "endpoints": {
+        "docs": { "method": "GET", "path": "/docs" }
+      },
+      "notes": "Endpoint contract not yet documented; check /docs for live shape"
+    },
+    "anomaly": {
+      "owner": "member3-sirinehj",
+      "transport": "docker-local",
+      "baseUrl": "http://localhost:8004",
+      "endpoints": {
+        "docs": { "method": "GET", "path": "/docs" }
+      },
+      "notes": "Endpoint contract not yet documented; check /docs for live shape"
+    },
+    "recommender": {
+      "owner": "member4",
+      "transport": "render-hosted",
+      "baseUrl": "https://estatemind-recommender.onrender.com",
+      "endpoints": {
+        "health": { "method": "GET", "path": "/health" },
+        "recommend": { "method": "POST", "path": "/api/recommend", "body": "json {query: string, top_k?: number}" }
+      },
+      "notes": "Free Render tier: cold-start 30-60s after 15min idle. Friend's doc said /recommend and /chat — actual path is /api/recommend, and /chat does not exist."
+    }
+  }
+}

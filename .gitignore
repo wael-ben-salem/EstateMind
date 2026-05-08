@@ -1,0 +1,40 @@
+# Virtual environment
+.venv/
+
+# Sensitive — never commit
+.env
+
+# Large datasets / model weights (exceed GitHub 100 MB limit)
+Flickr8K/
+bigfinal_realestate_Cleaned.csv
+best_model_bundle.pth
+member1/estate-mind/estatemind_snapshot_20260503_220404.zip
+member1/estate-mind/snapshot_20260503_220354/style_classifier.pkl
+member1/estate-mind/snapshot_20260503_220354/rag_predictor.pkl
+member1/estate-mind/snapshot_20260503_220354/stacking_ensemble.pkl
+
+# Training checkpoints
+outputs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Claude Code memory (local only)
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,198 @@
+// Database schema. Source-of-truth for both seeded scrape data and user-created listings.
+//
+// SWAP NOTE: when teammate's Postgres comes online, change `provider = "sqlite"` to
+// `provider = "postgresql"` and re-run `prisma migrate dev`. Field types stay the same.
+// The `images` field becomes a real `String[]` on Postgres (currently pipe-joined String).
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Listing {
+  id Int @id @default(autoincrement())
+
+  // Source / identity
+  reference String?
+  url       String?
+  source    String?
+  agence    String?
+
+  // Address & geo
+  adresse      String?
+  gouvernerat  String?
+  delegation   String?
+  ville        String?
+  localite     String?
+  codep        String?
+  latitude     Float?
+  longitude    Float?
+  geoPrecision String? @map("geo_precision")
+
+  // Listing meta
+  type           String?
+  contrat        String?
+  prix           Float?
+  prixOriginal   Float?  @map("prix_original")
+  prixM2         Float?  @map("prix_m2")
+  prixQ75Contrat Float?  @map("prix_q75_contrat")
+
+  // Physical
+  surface           Float?
+  surfaceOriginal   Float? @map("surface_original")
+  superficieTerrain Float? @map("superficie_terrain")
+  pieces            Int?
+  piecesOriginal    Int?   @map("pieces_original")
+  etage             Int?
+  etageOriginal     Int?   @map("etage_original")
+  anneeConstr       Int?   @map("annee_constr")
+
+  // Boolean amenities
+  hasAscenseur     Boolean? @map("has_ascenseur")
+  hasBalcon        Boolean? @map("has_balcon")
+  hasChaffage      Boolean? @map("has_chaffage")
+  hasClimatisation Boolean? @map("has_climatisation")
+  hasGarage        Boolean? @map("has_garage")
+  hasGardien       Boolean? @map("has_gardien")
+  hasJardin        Boolean? @map("has_jardin")
+  hasParking       Boolean? @map("has_parking")
+  hasPiscine       Boolean? @map("has_piscine")
+  hasTerrasse      Boolean? @map("has_terrasse")
+
+  // Other amenities (text)
+  cuisine                String?
+  salleDeBain            String? @map("salle_de_bain")
+  chauffage              String?
+  climatisation          String?
+  installationsSportives String? @map("installations_sportives")
+
+  // POI proximity counts
+  bus        Int?
+  railway    Int?
+  ecole      Int?
+  hopital    Int?
+  pharmacie  Int?
+  magasin    Int?
+  marche     Int?
+  restaurant Int?
+
+  // Standing / quality
+  standing        String?
+  hautStanding    Boolean? @map("haut_standing")
+  bonEntourage    Boolean? @map("bon_entourage")
+  bonEntourageLlm String?  @map("bon_entourage_llm")
+
+  // Contact
+  tel String?
+
+  // Description / search text
+  titre            String?
+  description      String?
+  descClean        String? @map("desc_clean")
+  caracBlock       String? @map("carac_block")
+  caracteristiques String?
+  contratCarac     String? @map("contrat_carac")
+  surfaceCarac     String? @map("surface_carac")
+  codePostalCarac  String? @map("code_postal_carac")
+
+  // Misc
+  fonds         String?
+  constructible String?
+  pleinAir      String? @map("plein_air")
+  service       String?
+
+  // Images: ' | '-joined URLs (becomes String[] on Postgres)
+  images    String?
+  otherData String? @map("other_data")
+
+  // Publication
+  datePublication String? @map("date_publication")
+  pubYear         Int?    @map("pub_year")
+  pubMonth        Int?    @map("pub_month")
+
+  // App-side metadata
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  isUserCreated Boolean  @default(false)
+
+  ownerId Int?
+  owner   User? @relation(fields: [ownerId], references: [id])
+
+  favorites Favorite[]
+
+  @@index([gouvernerat])
+  @@index([ville])
+  @@index([type])
+  @@index([contrat])
+  @@index([prix])
+  @@index([latitude, longitude])
+}
+
+model User {
+  id           Int     @id @default(autoincrement())
+  email        String  @unique
+  passwordHash String?
+  name         String?
+  role         String  @default("buyer") // "buyer" | "seller" | "admin"
+
+  createdAt DateTime @default(now())
+
+  listings  Listing[]
+  favorites Favorite[]
+  sessions  Session[]
+  accounts  Account[]
+}
+
+// NextAuth.js v4 tables (credentials provider doesn't strictly require them
+// but keeping them lets us layer in OAuth providers later without a migration).
+model Account {
+  id                String  @id @default(cuid())
+  userId            Int
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  listingId Int
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listingId])
+}

@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "name": "Outliers",
+    "tagline": "Tunisian real estate, powered by AI"
+  },
+  "nav": {
+    "search": "Search",
+    "post": "Post a listing",
+    "favorites": "Favorites",
+    "signin": "Sign in",
+    "signup": "Create account"
+  },
+  "hero": {
+    "title": "Find your next property in Tunisia",
+    "subtitle": "Over 50,000 listings analysed by our AI agents — predicted price, anomalies detected, undervalued areas identified.",
+    "searchPlaceholder": "e.g. S+2 apartment with pool in Hammamet under 200,000 TND",
+    "searchAction": "Search"
+  },
+  "filters": {
+    "title": "Filters",
+    "type": "Type",
+    "contract": "Contract",
+    "city": "Governorate",
+    "rooms": "Rooms",
+    "priceMin": "Min price",
+    "priceMax": "Max price",
+    "amenities": "Amenities",
+    "reset": "Reset"
+  },
+  "listing": {
+    "perMonth": "/ month",
+    "noPrice": "Price on request",
+    "noPhoto": "No photo available",
+    "rooms": "{n, plural, one {# room} other {# rooms}}",
+    "surface": "{n} m²",
+    "viewDetails": "View listing"
+  },
+  "home": {
+    "featured": "Featured",
+    "browseAll": "Browse all listings",
+    "byCity": "Explore by governorate"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "about": "About",
+    "contact": "Contact",
+    "legal": "Legal notice"
+  }
+}

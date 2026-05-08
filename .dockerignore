@@ -1,0 +1,35 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.gitignore
+.idea/
+.vscode/
+
+# Notebooks and training assets — not needed in the runtime image
+*.ipynb
+Flickr8K/
+outputs/
+SAT_*.ipynb
+Apartment_Listing_Generator.ipynb
+
+# Trained SAT bundle — not used by the API (BLIP-2 only)
+best_model_bundle.pth
+
+# Docs and dev launchers
+README.md
+launch.bat
+launch.sh
+setup_*.bat
+setup_*.sh
+requirements_train.txt
+
+# Streamlit dev UI is not part of the service image
+app.py
+
+# Ad-hoc files
+*.csv
+*.json
+*.log
+*.zip

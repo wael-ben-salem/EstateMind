@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-05-03T22:03:19.511981",
+  "features_version": "v1.0",
+  "nlp_schema_version": "v1.0",
+  "model_version": "lgbm_v1",
+  "dataset_rows": 4296,
+  "train_rows": 3073,
+  "test_rows": 769,
+  "metrics": {
+    "ridge_mae": 139670.0,
+    "lgbm_mae": 18643.0,
+    "arena_best_model": "Random Forest (200)",
+    "stack_mae": 18488.0,
+    "stack_r2": 0.528,
+    "lgbm_rmse": 96358.0,
+    "lgbm_mape_pct": 6.4
+  },
+  "llm_calls": 0,
+  "nlp_parse_errors": 0,
+  "nlp_total_calls": 0,
+  "providers_used": []
+}

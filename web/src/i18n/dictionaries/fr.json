@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "name": "Outliers",
+    "tagline": "L'immobilier tunisien, augmenté par l'IA"
+  },
+  "nav": {
+    "search": "Rechercher",
+    "post": "Publier une annonce",
+    "favorites": "Favoris",
+    "signin": "Se connecter",
+    "signup": "Créer un compte"
+  },
+  "hero": {
+    "title": "Trouvez votre prochain bien en Tunisie",
+    "subtitle": "Plus de 50 000 annonces analysées par nos agents IA — prix prédit, anomalies détectées, zones sous-évaluées repérées.",
+    "searchPlaceholder": "Ex: appartement S+2 piscine Hammamet moins de 200 000 TND",
+    "searchAction": "Lancer la recherche"
+  },
+  "filters": {
+    "title": "Filtres",
+    "type": "Type",
+    "contract": "Contrat",
+    "city": "Gouvernorat",
+    "rooms": "Pièces",
+    "priceMin": "Prix min",
+    "priceMax": "Prix max",
+    "amenities": "Équipements",
+    "reset": "Réinitialiser"
+  },
+  "listing": {
+    "perMonth": "/ mois",
+    "noPrice": "Prix sur demande",
+    "noPhoto": "Photo indisponible",
+    "rooms": "{n, plural, one {# pièce} other {# pièces}}",
+    "surface": "{n} m²",
+    "viewDetails": "Voir l'annonce"
+  },
+  "home": {
+    "featured": "À la une",
+    "browseAll": "Voir toutes les annonces",
+    "byCity": "Explorer par gouvernorat"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "about": "À propos",
+    "contact": "Contact",
+    "legal": "Mentions légales"
+  }
+}

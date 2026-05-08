@@ -1,0 +1,146 @@
+# Real-estate listing captioner service.
+#
+# GPU passthrough requires Docker Desktop with WSL2 + the Windows NVIDIA driver
+# (no separate Container Toolkit install needed; Docker Desktop bundles it).
+#
+# Run:   docker compose up --build
+# Stop:  docker compose down
+
+services:
+  captioner:
+    build: .
+    image: zakariabouchaddakh/realestate-captioner:latest
+    container_name: captioner
+    ports:
+      - "8000:8000"
+    volumes:
+      # Reuse the host's HF cache so BLIP-2 weights aren't re-downloaded.
+      # On Windows, `${USERPROFILE}` resolves to C:\Users\<you>.
+      - "${USERPROFILE}/.cache/huggingface:/root/.cache/huggingface"
+    environment:
+      # Ollama runs on the Windows host; reach it via host.docker.internal.
+      OLLAMA_URL: "http://host.docker.internal:11434/api/generate"
+      OLLAMA_MODEL: "llama3:8b"
+      BLIP2_MODEL_ID: "Salesforce/blip2-flan-t5-xl"
+      ALLOWED_ORIGINS: "*"
+      # External LLM fallback (ESPRIT → OpenRouter → Ollama)
+      ESPRIT_BASE_URL: "${ESPRIT_BASE_URL:-}"
+      ESPRIT_LLM_API_KEY: "${ESPRIT_LLM_API_KEY:-}"
+      ESPRIT_MODEL_NAME: "${ESPRIT_MODEL_NAME:-}"
+      OPENROUTER_API_1: "${OPENROUTER_API_1:-}"
+      OPENROUTER_API_2: "${OPENROUTER_API_2:-}"
+      OPENROUTER_API_3: "${OPENROUTER_API_3:-}"
+      HF_TOKEN: "${HF_TOKEN:-}"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/healthz"]
+      interval: 30s
+      timeout: 10s
+      start_period: 360s
+      retries: 5
+    restart: unless-stopped
+
+  outliers:
+    # Member 1's market-intel agent: pocket detection, RAG comparables,
+    # POI scoring, CLIP style classifier, price lexicon, static map.
+    # Price prediction is owned by another teammate — not exposed here.
+    build: ./member1/estate-mind
+    image: zakariabouchaddakh/outliers:latest
+    container_name: outliers
+    ports:
+      - "8001:8001"
+    volumes:
+      # Mount artifacts read-only so we can swap pickles without rebuilding.
+      - "./member1/estate-mind/models:/app/models:ro"
+      - "./member1/estate-mind/snapshot_20260503_220354:/app/snapshot_20260503_220354:ro"
+      - "./member1/estate-mind/artifacts:/app/artifacts:ro"
+      - "./member1/estate-mind/config:/app/config:ro"
+      - "./member1/estate-mind/carte_immobilier_tunisie.html:/app/carte_immobilier_tunisie.html:ro"
+      # Share HF cache for CLIP / BGE downloads.
+      - "${USERPROFILE}/.cache/huggingface:/root/.cache/huggingface"
+    environment:
+      ALLOWED_ORIGINS: "*"
+      ESTATEMIND_ROOT: "/app"
+      HF_TOKEN: "${HF_TOKEN:-}"
+    restart: unless-stopped
+
+  price:
+    # Member 3 (sirinehj) — price prediction service.
+    # Same image bundles both price + anomaly; CMD selects which one to run.
+    image: sirinehj/estatemind-price:v2
+    container_name: price
+    command: ["uvicorn", "services.price_prediction.price_service:app", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8003:8001"
+    restart: unless-stopped
+
+  anomaly:
+    # Member 3 (sirinehj) — anomaly detection service.
+    # Reusing the price image with a different CMD (anomaly_service module).
+    # Workaround for upstream typo: anomaly_service expects /app/model_artefacts/
+    # (plural) but the image only ships /app/model_artefact/ (singular).
+    # Symlink it before starting uvicorn.
+    image: sirinehj/estatemind-anomaly:v2
+    container_name: anomaly
+    command:
+      - "sh"
+      - "-c"
+      - "ln -sf /app/model_artefact /app/model_artefacts && exec uvicorn services.anomaly_detection.anomaly_service:app --host 0.0.0.0 --port 8002"
+    ports:
+      - "8004:8002"
+    restart: unless-stopped
+
+  lawagent:
+    # Member 2's legal/contract agent: /agent/ask (query + file), /analyze/contract.
+    # Image was prebuilt by member 2 — pulled from Docker Hub, no local build needed.
+    # Stack: Qdrant (vector store) + Cohere (LLM/embeddings).
+    # Required env vars (container hard-fails on startup if any are missing):
+    #   QDRANT_URL, QDRANT_API_KEY, COHERE_API_KEY
+    # Put real values in `.env` next to this compose file — they will be picked up automatically.
+    image: mohamedabdennadher/realestate-law-agent:v1.0
+    container_name: lawagent
+    # 2 workers so a slow /analyze/contract job doesn't block /agent/ask chatbot requests.
+    command: ["sh", "-c", "uvicorn api.api:app --host 0.0.0.0 --port 8000 --workers 2"]
+    ports:
+      - "8002:8000"   # container listens on 8000; host-mapped to 8002 (captioner owns 8000)
+    environment:
+      QDRANT_URL: "${QDRANT_URL:-}"
+      QDRANT_API_KEY: "${QDRANT_API_KEY:-}"
+      COHERE_API_KEY: "${COHERE_API_KEY:-}"
+      OPENROUTER_API_1: "${OPENROUTER_API_1:-}"
+      OPENROUTER_API_2: "${OPENROUTER_API_2:-}"
+      OPENROUTER_API_3: "${OPENROUTER_API_3:-}"
+      ESPRIT_LLM_API_KEY: "${ESPRIT_LLM_API_KEY:-}"
+      ESPRIT_MODEL_NAME: "${ESPRIT_MODEL_NAME:-}"
+      ESPRIT_BASE_URL: "${ESPRIT_BASE_URL:-}"
+    restart: unless-stopped
+
+  postgres:
+    # Teammate's pre-loaded PostgreSQL image.
+    # Data lives in the external volume etl_postgres-db-volume.
+    # To get the volume from the teammate:
+    #   docker save azizmaas1999/my-postgres:15 | ... (or ask for a pg_dump)
+    image: azizmaas1999/my-postgres:15
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - etl_postgres-db-volume:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  etl_postgres-db-volume:
+    external: true
+    name: etl_postgres-db-volume
