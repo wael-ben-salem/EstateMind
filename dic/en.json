@@ -1,0 +1,127 @@
+{
+  "brand": {
+    "name": "EstateMind",
+    "tagline": "Tunisian real estate, powered by AI"
+  },
+  "nav": {
+    "search": "Search",
+    "post": "Post a listing",
+    "favorites": "Favorites",
+    "signin": "Sign in",
+    "signup": "Create account"
+  },
+  "hero": {
+    "title": "Find your next property in Tunisia",
+    "subtitle": "Over 50,000 listings analysed by our AI agents — predicted price, anomalies detected, undervalued areas identified.",
+    "searchPlaceholder": "e.g. S+2 apartment with pool in Hammamet under 200,000 TND",
+    "searchAction": "Search"
+  },
+  "stats": {
+    "listings": "Listings",
+    "locations": "Locations",
+    "aiAgents": "AI Agents",
+    "clients": "Happy Clients",
+    "satisfaction": "Client Satisfaction",
+    "responseTime": "Response Time",
+    "sold": "Properties Sold",
+    "support": "AI Support"
+  },
+  "ai": {
+    "marketAnalyst": "AI Market Analyst",
+    "realTime": "Real-time insights",
+    "marketTrend": "Market Trend",
+    "avgPrice": "Avg. Price/SQM",
+    "hotZones": "Hot Zones",
+    "buyersMarket": "Buyer's market",
+    "confidenceScore": "AI Confidence Score"
+  },
+  "home": {
+    "featured": "Featured",
+    "featuredTitle": "Handpicked",
+    "properties": "Properties",
+    "featuredSubtitle": "Discover our most exclusive listings",
+    "browseAll": "Browse all listings",
+    "byCity": "Explore by governorate"
+  },
+  "cities": {
+    "badge": "Popular Destinations",
+    "title": "Explore Properties by",
+    "city": "City",
+    "subtitle": "Find your dream property in Tunisia's most vibrant locations",
+    "properties": "properties",
+    "explore": "Explore"
+  },
+  "aiFeatures": {
+    "badge": "Powered by Advanced AI",
+    "title": "Intelligent Features for",
+    "highlight": "Smart Decisions",
+    "subtitle": "Our AI agents work 24/7 to provide you with unprecedented market insights and property analysis",
+    "predictivePricing": "Predictive Pricing",
+    "predictivePricingDesc": "LightGBM model estimates real market value with 94% accuracy",
+    "fraudDetection": "Fraud Detection",
+    "fraudDetectionDesc": "AI-powered anomaly detection flags suspicious listings automatically",
+    "naturalLanguage": "Natural Language Search",
+    "naturalLanguageDesc": "Describe your ideal property, AI understands your intent",
+    "legalAssistant": "Legal Assistant",
+    "legalAssistantDesc": "Get answers to legal questions and contract analysis",
+    "smartDescriptions": "Smart Descriptions",
+    "smartDescriptionsDesc": "BLIP-2 generates professional descriptions from photos",
+    "personalizedMatches": "Personalized Matches",
+    "personalizedMatchesDesc": "Get suggestions based on your preferences",
+    "learnMore": "Learn more",
+    "tryNow": "Try AI Assistant Now"
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "Trusted by",
+    "highlight": "Thousands",
+    "titleEnd": "of Happy Clients",
+    "subtitle": "See why real estate professionals and home buyers choose us for their property needs",
+    "sarahName": "Sarah M.",
+    "sarahRole": "Home Buyer",
+    "sarahText": "The AI pricing predictions helped me save over $20,000 on my first home purchase. Incredible accuracy!",
+    "ahmedName": "Ahmed K.",
+    "ahmedRole": "Real Estate Agent",
+    "ahmedText": "Our agency's efficiency increased by 300% since using this platform. The AI features are game-changing."
+  },
+  "footer": {
+    "description": "Making property search smarter with AI technology.",
+    "company": "Company",
+    "resources": "Resources",
+    "contact": "Contact",
+    "about": "About",
+    "careers": "Careers",
+    "press": "Press",
+    "blog": "Blog",
+    "helpCenter": "Help Center",
+    "safety": "Safety",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "support": "Support",
+    "sales": "Sales",
+    "partners": "Partners",
+    "media": "Media",
+    "copyright": "© 2024 RealEstateAI. All rights reserved. Powered by Next.js & AI Technology",
+    "rights": "All rights reserved.",
+    "legal": "Legal notice"
+  },
+  "filters": {
+    "title": "Filters",
+    "type": "Type",
+    "contract": "Contract",
+    "city": "Governorate",
+    "rooms": "Rooms",
+    "priceMin": "Min price",
+    "priceMax": "Max price",
+    "amenities": "Amenities",
+    "reset": "Reset"
+  },
+  "listing": {
+    "perMonth": "/ month",
+    "noPrice": "Price on request",
+    "noPhoto": "No photo available",
+    "rooms": "{n, plural, one {# room} other {# rooms}}",
+    "surface": "{n} m²",
+    "viewDetails": "View listing"
+  }
+}

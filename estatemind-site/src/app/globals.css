@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy:       oklch(0.18 0.065 260);
+  --color-navy-mid:   oklch(0.26 0.065 260);
+  --color-primary:    oklch(0.60 0.22  27);
+  --color-primary-l:  oklch(0.73 0.17  32);
+  --color-gold:       oklch(0.77 0.18  68);
+  --color-gold-light: oklch(0.89 0.11  72);
+  --color-terra:      oklch(0.55 0.22  20);
+  --color-sand:       oklch(0.97 0.008 85);
+  --color-cream:      oklch(1.0  0.002 90);
+  --font-display:     var(--font-playfair), Georgia, serif;
+  --font-sans:        var(--font-inter), system-ui, sans-serif;
+}
+
+@keyframes marquee  { from { transform: translateX(0); }   to { transform: translateX(-50%); } }
+@keyframes kenburns { from { transform: scale(1) translate(0%,0%); } to { transform: scale(1.08) translate(-2%,-1.5%); } }
+@keyframes fadeUp   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes spin     { to { transform: rotate(360deg); } }
+
+@utility animate-marquee  { animation: marquee   28s linear      infinite;          }
+@utility animate-kenburns { animation: kenburns  16s ease-in-out infinite alternate; }
+@utility animate-fadeUp   { animation: fadeUp    0.7s ease-out   both;              }
+@utility animate-fadeIn   { animation: fadeIn    1.0s ease-out   both;              }
+@utility animate-spin     { animation: spin      1s   linear     infinite;          }
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: #ffffff;
+  color: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lively card shadow — warm orange tint */
+.shadow-card { box-shadow: 0 2px 12px oklch(0.60 0.22 27 / 0.08), 0 1px 3px oklch(0 0 0 / 0.06); }
+.shadow-card-hover { box-shadow: 0 8px 32px oklch(0.60 0.22 27 / 0.14), 0 2px 8px oklch(0 0 0 / 0.08); }

@@ -1,0 +1,127 @@
+{
+  "brand": {
+    "name": "EstateMind",
+    "tagline": "L'immobilier tunisien, augmenté par l'IA"
+  },
+  "nav": {
+    "search": "Rechercher",
+    "post": "Publier une annonce",
+    "favorites": "Favoris",
+    "signin": "Se connecter",
+    "signup": "Créer un compte"
+  },
+  "hero": {
+    "title": "Trouvez votre prochain bien en Tunisie",
+    "subtitle": "Plus de 50 000 annonces analysées par nos agents IA — prix prédit, anomalies détectées, zones sous-évaluées repérées.",
+    "searchPlaceholder": "Ex: appartement S+2 piscine Hammamet moins de 200 000 TND",
+    "searchAction": "Lancer la recherche"
+  },
+  "stats": {
+    "listings": "Annonces",
+    "locations": "Gouvernorats",
+    "aiAgents": "Agents IA",
+    "clients": "Clients satisfaits",
+    "satisfaction": "Satisfaction client",
+    "responseTime": "Temps de réponse",
+    "sold": "Biens vendus",
+    "support": "Support IA"
+  },
+  "ai": {
+    "marketAnalyst": "Analyste IA du marché",
+    "realTime": "Aperçu en temps réel",
+    "marketTrend": "Tendance du marché",
+    "avgPrice": "Prix moyen/m²",
+    "hotZones": "Zones chaudes",
+    "buyersMarket": "Marché acheteur",
+    "confidenceScore": "Score de confiance IA"
+  },
+  "home": {
+    "featured": "À la une",
+    "featuredTitle": "Propriétés",
+    "properties": "sélectionnées",
+    "featuredSubtitle": "Découvrez nos annonces les plus exclusives",
+    "browseAll": "Voir toutes les annonces",
+    "byCity": "Explorer par gouvernorat"
+  },
+  "cities": {
+    "badge": "Destinations populaires",
+    "title": "Explorez les propriétés par",
+    "city": "ville",
+    "subtitle": "Trouvez la propriété de vos rêves dans les lieux les plus dynamiques de Tunisie",
+    "properties": "biens",
+    "explore": "Explorer"
+  },
+  "aiFeatures": {
+    "badge": "Propulsé par l'IA avancée",
+    "title": "Fonctionnalités intelligentes pour des",
+    "highlight": "décisions éclairées",
+    "subtitle": "Nos agents IA travaillent 24/7 pour vous fournir des insights marché sans précédent",
+    "predictivePricing": "Prix prédictifs",
+    "predictivePricingDesc": "Modèle LightGBM estime la valeur marchande réelle avec 94% de précision",
+    "fraudDetection": "Détection de fraudes",
+    "fraudDetectionDesc": "L'IA identifie et signale automatiquement les annonces suspectes",
+    "naturalLanguage": "Recherche naturelle",
+    "naturalLanguageDesc": "Décrivez votre bien idéal, l'IA comprend votre intention",
+    "legalAssistant": "Assistant juridique",
+    "legalAssistantDesc": "Réponses à vos questions légales et analyse de contrats",
+    "smartDescriptions": "Descriptions intelligentes",
+    "smartDescriptionsDesc": "BLIP-2 génère des descriptions pro à partir des photos",
+    "personalizedMatches": "Recommandations personnalisées",
+    "personalizedMatchesDesc": "Recevez des suggestions basées sur vos préférences",
+    "learnMore": "En savoir plus",
+    "tryNow": "Essayer l'assistant IA"
+  },
+  "testimonials": {
+    "badge": "Témoignages",
+    "title": "Approuvé par des",
+    "highlight": "milliers",
+    "titleEnd": "de clients satisfaits",
+    "subtitle": "Découvrez pourquoi les professionnels et acheteurs nous choisissent",
+    "sarahName": "Sarah M.",
+    "sarahRole": "Acheteuse",
+    "sarahText": "Les prédictions IA m'ont aidé à économiser plus de 20 000$ sur mon premier achat. Une précision incroyable !",
+    "ahmedName": "Ahmed K.",
+    "ahmedRole": "Agent immobilier",
+    "ahmedText": "L'efficacité de notre agence a augmenté de 300% depuis l'utilisation de cette plateforme. Les fonctionnalités IA changent la donne."
+  },
+  "footer": {
+    "description": "Rendre la recherche immobilière plus intelligente avec l'IA.",
+    "company": "Entreprise",
+    "resources": "Ressources",
+    "contact": "Contact",
+    "about": "À propos",
+    "careers": "Carrières",
+    "press": "Presse",
+    "blog": "Blog",
+    "helpCenter": "Centre d'aide",
+    "safety": "Sécurité",
+    "terms": "Conditions",
+    "privacy": "Confidentialité",
+    "support": "Support",
+    "sales": "Ventes",
+    "partners": "Partenaires",
+    "media": "Médias",
+    "copyright": "© 2024 RealEstateAI. Tous droits réservés. Propulsé par Next.js & IA",
+    "rights": "Tous droits réservés.",
+    "legal": "Mentions légales"
+  },
+  "filters": {
+    "title": "Filtres",
+    "type": "Type",
+    "contract": "Contrat",
+    "city": "Gouvernorat",
+    "rooms": "Pièces",
+    "priceMin": "Prix min",
+    "priceMax": "Prix max",
+    "amenities": "Équipements",
+    "reset": "Réinitialiser"
+  },
+  "listing": {
+    "perMonth": "/ mois",
+    "noPrice": "Prix sur demande",
+    "noPhoto": "Photo indisponible",
+    "rooms": "{n, plural, one {# pièce} other {# pièces}}",
+    "surface": "{n} m²",
+    "viewDetails": "Voir l'annonce"
+  }
+}

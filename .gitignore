@@ -4,6 +4,11 @@
 # Sensitive — never commit
 .env
 
+# SQLite databases (seeded from CSV — too large for GitHub)
+**/*.db
+**/*.db-shm
+**/*.db-wal
+
 # Large datasets / model weights (exceed GitHub 100 MB limit)
 Flickr8K/
 bigfinal_realestate_Cleaned.csv

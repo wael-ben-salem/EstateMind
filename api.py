@@ -11,8 +11,10 @@ Run:
 """
 from __future__ import annotations
 
+import asyncio
 import os
 from contextlib import asynccontextmanager
+from functools import partial
 from pathlib import Path
 
 # Load .env from the project root so ESPRIT_LLM_API_KEY etc. are available.
@@ -55,9 +57,9 @@ def _available_vram_gb() -> float:
 async def lifespan(app: FastAPI):
     # BLIP-2 flan-t5-xl needs ~7.5 GB VRAM (fp16).  Anything smaller → BLIP-1.
     # BLIP-1 large (~1.5 GB) is fast on any GPU and adequate for listing captions.
+    # VRAM check always wins — even if BLIP2_MODEL_ID is explicitly set.
     vram = _available_vram_gb()
-    explicit = "BLIP2_MODEL_ID" in os.environ
-    use_blip2 = explicit or vram >= 7.0
+    use_blip2 = vram >= 7.0
     if use_blip2:
         try:
             _state["blip"] = load_blip2_model(BLIP2_MODEL_ID)
@@ -111,7 +113,8 @@ async def caption_listing_endpoint(files: list[UploadFile] = File(...)):
     if not files:
         raise HTTPException(400, "No files uploaded.")
     images = [(f.filename or "image", await f.read()) for f in files]
-    return caption_listing(_state["blip"], images)
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, partial(caption_listing, _state["blip"], images))
 
 
 @app.post("/caption-only")
@@ -121,4 +124,5 @@ async def caption_only_endpoint(files: list[UploadFile] = File(...)):
     if not files:
         raise HTTPException(400, "No files uploaded.")
     images = [(f.filename or "image", await f.read()) for f in files]
-    return caption_listing(_state["blip"], images, skip_ollama=True)
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, partial(caption_listing, _state["blip"], images, True))
