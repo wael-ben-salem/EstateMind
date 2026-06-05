@@ -40,22 +40,36 @@ EstateMind/
     └── soutenance PI.pptx
 ```
 
-### 🎥 Commercial Video
+🎬 Demo Videos & Project Documents
 
-[Watch the commercial video](./video/vid_commercial.mp4)
+All demo videos and project documents are hosted on Google Drive to keep the GitHub repository lightweight and easy to clone.
 
-### 🎥 Full Platform Demo
+📁 Google Drive Folder:
+Open EstateMind Demo Videos & Documents
 
-[Watch the full platform demo](./video/demoESTATEMIND.mp4)
+🎥 Commercial Video
 
-### 📄 Project Report
+The commercial video presents the main idea of EstateMind, the problem addressed, and the value of using AI for real estate transparency.
 
-[Read the project report](./video/EstateMind_Rapport.pdf)
+▶ Watch the commercial video
 
-### 📊 Defense Presentation
+🎥 Full Platform Demo
 
-[Open the defense presentation](./video/soutenance%20PI.pptx)
+The full demo video shows the main features of the platform, including listings, AI recommendation, market intelligence, price prediction, anomaly detection, and legal assistance.
 
+▶ Watch the full platform demo
+
+📄 Project Report
+
+The project report contains the full technical and functional documentation of EstateMind.
+
+📖 Read the project report
+
+📊 Defense Presentation
+
+The defense presentation summarizes the project context, architecture, features, AI agents, results, and future improvements.
+
+📖 View the defense presentation
 ---
 
 ## 🤖 AI Agents
