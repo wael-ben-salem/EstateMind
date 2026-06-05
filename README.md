@@ -25,51 +25,28 @@ EstateMind solves this problem by combining:
 The goal is to make real estate decisions more transparent, intelligent, and data-driven.
 
 ---
+## 🎬 Demo Videos & Project Documents
 
-## 🎬 Demo Videos & Documents
+To keep the GitHub repository lightweight, all demo videos and project documents are hosted on Google Drive.
 
-All demo files and documents are placed inside the `video/` folder.
+📁 **Google Drive Folder:**
+[Open EstateMind Demo Videos & Documents](https://drive.google.com/drive/u/1/folders/1z5XoS5Dj4xuygFrM836cTWIDs1pLff4B)
 
-```txt
-EstateMind/
-├── README.md
-└── video/
-    ├── vid_commercial.mp4
-    ├── demoESTATEMIND.mp4
-    ├── EstateMind_Rapport.pdf
-    └── soutenance PI.pptx
-```
+### 🎥 Commercial Video
 
-🎬 Demo Videos & Project Documents
+[▶ Watch the commercial video](https://drive.google.com/drive/u/1/folders/1z5XoS5Dj4xuygFrM836cTWIDs1pLff4B)
 
-All demo videos and project documents are hosted on Google Drive to keep the GitHub repository lightweight and easy to clone.
+### 🎥 Full Platform Demo
 
-📁 Google Drive Folder:
-Open EstateMind Demo Videos & Documents
+[▶ Watch the full platform demo](https://drive.google.com/drive/u/1/folders/1z5XoS5Dj4xuygFrM836cTWIDs1pLff4B)
 
-🎥 Commercial Video
+### 📄 Project Report
 
-The commercial video presents the main idea of EstateMind, the problem addressed, and the value of using AI for real estate transparency.
+[📖 Read the project report](https://drive.google.com/drive/u/1/folders/1z5XoS5Dj4xuygFrM836cTWIDs1pLff4B)
 
-▶ Watch the commercial video
+### 📊 Defense Presentation
 
-🎥 Full Platform Demo
-
-The full demo video shows the main features of the platform, including listings, AI recommendation, market intelligence, price prediction, anomaly detection, and legal assistance.
-
-▶ Watch the full platform demo
-
-📄 Project Report
-
-The project report contains the full technical and functional documentation of EstateMind.
-
-📖 Read the project report
-
-📊 Defense Presentation
-
-The defense presentation summarizes the project context, architecture, features, AI agents, results, and future improvements.
-
-📖 View the defense presentation
+[📖 View the defense presentation](https://drive.google.com/drive/u/1/folders/1z5XoS5Dj4xuygFrM836cTWIDs1pLff4B)
 ---
 
 ## 🤖 AI Agents
